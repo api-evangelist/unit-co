@@ -1,0 +1,868 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unit API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List Application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/applications"
+          },
+          "docs": "Lists individual and business applications with filtering, sorting, and paging."
+        },
+        {
+          "info": {
+            "name": "Create Application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/applications",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"data\": {\n    \"type\": \"individualApplication\",\n    \"attributes\": {\n      \"ssn\": \"123456789\",\n      \"fullName\": { \"first\": \"John\", \"last\": \"Kenn\" },\n      \"dateOfBirth\": \"1989-02-01\",\n      \"address\": { \"street\": \"123 Main St\", \"city\": \"San Francisco\", \"state\": \"CA\", \"postalCode\": \"94205\", \"country\": \"US\" },\n      \"email\": \"jone.doe@unit-finance.com\",\n      \"phone\": { \"countryCode\": \"1\", \"number\": \"5555555555\" },\n      \"occupation\": \"ArchitectOrEngineer\",\n      \"annualIncome\": \"UpTo10k\",\n      \"sourceOfIncome\": \"EmploymentOrPayrollIncome\"\n    }\n  }\n}"
+            }
+          },
+          "docs": "Creates an individualApplication or businessApplication."
+        },
+        {
+          "info": {
+            "name": "Get Application by Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/applications/:applicationId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The applicationId."
+              }
+            ]
+          },
+          "docs": "Retrieves an application by ID."
+        },
+        {
+          "info": {
+            "name": "Cancel Application by Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/applications/:applicationId/cancel",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The applicationId."
+              }
+            ]
+          },
+          "docs": "Cancels a pending application."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Customers List.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/customers"
+          },
+          "docs": "Lists customers."
+        },
+        {
+          "info": {
+            "name": "Get Customer by Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/customers/:customerId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The customerId."
+              }
+            ]
+          },
+          "docs": "Retrieves a customer by ID."
+        },
+        {
+          "info": {
+            "name": "Archive Customer by Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/customers/:customerId/archive",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The customerId."
+              }
+            ]
+          },
+          "docs": "Archives a customer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List Accounts.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/accounts"
+          },
+          "docs": "Lists deposit and credit accounts."
+        },
+        {
+          "info": {
+            "name": "Create Account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/accounts",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"data\": {\n    \"type\": \"depositAccount\",\n    \"attributes\": {\n      \"depositProduct\": \"checking\",\n      \"tags\": { \"purpose\": \"checking\" },\n      \"idempotencyKey\": \"3a1a33be-4e12-4603-9ed0-820922389fb8\"\n    },\n    \"relationships\": {\n      \"customer\": { \"data\": { \"type\": \"customer\", \"id\": \"45555\" } }\n    }\n  }\n}"
+            }
+          },
+          "docs": "Creates a deposit or credit account for a customer."
+        },
+        {
+          "info": {
+            "name": "Get Account by Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "The accountId."
+              }
+            ]
+          },
+          "docs": "Retrieves an account by ID."
+        },
+        {
+          "info": {
+            "name": "Freeze Account by Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/accounts/:accountId/freeze",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "The accountId."
+              }
+            ]
+          },
+          "docs": "Freezes an account."
+        },
+        {
+          "info": {
+            "name": "Close an Account by Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/accounts/:accountId/close",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "The accountId."
+              }
+            ]
+          },
+          "docs": "Closes an account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Cards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List of Cards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/cards"
+          },
+          "docs": "Lists cards."
+        },
+        {
+          "info": {
+            "name": "Create a Card.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/cards",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"data\": {\n    \"type\": \"individualDebitCard\",\n    \"attributes\": {\n      \"shippingAddress\": { \"street\": \"5230 Newell Rd\", \"city\": \"Palo Alto\", \"state\": \"CA\", \"postalCode\": \"94303\", \"country\": \"US\" }\n    },\n    \"relationships\": {\n      \"account\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10001\" } }\n    }\n  }\n}"
+            }
+          },
+          "docs": "Creates a debit or credit card linked to an account."
+        },
+        {
+          "info": {
+            "name": "Freeze a Card.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/cards/:cardId/freeze",
+            "params": [
+              {
+                "name": "cardId",
+                "value": "",
+                "type": "path",
+                "description": "The cardId."
+              }
+            ]
+          },
+          "docs": "Freezes a card."
+        },
+        {
+          "info": {
+            "name": "Report card as stolen.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/cards/:cardId/report-stolen",
+            "params": [
+              {
+                "name": "cardId",
+                "value": "",
+                "type": "path",
+                "description": "The cardId."
+              }
+            ]
+          },
+          "docs": "Reports a card as stolen."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Authorizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List authorizations.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/authorizations"
+          },
+          "docs": "Lists completed authorizations."
+        },
+        {
+          "info": {
+            "name": "Get List Authorization Requests.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/authorization-requests"
+          },
+          "docs": "Lists real-time authorization requests."
+        },
+        {
+          "info": {
+            "name": "Approve Authorization Request by Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/authorization-requests/:authorizationId/approve",
+            "params": [
+              {
+                "name": "authorizationId",
+                "value": "",
+                "type": "path",
+                "description": "The authorizationId."
+              }
+            ]
+          },
+          "docs": "Approves a real-time authorization request."
+        },
+        {
+          "info": {
+            "name": "Decline Authorization Request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/authorization-requests/:authorizationId/decline",
+            "params": [
+              {
+                "name": "authorizationId",
+                "value": "",
+                "type": "path",
+                "description": "The authorizationId."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{\n  \"data\": { \"type\": \"declineAuthorizationRequest\", \"attributes\": { \"reason\": \"InsufficientFunds\" } }\n}"
+            }
+          },
+          "docs": "Declines a real-time authorization request with a reason."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List Payments.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/payments"
+          },
+          "docs": "Lists payments."
+        },
+        {
+          "info": {
+            "name": "Create a Book Payment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/payments",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"data\": {\n    \"type\": \"bookPayment\",\n    \"attributes\": { \"amount\": 10000, \"description\": \"Book payment\" },\n    \"relationships\": {\n      \"account\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10001\" } },\n      \"counterpartyAccount\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10002\" } }\n    }\n  }\n}"
+            }
+          },
+          "docs": "Creates an internal, instant book payment."
+        },
+        {
+          "info": {
+            "name": "Create an ACH Payment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/payments",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"data\": {\n    \"type\": \"achPayment\",\n    \"attributes\": { \"amount\": 5000, \"direction\": \"Credit\", \"description\": \"ACH payment\" },\n    \"relationships\": {\n      \"account\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10001\" } },\n      \"counterparty\": { \"data\": { \"type\": \"counterparty\", \"id\": \"20001\" } }\n    }\n  }\n}"
+            }
+          },
+          "docs": "Creates an ACH debit or credit payment."
+        },
+        {
+          "info": {
+            "name": "Cancel a Payment by Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/payments/:paymentId/cancel",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "The paymentId."
+              }
+            ]
+          },
+          "docs": "Cancels a pending payment."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Counterparties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Counterparties List.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/counterparties"
+          },
+          "docs": "Lists counterparties."
+        },
+        {
+          "info": {
+            "name": "Create Counterparty.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/counterparties",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"data\": {\n    \"type\": \"achCounterparty\",\n    \"attributes\": { \"name\": \"John Doe\", \"routingNumber\": \"812345678\", \"accountNumber\": \"1234567890\", \"accountType\": \"Checking\", \"type\": \"Person\", \"permissions\": \"CreditOnly\" },\n    \"relationships\": { \"customer\": { \"data\": { \"type\": \"customer\", \"id\": \"45555\" } } }\n  }\n}"
+            }
+          },
+          "docs": "Creates a counterparty (external bank account)."
+        },
+        {
+          "info": {
+            "name": "Get Institution by Routing Number.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/institutions/:routingNumber",
+            "params": [
+              {
+                "name": "routingNumber",
+                "value": "",
+                "type": "path",
+                "description": "The routingNumber."
+              }
+            ]
+          },
+          "docs": "Looks up a financial institution by routing number."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Checks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List Check Deposits.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/check-deposits"
+          },
+          "docs": "Lists check deposits."
+        },
+        {
+          "info": {
+            "name": "Create Check Deposit.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/check-deposits",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"data\": {\n    \"type\": \"checkDeposit\",\n    \"attributes\": { \"amount\": 12345, \"description\": \"Check deposit\" },\n    \"relationships\": { \"account\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10001\" } } }\n  }\n}"
+            }
+          },
+          "docs": "Creates a mobile check deposit."
+        },
+        {
+          "info": {
+            "name": "Create Check Payment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/check-payments",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"data\": {\n    \"type\": \"checkPayment\",\n    \"attributes\": { \"amount\": 5000, \"description\": \"Check payment\" },\n    \"relationships\": { \"account\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10001\" } } }\n  }\n}"
+            }
+          },
+          "docs": "Creates an outbound, print-and-mail check payment."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List Transactions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/transactions?page[limit]=20&page[offset]=0",
+            "params": [
+              {
+                "name": "page[limit]",
+                "value": "20",
+                "type": "query",
+                "description": "The page[limit] query parameter."
+              },
+              {
+                "name": "page[offset]",
+                "value": "0",
+                "type": "query",
+                "description": "The page[offset] query parameter."
+              }
+            ]
+          },
+          "docs": "Lists posted transactions. Paging requires filtering by customer id or account id."
+        },
+        {
+          "info": {
+            "name": "Get Transaction by Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/accounts/:accountId/transactions/:transactionId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "The accountId."
+              },
+              {
+                "name": "transactionId",
+                "value": "",
+                "type": "path",
+                "description": "The transactionId."
+              }
+            ]
+          },
+          "docs": "Retrieves a single transaction."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Statements and Tax Forms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List Statements.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/statements"
+          },
+          "docs": "Lists monthly account statements."
+        },
+        {
+          "info": {
+            "name": "Get PDF Statement by Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/statements/:statementId/pdf",
+            "params": [
+              {
+                "name": "statementId",
+                "value": "",
+                "type": "path",
+                "description": "The statementId."
+              }
+            ]
+          },
+          "docs": "Downloads a statement as PDF."
+        },
+        {
+          "info": {
+            "name": "Get Tax Forms List.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/tax-forms"
+          },
+          "docs": "Lists tax forms."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events and Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Events List.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/events?page[limit]=20&filter[since]=2026-06-01T00:00:00.000Z",
+            "params": [
+              {
+                "name": "page[limit]",
+                "value": "20",
+                "type": "query",
+                "description": "The page[limit] query parameter."
+              },
+              {
+                "name": "filter[since]",
+                "value": "2026-06-01T00:00:00.000Z",
+                "type": "query",
+                "description": "The filter[since] query parameter."
+              }
+            ]
+          },
+          "docs": "Lists events going back up to 90 days."
+        },
+        {
+          "info": {
+            "name": "Get List Webhooks.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/webhooks"
+          },
+          "docs": "Lists webhook subscriptions."
+        },
+        {
+          "info": {
+            "name": "Create Webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"data\": {\n    \"type\": \"webhook\",\n    \"attributes\": { \"url\": \"https://example.com/webhook\", \"secret\": \"my-signing-secret\" }\n  }\n}"
+            }
+          },
+          "docs": "Creates a webhook subscription, signed via X-Unit-Signature."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Risk and Fraud",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Stop Payment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/stop-payments",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"data\": {\n    \"type\": \"achStopPayment\",\n    \"attributes\": { \"description\": \"Stop payment\" },\n    \"relationships\": { \"account\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10001\" } } }\n  }\n}"
+            }
+          },
+          "docs": "Creates a stop payment on an ACH or check."
+        },
+        {
+          "info": {
+            "name": "Get List Disputes.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/disputes"
+          },
+          "docs": "Lists card disputes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Credit and Repayments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List Repayments.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/repayments"
+          },
+          "docs": "Lists repayments on credit accounts."
+        },
+        {
+          "info": {
+            "name": "Create a Repayment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/repayments",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"data\": {\n    \"type\": \"bookRepayment\",\n    \"attributes\": { \"amount\": 5000, \"description\": \"Repayment\" },\n    \"relationships\": {\n      \"account\": { \"data\": { \"type\": \"creditAccount\", \"id\": \"10003\" } },\n      \"counterpartyAccount\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10001\" } }\n    }\n  }\n}"
+            }
+          },
+          "docs": "Creates a one-time repayment on a credit account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Fees and Rewards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Fee.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/fees",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"data\": {\n    \"type\": \"fee\",\n    \"attributes\": { \"amount\": 500, \"description\": \"Monthly service fee\" },\n    \"relationships\": { \"account\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10001\" } } }\n  }\n}"
+            }
+          },
+          "docs": "Charges a customer's account for an activity not covered by native fees."
+        },
+        {
+          "info": {
+            "name": "Get Rewards List.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/rewards"
+          },
+          "docs": "Lists rewards."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "API Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List Org API Tokens.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/users/:userId/api-tokens",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The userId."
+              }
+            ]
+          },
+          "docs": "Lists a user's org-level API tokens."
+        },
+        {
+          "info": {
+            "name": "Create Customer Token.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/customers/:customerId/token",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The customerId."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{\n  \"data\": {\n    \"type\": \"customerToken\",\n    \"attributes\": { \"scope\": \"accounts payments cards\" }\n  }\n}"
+            }
+          },
+          "docs": "Issues a scoped, short-lived customer API token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

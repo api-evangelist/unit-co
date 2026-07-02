@@ -1,0 +1,134 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Unit
+providerId: unit-co
+created: '2026-07-02'
+modified: '2026-07-02'
+reconciled: false
+tags:
+- FinTech
+- BaaS
+- Banking
+- Card Issuing
+- ACH
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Unit spend. Unit is a Banking-as-a-Service platform sold
+  under a negotiated production contract (no public price list); sandbox
+  usage is free. Production cost drivers are a platform/minimum fee,
+  per-transaction and per-card fees, ACH/wire network and processor
+  pass-through, and a revenue share on card interchange and account
+  interest that flows the other direction (from Unit to the customer's
+  program) net of Unit's share. Programs typically span multiple cost
+  centers - onboarding/KYC volume, active accounts, active cards,
+  transaction/payment throughput, and dispute/fraud handling.
+notes: >-
+  Rates are not reconciled here; confirm current commercial terms with a
+  Unit solution engineer. FOCUS alignment below is directional, mapping
+  Unit's billing concepts onto FOCUS columns for cross-provider cost
+  reporting.
+sources:
+- https://www.unit.co/
+- https://www.unit.co/docs/api/
+- https://www.unit.co/docs/cards/interchange/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Unit Finance, Inc.
+serviceCategory: Banking as a Service
+billingModel:
+  pricingCategory: Subscription + Usage
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Unit BaaS Platform
+  ServiceCategory: Banking as a Service
+  ProviderName: Unit
+  PublisherName: Unit Finance, Inc.
+  InvoiceIssuerName: Unit
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Subscription + Usage
+meters:
+- name: applications_processed
+  description: Individual and business applications submitted for onboarding/KYC review.
+  unit: application
+  aggregation: sum
+  dimensions:
+  - org
+  - application_type
+- name: active_accounts
+  description: Open deposit and credit accounts under management.
+  unit: account
+  aggregation: max
+  dimensions:
+  - org
+  - account_type
+- name: active_cards
+  description: Active debit and credit cards issued.
+  unit: card
+  aggregation: max
+  dimensions:
+  - org
+  - card_product
+- name: transactions_processed
+  description: Posted ledger transactions across payments, cards, and checks.
+  unit: transaction
+  aggregation: sum
+  dimensions:
+  - org
+  - account_type
+- name: ach_wire_transfers
+  description: ACH and wire payments originated or received.
+  unit: transfer
+  aggregation: sum
+  dimensions:
+  - org
+  - rail
+- name: interchange_revenue_share
+  description: Unit's contractual share retained from gross card interchange.
+  unit: usd
+  aggregation: sum
+  dimensions:
+  - org
+- name: dispute_fraud_cases
+  description: Card disputes and fraud outreach cases handled.
+  unit: case
+  aggregation: sum
+  dimensions:
+  - org
+principles:
+- name: Visibility
+  description: >-
+    Pull the Transactions, Statements, and Events APIs on a schedule to
+    attribute Unit-driven activity (and therefore fee exposure) to internal
+    cost centers and end customers.
+- name: Allocation
+  description: >-
+    Use Unit's tags attribute on applications, accounts, and payments to
+    attribute per-transaction and per-card fees to the correct product line
+    or business unit.
+- name: Optimization
+  description: >-
+    Favor Book Payments (free, instant, internal) over ACH/wire where funds
+    stay on Unit's ledger; batch and filter Events/webhook subscriptions to
+    avoid unnecessary downstream processing costs.
+- name: Accountability
+  description: >-
+    Assign a program owner to review monthly Unit invoices against contract
+    minimums, active account/card counts, and interchange revenue share
+    reconciliation.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

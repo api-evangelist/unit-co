@@ -1,0 +1,81 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Unit
+providerId: unit-co
+created: '2026-07-02'
+modified: '2026-07-02'
+reconciled: false
+tags:
+- FinTech
+- BaaS
+- Banking
+- Rate Limiting
+- Quotas
+description: >-
+  Unit enforces rate limiting on the API - Unit's Help Center confirms a
+  documented "What is Unit's rate limit?" article exists, and Unit's API
+  reference describes filtering/paging controls (page[limit], page[offset])
+  on list endpoints - but this research pass could not independently
+  re-confirm the exact numeric request-per-minute/second ceiling from a
+  live docs page (the specific rate-limit reference page returned a 404 at
+  review time, and the figure is not present in Unit's published OpenAPI
+  specification). Treat any specific number as unverified until confirmed
+  directly with Unit.
+notes: >-
+  A companion, thinner catalog entry for this same company already exists
+  in this network under aid `unit` and asserts a limit of 1000 requests per
+  minute per IP; that figure could not be independently re-verified against
+  a live Unit docs page during this pass, so it is carried here only as an
+  unreconciled reference point, not a confirmed fact.
+sources:
+- https://www.unit.co/docs/api/
+- https://support.unit.co/hc/en-us
+- https://www.unit.co/docs/api/about-jsonapi/
+responseCodes:
+  throttled: 429
+limits:
+- name: API Request Rate
+  scope: org
+  metric: requests
+  limit: not independently confirmed in this research pass
+  notes: >-
+    Unit's Help Center references a "What is Unit's rate limit?" FAQ; a
+    prior, unreconciled note in this network cites 1000 requests/minute per
+    IP. Verify current numeric limits with a Unit solution engineer.
+- name: List Endpoint Page Size
+  scope: request
+  metric: records
+  limit: configurable via page[limit] (default varies by endpoint; overall paging is offset-based)
+  notes: Applies to list endpoints such as GET /applications, GET /accounts, GET /events, GET /transactions.
+- name: Customer Token Verification Attempts
+  scope: customer
+  metric: attempts
+  limit: bounded (documented as a small number of attempts per short window in Unit's customer-token verification flow)
+  notes: Exact figures not reconciled in this pass; see Customer API Tokens documentation.
+- name: Sandbox vs Production
+  scope: environment
+  metric: requests
+  limit: differ by environment
+  notes: Unit's own materials indicate sandbox and production throttling are configured independently; production limits are set per BaaS agreement.
+policies:
+- name: Backoff Strategy
+  description: Implement exponential backoff with jitter on HTTP 429 responses.
+- name: Idempotency
+  description: >-
+    Attach an idempotencyKey to POST requests that create resources
+    (applications, accounts, payments) to safely retry after a timeout or
+    429 without creating duplicates.
+- name: Scoped Tokens
+  description: >-
+    Use short-lived, narrowly-scoped Customer API Tokens for end-user
+    initiated actions instead of the broader org API token, reducing blast
+    radius and typically the applicable throttling scope.
+- name: Paging
+  description: >-
+    Use page[limit] and page[offset] (and, on Events, filter[since] /
+    filter[until]) to pull large result sets in bounded pages rather than
+    requesting unbounded lists.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,522 @@
+{
+  "info": {
+    "name": "Unit API",
+    "description": "Unit is a Banking-as-a-Service (BaaS) platform. This collection covers Applications, Customers, Accounts, Cards, Authorizations, Payments, Counterparties, Checks, Transactions, Statements, Tax Forms, Events, Webhooks, Risk/Fraud, Credit/Repayments, Fees/Rewards, and API Tokens. All requests use the JSON:API media type (application/vnd.api+json) and a Bearer token. Sandbox base URL: https://api.s.unit.sh.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      { "key": "token", "value": "{{bearerToken}}", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.s.unit.sh", "type": "string" },
+    { "key": "bearerToken", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Applications",
+      "item": [
+        {
+          "name": "Get List Application",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/applications", "host": ["{{baseUrl}}"], "path": ["applications"] },
+            "description": "Lists individual and business applications with filtering, sorting, and paging."
+          }
+        },
+        {
+          "name": "Create Application",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/vnd.api+json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"data\": {\n    \"type\": \"individualApplication\",\n    \"attributes\": {\n      \"ssn\": \"123456789\",\n      \"fullName\": { \"first\": \"John\", \"last\": \"Kenn\" },\n      \"dateOfBirth\": \"1989-02-01\",\n      \"address\": { \"street\": \"123 Main St\", \"city\": \"San Francisco\", \"state\": \"CA\", \"postalCode\": \"94205\", \"country\": \"US\" },\n      \"email\": \"jone.doe@unit-finance.com\",\n      \"phone\": { \"countryCode\": \"1\", \"number\": \"5555555555\" },\n      \"occupation\": \"ArchitectOrEngineer\",\n      \"annualIncome\": \"UpTo10k\",\n      \"sourceOfIncome\": \"EmploymentOrPayrollIncome\"\n    }\n  }\n}" },
+            "url": { "raw": "{{baseUrl}}/applications", "host": ["{{baseUrl}}"], "path": ["applications"] },
+            "description": "Creates an individualApplication or businessApplication."
+          }
+        },
+        {
+          "name": "Get Application by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/applications/:applicationId", "host": ["{{baseUrl}}"], "path": ["applications", ":applicationId"], "variable": [{ "key": "applicationId", "value": "" }] },
+            "description": "Retrieves an application by ID."
+          }
+        },
+        {
+          "name": "Cancel Application by Id",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/applications/:applicationId/cancel", "host": ["{{baseUrl}}"], "path": ["applications", ":applicationId", "cancel"], "variable": [{ "key": "applicationId", "value": "" }] },
+            "description": "Cancels a pending application."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "Get Customers List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/customers", "host": ["{{baseUrl}}"], "path": ["customers"] },
+            "description": "Lists customers."
+          }
+        },
+        {
+          "name": "Get Customer by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/customers/:customerId", "host": ["{{baseUrl}}"], "path": ["customers", ":customerId"], "variable": [{ "key": "customerId", "value": "" }] },
+            "description": "Retrieves a customer by ID."
+          }
+        },
+        {
+          "name": "Archive Customer by Id",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/customers/:customerId/archive", "host": ["{{baseUrl}}"], "path": ["customers", ":customerId", "archive"], "variable": [{ "key": "customerId", "value": "" }] },
+            "description": "Archives a customer."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Accounts",
+      "item": [
+        {
+          "name": "Get List Accounts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/accounts", "host": ["{{baseUrl}}"], "path": ["accounts"] },
+            "description": "Lists deposit and credit accounts."
+          }
+        },
+        {
+          "name": "Create Account",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/vnd.api+json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"data\": {\n    \"type\": \"depositAccount\",\n    \"attributes\": {\n      \"depositProduct\": \"checking\",\n      \"tags\": { \"purpose\": \"checking\" },\n      \"idempotencyKey\": \"3a1a33be-4e12-4603-9ed0-820922389fb8\"\n    },\n    \"relationships\": {\n      \"customer\": { \"data\": { \"type\": \"customer\", \"id\": \"45555\" } }\n    }\n  }\n}" },
+            "url": { "raw": "{{baseUrl}}/accounts", "host": ["{{baseUrl}}"], "path": ["accounts"] },
+            "description": "Creates a deposit or credit account for a customer."
+          }
+        },
+        {
+          "name": "Get Account by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/accounts/:accountId", "host": ["{{baseUrl}}"], "path": ["accounts", ":accountId"], "variable": [{ "key": "accountId", "value": "" }] },
+            "description": "Retrieves an account by ID."
+          }
+        },
+        {
+          "name": "Freeze Account by Id",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/accounts/:accountId/freeze", "host": ["{{baseUrl}}"], "path": ["accounts", ":accountId", "freeze"], "variable": [{ "key": "accountId", "value": "" }] },
+            "description": "Freezes an account."
+          }
+        },
+        {
+          "name": "Close an Account by Id",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/accounts/:accountId/close", "host": ["{{baseUrl}}"], "path": ["accounts", ":accountId", "close"], "variable": [{ "key": "accountId", "value": "" }] },
+            "description": "Closes an account."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cards",
+      "item": [
+        {
+          "name": "Get List of Cards",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/cards", "host": ["{{baseUrl}}"], "path": ["cards"] },
+            "description": "Lists cards."
+          }
+        },
+        {
+          "name": "Create a Card",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/vnd.api+json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"data\": {\n    \"type\": \"individualDebitCard\",\n    \"attributes\": {\n      \"shippingAddress\": { \"street\": \"5230 Newell Rd\", \"city\": \"Palo Alto\", \"state\": \"CA\", \"postalCode\": \"94303\", \"country\": \"US\" }\n    },\n    \"relationships\": {\n      \"account\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10001\" } }\n    }\n  }\n}" },
+            "url": { "raw": "{{baseUrl}}/cards", "host": ["{{baseUrl}}"], "path": ["cards"] },
+            "description": "Creates a debit or credit card linked to an account."
+          }
+        },
+        {
+          "name": "Freeze a Card",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/cards/:cardId/freeze", "host": ["{{baseUrl}}"], "path": ["cards", ":cardId", "freeze"], "variable": [{ "key": "cardId", "value": "" }] },
+            "description": "Freezes a card."
+          }
+        },
+        {
+          "name": "Report card as stolen",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/cards/:cardId/report-stolen", "host": ["{{baseUrl}}"], "path": ["cards", ":cardId", "report-stolen"], "variable": [{ "key": "cardId", "value": "" }] },
+            "description": "Reports a card as stolen."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Authorizations",
+      "item": [
+        {
+          "name": "Get List authorizations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/authorizations", "host": ["{{baseUrl}}"], "path": ["authorizations"] },
+            "description": "Lists completed authorizations."
+          }
+        },
+        {
+          "name": "Get List Authorization Requests",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/authorization-requests", "host": ["{{baseUrl}}"], "path": ["authorization-requests"] },
+            "description": "Lists real-time authorization requests."
+          }
+        },
+        {
+          "name": "Approve Authorization Request by Id",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/authorization-requests/:authorizationId/approve", "host": ["{{baseUrl}}"], "path": ["authorization-requests", ":authorizationId", "approve"], "variable": [{ "key": "authorizationId", "value": "" }] },
+            "description": "Approves a real-time authorization request."
+          }
+        },
+        {
+          "name": "Decline Authorization Request",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/vnd.api+json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"data\": { \"type\": \"declineAuthorizationRequest\", \"attributes\": { \"reason\": \"InsufficientFunds\" } }\n}" },
+            "url": { "raw": "{{baseUrl}}/authorization-requests/:authorizationId/decline", "host": ["{{baseUrl}}"], "path": ["authorization-requests", ":authorizationId", "decline"], "variable": [{ "key": "authorizationId", "value": "" }] },
+            "description": "Declines a real-time authorization request with a reason."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "Get List Payments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/payments", "host": ["{{baseUrl}}"], "path": ["payments"] },
+            "description": "Lists payments."
+          }
+        },
+        {
+          "name": "Create a Book Payment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/vnd.api+json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"data\": {\n    \"type\": \"bookPayment\",\n    \"attributes\": { \"amount\": 10000, \"description\": \"Book payment\" },\n    \"relationships\": {\n      \"account\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10001\" } },\n      \"counterpartyAccount\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10002\" } }\n    }\n  }\n}" },
+            "url": { "raw": "{{baseUrl}}/payments", "host": ["{{baseUrl}}"], "path": ["payments"] },
+            "description": "Creates an internal, instant book payment."
+          }
+        },
+        {
+          "name": "Create an ACH Payment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/vnd.api+json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"data\": {\n    \"type\": \"achPayment\",\n    \"attributes\": { \"amount\": 5000, \"direction\": \"Credit\", \"description\": \"ACH payment\" },\n    \"relationships\": {\n      \"account\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10001\" } },\n      \"counterparty\": { \"data\": { \"type\": \"counterparty\", \"id\": \"20001\" } }\n    }\n  }\n}" },
+            "url": { "raw": "{{baseUrl}}/payments", "host": ["{{baseUrl}}"], "path": ["payments"] },
+            "description": "Creates an ACH debit or credit payment."
+          }
+        },
+        {
+          "name": "Cancel a Payment by Id",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/payments/:paymentId/cancel", "host": ["{{baseUrl}}"], "path": ["payments", ":paymentId", "cancel"], "variable": [{ "key": "paymentId", "value": "" }] },
+            "description": "Cancels a pending payment."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Counterparties",
+      "item": [
+        {
+          "name": "Get Counterparties List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/counterparties", "host": ["{{baseUrl}}"], "path": ["counterparties"] },
+            "description": "Lists counterparties."
+          }
+        },
+        {
+          "name": "Create Counterparty",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/vnd.api+json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"data\": {\n    \"type\": \"achCounterparty\",\n    \"attributes\": { \"name\": \"John Doe\", \"routingNumber\": \"812345678\", \"accountNumber\": \"1234567890\", \"accountType\": \"Checking\", \"type\": \"Person\", \"permissions\": \"CreditOnly\" },\n    \"relationships\": { \"customer\": { \"data\": { \"type\": \"customer\", \"id\": \"45555\" } } }\n  }\n}" },
+            "url": { "raw": "{{baseUrl}}/counterparties", "host": ["{{baseUrl}}"], "path": ["counterparties"] },
+            "description": "Creates a counterparty (external bank account)."
+          }
+        },
+        {
+          "name": "Get Institution by Routing Number",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/institutions/:routingNumber", "host": ["{{baseUrl}}"], "path": ["institutions", ":routingNumber"], "variable": [{ "key": "routingNumber", "value": "" }] },
+            "description": "Looks up a financial institution by routing number."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Checks",
+      "item": [
+        {
+          "name": "Get List Check Deposits",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/check-deposits", "host": ["{{baseUrl}}"], "path": ["check-deposits"] },
+            "description": "Lists check deposits."
+          }
+        },
+        {
+          "name": "Create Check Deposit",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/vnd.api+json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"data\": {\n    \"type\": \"checkDeposit\",\n    \"attributes\": { \"amount\": 12345, \"description\": \"Check deposit\" },\n    \"relationships\": { \"account\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10001\" } } }\n  }\n}" },
+            "url": { "raw": "{{baseUrl}}/check-deposits", "host": ["{{baseUrl}}"], "path": ["check-deposits"] },
+            "description": "Creates a mobile check deposit."
+          }
+        },
+        {
+          "name": "Create Check Payment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/vnd.api+json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"data\": {\n    \"type\": \"checkPayment\",\n    \"attributes\": { \"amount\": 5000, \"description\": \"Check payment\" },\n    \"relationships\": { \"account\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10001\" } } }\n  }\n}" },
+            "url": { "raw": "{{baseUrl}}/check-payments", "host": ["{{baseUrl}}"], "path": ["check-payments"] },
+            "description": "Creates an outbound, print-and-mail check payment."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transactions",
+      "item": [
+        {
+          "name": "Get List Transactions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/transactions?page[limit]=20&page[offset]=0", "host": ["{{baseUrl}}"], "path": ["transactions"], "query": [{ "key": "page[limit]", "value": "20" }, { "key": "page[offset]", "value": "0" }] },
+            "description": "Lists posted transactions. Paging requires filtering by customer id or account id."
+          }
+        },
+        {
+          "name": "Get Transaction by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/accounts/:accountId/transactions/:transactionId", "host": ["{{baseUrl}}"], "path": ["accounts", ":accountId", "transactions", ":transactionId"], "variable": [{ "key": "accountId", "value": "" }, { "key": "transactionId", "value": "" }] },
+            "description": "Retrieves a single transaction."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Statements and Tax Forms",
+      "item": [
+        {
+          "name": "Get List Statements",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/statements", "host": ["{{baseUrl}}"], "path": ["statements"] },
+            "description": "Lists monthly account statements."
+          }
+        },
+        {
+          "name": "Get PDF Statement by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/statements/:statementId/pdf", "host": ["{{baseUrl}}"], "path": ["statements", ":statementId", "pdf"], "variable": [{ "key": "statementId", "value": "" }] },
+            "description": "Downloads a statement as PDF."
+          }
+        },
+        {
+          "name": "Get Tax Forms List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/tax-forms", "host": ["{{baseUrl}}"], "path": ["tax-forms"] },
+            "description": "Lists tax forms."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Events and Webhooks",
+      "item": [
+        {
+          "name": "Get Events List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/events?page[limit]=20&filter[since]=2026-06-01T00:00:00.000Z", "host": ["{{baseUrl}}"], "path": ["events"], "query": [{ "key": "page[limit]", "value": "20" }, { "key": "filter[since]", "value": "2026-06-01T00:00:00.000Z" }] },
+            "description": "Lists events going back up to 90 days."
+          }
+        },
+        {
+          "name": "Get List Webhooks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/webhooks", "host": ["{{baseUrl}}"], "path": ["webhooks"] },
+            "description": "Lists webhook subscriptions."
+          }
+        },
+        {
+          "name": "Create Webhook",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/vnd.api+json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"data\": {\n    \"type\": \"webhook\",\n    \"attributes\": { \"url\": \"https://example.com/webhook\", \"secret\": \"my-signing-secret\" }\n  }\n}" },
+            "url": { "raw": "{{baseUrl}}/webhooks", "host": ["{{baseUrl}}"], "path": ["webhooks"] },
+            "description": "Creates a webhook subscription, signed via X-Unit-Signature."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Risk and Fraud",
+      "item": [
+        {
+          "name": "Create Stop Payment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/vnd.api+json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"data\": {\n    \"type\": \"achStopPayment\",\n    \"attributes\": { \"description\": \"Stop payment\" },\n    \"relationships\": { \"account\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10001\" } } }\n  }\n}" },
+            "url": { "raw": "{{baseUrl}}/stop-payments", "host": ["{{baseUrl}}"], "path": ["stop-payments"] },
+            "description": "Creates a stop payment on an ACH or check."
+          }
+        },
+        {
+          "name": "Get List Disputes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/disputes", "host": ["{{baseUrl}}"], "path": ["disputes"] },
+            "description": "Lists card disputes."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Credit and Repayments",
+      "item": [
+        {
+          "name": "Get List Repayments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/repayments", "host": ["{{baseUrl}}"], "path": ["repayments"] },
+            "description": "Lists repayments on credit accounts."
+          }
+        },
+        {
+          "name": "Create a Repayment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/vnd.api+json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"data\": {\n    \"type\": \"bookRepayment\",\n    \"attributes\": { \"amount\": 5000, \"description\": \"Repayment\" },\n    \"relationships\": {\n      \"account\": { \"data\": { \"type\": \"creditAccount\", \"id\": \"10003\" } },\n      \"counterpartyAccount\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10001\" } }\n    }\n  }\n}" },
+            "url": { "raw": "{{baseUrl}}/repayments", "host": ["{{baseUrl}}"], "path": ["repayments"] },
+            "description": "Creates a one-time repayment on a credit account."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Fees and Rewards",
+      "item": [
+        {
+          "name": "Create Fee",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/vnd.api+json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"data\": {\n    \"type\": \"fee\",\n    \"attributes\": { \"amount\": 500, \"description\": \"Monthly service fee\" },\n    \"relationships\": { \"account\": { \"data\": { \"type\": \"depositAccount\", \"id\": \"10001\" } } }\n  }\n}" },
+            "url": { "raw": "{{baseUrl}}/fees", "host": ["{{baseUrl}}"], "path": ["fees"] },
+            "description": "Charges a customer's account for an activity not covered by native fees."
+          }
+        },
+        {
+          "name": "Get Rewards List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/rewards", "host": ["{{baseUrl}}"], "path": ["rewards"] },
+            "description": "Lists rewards."
+          }
+        }
+      ]
+    },
+    {
+      "name": "API Tokens",
+      "item": [
+        {
+          "name": "Get List Org API Tokens",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/users/:userId/api-tokens", "host": ["{{baseUrl}}"], "path": ["users", ":userId", "api-tokens"], "variable": [{ "key": "userId", "value": "" }] },
+            "description": "Lists a user's org-level API tokens."
+          }
+        },
+        {
+          "name": "Create Customer Token",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/vnd.api+json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"data\": {\n    \"type\": \"customerToken\",\n    \"attributes\": { \"scope\": \"accounts payments cards\" }\n  }\n}" },
+            "url": { "raw": "{{baseUrl}}/customers/:customerId/token", "host": ["{{baseUrl}}"], "path": ["customers", ":customerId", "token"], "variable": [{ "key": "customerId", "value": "" }] },
+            "description": "Issues a scoped, short-lived customer API token."
+          }
+        }
+      ]
+    }
+  ]
+}

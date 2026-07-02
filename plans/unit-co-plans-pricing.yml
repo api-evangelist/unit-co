@@ -1,0 +1,128 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Unit
+providerId: unit-co
+created: '2026-07-02'
+modified: '2026-07-02'
+reconciled: false
+tags:
+- FinTech
+- BaaS
+- Banking
+- Card Issuing
+- ACH
+- Plans
+description: >-
+  Unit does not publish public pricing plans or tiers. The Sandbox
+  environment (https://api.s.unit.sh) is free and self-serve for building and
+  testing an integration end-to-end with synthetic data and simulation
+  endpoints. Production access requires signing a Banking-as-a-Service
+  agreement with Unit and its partner bank(s), after which Unit bills under a
+  negotiated contract: a recurring platform/minimum fee, per-transaction and
+  per-card fees, ACH/wire pass-through fees, and a revenue share on
+  interchange and/or interest earned on customer balances. Exact rates are
+  not publicly reconciled and vary by program type (deposit, credit, cards)
+  and volume.
+notes: >-
+  Confirm current commercial terms with a Unit solution engineer; nothing in
+  this file should be treated as a quoted or guaranteed price. The interchange
+  revenue-share model (Interchange Revenue = Interchange Share x (Gross
+  Interchange - Network Fees + Processor Fees)) is documented publicly for
+  card programs; other fee lines are contract-specific.
+sources:
+- https://www.unit.co/
+- https://www.unit.co/docs/api/
+- https://www.unit.co/docs/cards/interchange/
+- https://www.unit.co/docs/api/fees/overview/
+plans:
+- id: unit-sandbox
+  name: Sandbox
+  type: free
+  description: >-
+    Free, self-serve sandbox at https://api.s.unit.sh with synthetic
+    applications, accounts, cards, and sandbox-only simulation endpoints
+    (ATM deposits, card activation, incoming ACH/received payments).
+  entries:
+  - label: Sandbox API Access
+    name: sandbox_access
+    type: included
+    metric: api_calls
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '0'
+    userMultiplied: false
+  elements:
+  - name: All Sandbox APIs
+  - name: Simulation Endpoints
+  - name: Synthetic Test Data
+- id: unit-production-baas
+  name: Production BaaS Agreement (Custom)
+  type: enterprise
+  description: >-
+    Negotiated contract to launch on Unit's production infrastructure
+    through Unit's partner bank network. Combines a platform/minimum fee
+    with usage-based transaction, card, and payment-rail fees, plus revenue
+    share on interchange and account interest.
+  entries:
+  - label: Platform / Minimum Fee
+    name: platform_fee
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: negotiated
+    userMultiplied: false
+  - label: Per-Transaction Fee
+    name: transaction_fee
+    type: metered
+    metric: transaction
+    limit: -1
+    timeFrame: usage
+    geo: global
+    unit: 1
+    price: negotiated
+    userMultiplied: false
+  - label: Per-Card Fee
+    name: card_fee
+    type: metered
+    metric: active_card
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: negotiated
+    userMultiplied: false
+  - label: ACH / Wire Pass-Through
+    name: ach_wire_fee
+    type: metered
+    metric: transfer
+    limit: -1
+    timeFrame: usage
+    geo: global
+    unit: 1
+    price: negotiated (network and processor pass-through)
+    userMultiplied: false
+  - label: Interchange Revenue Share
+    name: interchange_share
+    type: revshare
+    metric: interchange_dollars
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 'contractual share of (Gross Interchange - Network Fees + Processor Fees)'
+    userMultiplied: false
+  elements:
+  - name: Partner Bank Sponsorship
+  - name: All Production APIs
+  - name: PCI DSS Validated Card Issuing
+  - name: SOC 1 / SOC 2 Reports
+  - name: Compliance and Risk Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

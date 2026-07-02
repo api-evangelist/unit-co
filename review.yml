@@ -1,0 +1,291 @@
+aid: unit-co
+name: Unit
+review:
+  question: Does Unit expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-02'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Unit's own public API surface is
+    request/response REST over HTTPS, following the JSON:API specification
+    (application/vnd.api+json). There is no server-push transport (WebSocket
+    or Server-Sent Events) on Unit's own API to model. Unit's real-time
+    behavior is delivered two ways instead: (1) Events are pushed out as
+    signed HTTP POST callbacks to a Webhook subscription's configured URL,
+    and (2) card Authorization Requests are delivered as a synchronous HTTP
+    POST to a configured webhook URL that must respond within a short
+    window with an approve/decline decision. Both are HTTP request/response
+    patterns initiated by Unit against a merchant-hosted endpoint, not a
+    persistent bidirectional WebSocket connection.
+findings:
+  summary: |
+    Unit does not publish a documented public WebSocket API. Unit is a
+    Banking-as-a-Service platform whose REST API follows the JSON:API
+    specification - every request and response uses the
+    application/vnd.api+json media type, wraps resources in a top-level
+    `data` object, and authenticates with a Bearer JWT (an org API token or
+    a customer API token). The confirmed sandbox host is
+    https://api.s.unit.sh (the default `servers` entry in Unit's own
+    published OpenAPI specification); a production host of
+    https://api.unit.co is the standard convention paired with that
+    sandbox host but was not independently re-confirmed against a live
+    docs page in this research pass. Unit's "real-time" surface is built
+    entirely on HTTP: Events (e.g. application.created, account.frozen,
+    card.authorization) are recorded internally and, when a matching
+    Webhook subscription exists, delivered as an HMAC-signed HTTP POST to
+    the subscriber's URL (the signature is computed as an HMAC-SHA1 hash of
+    the request body, base64-encoded, and passed in an X-Unit-Signature
+    header). Separately, real-time card Authorization Requests are pushed
+    to a configured webhook endpoint so the merchant can approve or decline
+    a card swipe inline, using a fixed set of decline reasons
+    (AccountClosed, CardExceedsAmountLimit, DoNotHonor, InsufficientFunds,
+    InvalidMerchant, ReferToCardIssuer, RestrictedCard,
+    TransactionNotPermittedToCardholder). No realtime, bidirectional
+    WebSocket (ws:// or wss://) endpoint is documented anywhere in Unit's
+    API reference, its officially published OpenAPI 3.0.2 specification
+    (github.com/unit-finance/openapi-unit-sdk), or its generated Node.js,
+    Python, Ruby, and Java SDKs.
+  openApiSpec: |
+    Unlike several other providers reviewed in this network, Unit
+    officially publishes and maintains a real OpenAPI 3.0.2 specification
+    at github.com/unit-finance/openapi-unit-sdk (root file openapi.json,
+    spec-internal version 0.4.0), split into per-resource path/schema
+    files under schemas/, and uses it to generate official Node.js
+    (@unit-finance/unit-node-sdk), Python (unit-python-sdk), Ruby, and Java
+    client libraries via openapi-generator. This research pass fetched
+    that spec directly and confirmed 117 distinct path entries covering
+    every resource category listed below; the openapi/unit-co-openapi.yml
+    file in this repository is an API Evangelist re-typed consolidation of
+    that confirmed path/method surface (condensed request/response schemas
+    for readability), not the raw upstream file.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.s.unit.sh
+      documented: true
+      note: >-
+        Confirmed as the default `servers` entry in Unit's published
+        OpenAPI specification and in every code sample across Unit's docs
+        and SDK READMEs.
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.unit.co
+      documented: false
+      note: >-
+        Referenced as the production host by convention (and by a prior,
+        thinner catalog entry for this company already in this network,
+        aid `unit`), but not independently re-confirmed against a live
+        Unit docs page during this research pass.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: >-
+        Event and Authorization Request delivery: Unit issues an HTTP POST
+        to a subscriber-configured URL, HMAC-SHA1-signed via
+        X-Unit-Signature. Server-to-endpoint HTTP, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: >-
+        No WebSocket endpoint is documented in Unit's API reference,
+        published OpenAPI spec, or SDKs as of the review date.
+  endpointsConfirmed:
+    - GET    https://api.s.unit.sh/applications
+    - POST   https://api.s.unit.sh/applications
+    - GET    https://api.s.unit.sh/applications/{applicationId}
+    - PATCH  https://api.s.unit.sh/applications/{applicationId}
+    - POST   https://api.s.unit.sh/applications/{applicationId}/cancel
+    - GET    https://api.s.unit.sh/applications/{applicationId}/documents
+    - POST   https://api.s.unit.sh/applications/{applicationId}/documents
+    - PUT    https://api.s.unit.sh/applications/{applicationId}/documents/{documentId}/multipart
+    - PUT    https://api.s.unit.sh/applications/{applicationId}/documents/{documentId}/verify
+    - GET    https://api.s.unit.sh/applications/{applicationId}/documents/{documentId}/download
+    - GET    https://api.s.unit.sh/applications/{applicationId}/missing-fields
+    - GET    https://api.s.unit.sh/application-forms
+    - POST   https://api.s.unit.sh/application-forms
+    - GET    https://api.s.unit.sh/application-forms/{applicationFormId}
+    - PATCH  https://api.s.unit.sh/beneficial-owner/{beneficialOwnerId}
+    - GET    https://api.s.unit.sh/customers
+    - GET    https://api.s.unit.sh/customers/{customerId}
+    - PATCH  https://api.s.unit.sh/customers/{customerId}
+    - POST   https://api.s.unit.sh/customers/{customerId}/archive
+    - POST   https://api.s.unit.sh/customers/{customerId}/authorized-users
+    - DELETE https://api.s.unit.sh/customers/{customerId}/authorized-users
+    - GET    https://api.s.unit.sh/accounts
+    - POST   https://api.s.unit.sh/accounts
+    - GET    https://api.s.unit.sh/accounts/{accountId}
+    - PATCH  https://api.s.unit.sh/accounts/{accountId}
+    - GET    https://api.s.unit.sh/accounts/{accountId}/limits
+    - POST   https://api.s.unit.sh/accounts/{accountId}/freeze
+    - POST   https://api.s.unit.sh/accounts/{accountId}/unfreeze
+    - POST   https://api.s.unit.sh/accounts/{accountId}/close
+    - POST   https://api.s.unit.sh/accounts/{accountId}/reopen
+    - POST   https://api.s.unit.sh/accounts/{accountId}/enter-daca
+    - POST   https://api.s.unit.sh/accounts/{accountId}/activate-daca
+    - POST   https://api.s.unit.sh/accounts/{accountId}/deactivate-daca
+    - GET    https://api.s.unit.sh/account-end-of-day
+    - GET    https://api.s.unit.sh/accounts/{accountId}/repayment-information
+    - GET    https://api.s.unit.sh/accounts/{accountId}/deposit-products
+    - POST   https://api.s.unit.sh/accounts/{accountId}/relationships/customers
+    - DELETE https://api.s.unit.sh/accounts/{accountId}/relationships/customers
+    - GET    https://api.s.unit.sh/cards
+    - POST   https://api.s.unit.sh/cards
+    - GET    https://api.s.unit.sh/cards/{cardId}
+    - PATCH  https://api.s.unit.sh/cards/{cardId}
+    - POST   https://api.s.unit.sh/cards/{cardId}/report-lost
+    - POST   https://api.s.unit.sh/cards/{cardId}/report-stolen
+    - POST   https://api.s.unit.sh/cards/{cardId}/close
+    - POST   https://api.s.unit.sh/cards/{cardId}/freeze
+    - POST   https://api.s.unit.sh/cards/{cardId}/unfreeze
+    - POST   https://api.s.unit.sh/cards/{cardId}/replace
+    - GET    https://api.s.unit.sh/cards/{cardId}/limits
+    - GET    https://api.s.unit.sh/cards/{cardId}/secure-data/pin/status
+    - GET    https://api.s.unit.sh/atm-locations
+    - GET    https://api.s.unit.sh/authorizations
+    - GET    https://api.s.unit.sh/authorizations/{authorizationId}
+    - GET    https://api.s.unit.sh/authorization-requests
+    - GET    https://api.s.unit.sh/authorization-requests/{authorizationId}
+    - POST   https://api.s.unit.sh/authorization-requests/{authorizationId}/approve
+    - POST   https://api.s.unit.sh/authorization-requests/{authorizationId}/decline
+    - GET    https://api.s.unit.sh/payments
+    - POST   https://api.s.unit.sh/payments
+    - GET    https://api.s.unit.sh/payments/{paymentId}
+    - PATCH  https://api.s.unit.sh/payments/{paymentId}
+    - POST   https://api.s.unit.sh/payments/{paymentId}/cancel
+    - GET    https://api.s.unit.sh/received-payments
+    - GET    https://api.s.unit.sh/received-payments/{paymentId}
+    - PATCH  https://api.s.unit.sh/received-payments/{paymentId}
+    - POST   https://api.s.unit.sh/received-payments/{paymentId}/advance
+    - POST   https://api.s.unit.sh/received-payments/{paymentId}/reprocess
+    - POST   https://api.s.unit.sh/returns/{transactionId}
+    - GET    https://api.s.unit.sh/recurring-payments
+    - POST   https://api.s.unit.sh/recurring-payments
+    - GET    https://api.s.unit.sh/recurring-payments/{paymentId}
+    - POST   https://api.s.unit.sh/recurring-payments/{paymentId}/disable
+    - POST   https://api.s.unit.sh/recurring-payments/{paymentId}/enable
+    - POST   https://api.s.unit.sh/cash-deposits/barcodes
+    - GET    https://api.s.unit.sh/cash-deposits/barcodes/{barcodeNumber}/image
+    - GET    https://api.s.unit.sh/store-locations
+    - GET    https://api.s.unit.sh/counterparties
+    - POST   https://api.s.unit.sh/counterparties
+    - GET    https://api.s.unit.sh/counterparties/{counterpartyId}
+    - PATCH  https://api.s.unit.sh/counterparties/{counterpartyId}
+    - DELETE https://api.s.unit.sh/counterparties/{counterpartyId}
+    - GET    https://api.s.unit.sh/counterparties/{counterpartyId}/balance
+    - GET    https://api.s.unit.sh/institutions/{routingNumber}
+    - GET    https://api.s.unit.sh/check-deposits
+    - POST   https://api.s.unit.sh/check-deposits
+    - GET    https://api.s.unit.sh/check-deposits/{checkDepositId}
+    - PATCH  https://api.s.unit.sh/check-deposits/{checkDepositId}
+    - POST   https://api.s.unit.sh/check-deposits/{checkDepositId}/confirm
+    - GET    https://api.s.unit.sh/check-deposits/{checkDepositId}/front
+    - GET    https://api.s.unit.sh/check-deposits/{checkDepositId}/back
+    - GET    https://api.s.unit.sh/check-payments
+    - POST   https://api.s.unit.sh/check-payments
+    - GET    https://api.s.unit.sh/check-payments/{checkPaymentId}
+    - POST   https://api.s.unit.sh/check-payments/{checkPaymentId}/approve
+    - POST   https://api.s.unit.sh/check-payments/{checkPaymentId}/cancel
+    - POST   https://api.s.unit.sh/check-payments/{checkPaymentId}/return
+    - GET    https://api.s.unit.sh/transactions
+    - GET    https://api.s.unit.sh/accounts/{accountId}/transactions/{transactionId}
+    - PATCH  https://api.s.unit.sh/accounts/{accountId}/transactions/{transactionId}
+    - GET    https://api.s.unit.sh/statements
+    - GET    https://api.s.unit.sh/statements/{statementId}/html
+    - GET    https://api.s.unit.sh/statements/{statementId}/pdf
+    - GET    https://api.s.unit.sh/statements/{accountId}/bank/pdf
+    - GET    https://api.s.unit.sh/tax-forms
+    - GET    https://api.s.unit.sh/tax-forms/{taxFormId}
+    - GET    https://api.s.unit.sh/tax-forms/{taxFormId}/pdf
+    - GET    https://api.s.unit.sh/events
+    - GET    https://api.s.unit.sh/events/{eventId}
+    - POST   https://api.s.unit.sh/events/{eventId}
+    - GET    https://api.s.unit.sh/webhooks
+    - POST   https://api.s.unit.sh/webhooks
+    - GET    https://api.s.unit.sh/webhooks/{webhookId}
+    - PATCH  https://api.s.unit.sh/webhooks/{webhookId}
+    - POST   https://api.s.unit.sh/webhooks/{webhookId}/enable
+    - POST   https://api.s.unit.sh/webhooks/{webhookId}/disable
+    - GET    https://api.s.unit.sh/stop-payments
+    - POST   https://api.s.unit.sh/stop-payments
+    - GET    https://api.s.unit.sh/stop-payments/{stopPaymentId}
+    - POST   https://api.s.unit.sh/stop-payments/{stopPaymentId}/disable
+    - GET    https://api.s.unit.sh/disputes
+    - GET    https://api.s.unit.sh/disputes/{disputeId}
+    - GET    https://api.s.unit.sh/repayments
+    - POST   https://api.s.unit.sh/repayments
+    - GET    https://api.s.unit.sh/repayments/{repaymentId}
+    - GET    https://api.s.unit.sh/recurring-repayments
+    - POST   https://api.s.unit.sh/recurring-repayments
+    - GET    https://api.s.unit.sh/recurring-repayments/{recurringRepaymentId}
+    - POST   https://api.s.unit.sh/recurring-repayments/{recurringRepaymentId}/disable
+    - POST   https://api.s.unit.sh/recurring-repayments/{recurringRepaymentId}/enable
+    - POST   https://api.s.unit.sh/fees
+    - POST   https://api.s.unit.sh/fees/reverse
+    - GET    https://api.s.unit.sh/rewards
+    - POST   https://api.s.unit.sh/rewards
+    - GET    https://api.s.unit.sh/rewards/{rewardId}
+    - GET    https://api.s.unit.sh/users/{userId}/api-tokens
+    - POST   https://api.s.unit.sh/users/{userId}/api-tokens
+    - DELETE https://api.s.unit.sh/users/{userId}/api-tokens/{tokenId}
+    - POST   https://api.s.unit.sh/customers/{customerId}/token
+    - POST   https://api.s.unit.sh/customers/{customerId}/token/verification
+  endpointsModeled:
+    - note: >-
+        All 117 path entries above were read directly from Unit's officially
+        published OpenAPI specification (github.com/unit-finance/openapi-unit-sdk,
+        openapi.json referencing per-resource files under schemas/). Nothing
+        in the confirmed list is fabricated. What is modeled rather than
+        confirmed, in openapi/unit-co-openapi.yml, is the depth of the
+        request/response JSON schemas themselves - Unit's real schemas
+        define dozens of specific resource types (e.g. individualApplication,
+        businessApplication, depositAccount, creditAccount,
+        individualDebitCard, businessCreditCard, bookPayment, achPayment,
+        wirePayment) each with many typed attributes; this repository
+        condenses those into a generic JsonApiResource envelope
+        (type/id/attributes/relationships) for readability rather than
+        reproducing every field.
+sources:
+  - url: https://www.unit.co/docs/api/
+    type: Documentation
+    note: Top-level API reference; sidebar enumerates every resource category modeled in apis.yml.
+  - url: https://www.unit.co/docs/api/about-jsonapi/
+    type: Documentation
+    note: Confirms the JSON:API convention and application/vnd.api+json media type.
+  - url: https://github.com/unit-finance/openapi-unit-sdk
+    type: OpenAPI
+    note: >-
+      Official OpenAPI 3.0.2 specification (openapi.json + schemas/*),
+      fetched directly during this review; source of the 117 confirmed
+      paths and the confirmed sandbox server https://api.s.unit.sh.
+  - url: https://github.com/unit-finance/unit-node-sdk
+    type: SourceCode
+    note: Official generated Node.js/TypeScript SDK.
+  - url: https://github.com/unit-finance/unit-python-sdk
+    type: SourceCode
+    note: Official generated Python SDK.
+  - url: https://docs.unit.co/webhooks/
+    type: Documentation
+    note: Webhook subscription management, X-Unit-Signature HMAC-SHA1 signing, delivery-per-event behavior.
+  - url: https://docs.unit.co/cards-authorization-requests/
+    type: Documentation
+    note: Real-time authorization request webhook flow and decline reasons.
+  - url: https://www.unit.co/docs/api/rate-limit/
+    type: Documentation
+    note: >-
+      Referenced by a prior catalog entry for this company as the source
+      of a numeric rate limit; returned HTTP 404 when re-fetched during
+      this review, so the specific figure is not independently confirmed
+      here.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists on Unit's own API, and no
+    server-push transport (WebSocket or SSE) exists to model in AsyncAPI -
+    Unit's realtime behavior (events, authorization requests) is delivered
+    as Unit-initiated HTTP POST callbacks to a subscriber's own endpoint,
+    which is a webhook pattern rather than a persistent streaming
+    connection. apis.yml was built directly from Unit's officially
+    published OpenAPI specification, organized into 15 logical API
+    groupings for this catalog entry.
