@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://www.unit.co/security
+url: https://www.unit.co/security
+certifications:
+- SOC 2
+- PCI DSS
+evidence:
+- source: https://www.unit.co/security
+  keywords:
+  - soc 2
+  - pci dss
+  - pci-dss

@@ -338,6 +338,14 @@ apis:
     challenges) that let end users authenticate directly against Unit from a
     client application with reduced scope.
 common:
+- type: TrustCenter
+  url: security/unit-co-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/unit-co-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/unit-co-domain-security.yml
+- type: Authentication
+  url: authentication/unit-co-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/unit-finance
 - type: LinkedIn
@@ -352,6 +360,8 @@ common:
   url: rate-limits/unit-co-rate-limits.yml
 - type: FinOps
   url: finops/unit-co-finops.yml
+- url: https://www.unit.co/blog/
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/unit-co-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: 'Bearer JWT issued as an org API token (Dashboard > Developers) or a customer
+    API token. Sent as `Authorization: Bearer ${TOKEN}`. All request and response bodies use
+    the `application/vnd.api+json` JSON:API media type.'
+  sources:
+  - openapi/unit-co-openapi.yml
