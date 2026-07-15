@@ -338,6 +338,8 @@ apis:
     challenges) that let end users authenticate directly against Unit from a
     client application with reduced scope.
 common:
+- type: AgenticAccess
+  url: agentic-access/unit-co-agentic-access.yml
 - type: TrustCenter
   url: security/unit-co-trust-center.yml
 - type: VulnerabilityDisclosure
