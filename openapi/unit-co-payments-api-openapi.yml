@@ -1,0 +1,403 @@
+openapi: 3.0.3
+info:
+  title: Unit Accounts Payments API
+  description: Unit is a Banking-as-a-Service (BaaS) platform. This document is an API Evangelist consolidation of Unit's public REST surface, organized into logical groupings (Applications, Customers, Accounts, Cards, Authorizations, Payments, Counterparties, Checks, Transactions, Statements, Tax Forms, Events, Webhooks, Risk/Fraud, Credit/Repayments, Fees, Rewards, and API Tokens). All paths, methods, and the request/ response envelope below were confirmed against Unit's officially published OpenAPI 3.0.2 specification at github.com/unit-finance/openapi-unit-sdk (openapi.json, version 0.4.0); request/response bodies here are condensed and re-typed for readability rather than reproduced schema-for-schema. Unit's API follows the JSON:API specification - every request and response uses the `application/vnd.api+json` media type, wraps the primary resource in a top-level `data` object with `type`/`id`/`attributes`/`relationships`, and authenticates with a Bearer JWT obtained as an org API token or a customer API token.
+  version: '1.0'
+  contact:
+    name: Unit
+    url: https://www.unit.co
+  license:
+    name: Proprietary
+    url: https://www.unit.co/legal/
+servers:
+- url: https://api.s.unit.sh
+  description: Sandbox (confirmed - default server in Unit's published OpenAPI spec)
+- url: https://api.unit.co
+  description: Production (industry-standard Unit convention paired with the sandbox host; not independently re-confirmed against a live docs page in this research pass - verify with your Unit solution engineer)
+security:
+- bearerAuth: []
+tags:
+- name: Payments
+  description: Book, ACH, wire, recurring, and cash-deposit payments.
+paths:
+  /payments:
+    get:
+      operationId: getPaymentsList
+      tags:
+      - Payments
+      summary: Get List Payments
+      parameters:
+      - $ref: '#/components/parameters/PageLimit'
+      - $ref: '#/components/parameters/PageOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/ResourceList'
+    post:
+      operationId: createPayment
+      tags:
+      - Payments
+      summary: Create a Payment
+      description: Creates a bookPayment, achPayment, or wirePayment depending on the `type` in the request body.
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/CreatePaymentRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/SingleResource'
+  /payments/{paymentId}:
+    parameters:
+    - name: paymentId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getPayment
+      tags:
+      - Payments
+      summary: Get Payment by Id
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleResource'
+    patch:
+      operationId: updatePayment
+      tags:
+      - Payments
+      summary: Update Payment
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleResource'
+  /payments/{paymentId}/cancel:
+    parameters:
+    - name: paymentId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: cancelPayment
+      tags:
+      - Payments
+      summary: Cancel a Payment by Id
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleResource'
+  /received-payments:
+    get:
+      operationId: getReceivedPaymentsList
+      tags:
+      - Payments
+      summary: Get Received Payments List
+      responses:
+        '200':
+          $ref: '#/components/responses/ResourceList'
+  /received-payments/{paymentId}:
+    parameters:
+    - name: paymentId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getReceivedPayment
+      tags:
+      - Payments
+      summary: Get Received Payment by Id
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleResource'
+    patch:
+      operationId: updateReceivedPayment
+      tags:
+      - Payments
+      summary: Update Received Payment
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleResource'
+  /received-payments/{paymentId}/advance:
+    parameters:
+    - name: paymentId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: advanceReceivedPayment
+      tags:
+      - Payments
+      summary: Advance Received Payment by Id
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleResource'
+  /received-payments/{paymentId}/reprocess:
+    parameters:
+    - name: paymentId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: reprocessReceivedPayment
+      tags:
+      - Payments
+      summary: Reprocess Received Payment by Id
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleResource'
+  /returns/{transactionId}:
+    parameters:
+    - name: transactionId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: returnReceivedAchTransaction
+      tags:
+      - Payments
+      summary: Return Received ACH Transaction
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleResource'
+  /recurring-payments:
+    get:
+      operationId: getRecurringPaymentsList
+      tags:
+      - Payments
+      summary: Get Recurring Payments List
+      responses:
+        '200':
+          $ref: '#/components/responses/ResourceList'
+    post:
+      operationId: createRecurringPayment
+      tags:
+      - Payments
+      summary: Create Recurring Payment
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+      responses:
+        '201':
+          $ref: '#/components/responses/SingleResource'
+  /recurring-payments/{paymentId}:
+    parameters:
+    - name: paymentId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getRecurringPayment
+      tags:
+      - Payments
+      summary: Get Recurring Payment
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleResource'
+  /recurring-payments/{paymentId}/disable:
+    parameters:
+    - name: paymentId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: disableRecurringPayment
+      tags:
+      - Payments
+      summary: Disable Recurring Payment
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleResource'
+  /recurring-payments/{paymentId}/enable:
+    parameters:
+    - name: paymentId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: enableRecurringPayment
+      tags:
+      - Payments
+      summary: Enable Recurring Payment
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleResource'
+  /cash-deposits/barcodes:
+    post:
+      operationId: generateCashDepositBarcode
+      tags:
+      - Payments
+      summary: Generate Cash Deposit Barcode
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+      responses:
+        '201':
+          $ref: '#/components/responses/SingleResource'
+  /cash-deposits/barcodes/{barcodeNumber}/image:
+    parameters:
+    - name: barcodeNumber
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getBarcodeImage
+      tags:
+      - Payments
+      summary: Get Barcode Image By Barcode Number
+      responses:
+        '200':
+          description: Barcode image.
+          content:
+            image/png: {}
+  /store-locations:
+    get:
+      operationId: getCashDepositStoreLocations
+      tags:
+      - Payments
+      summary: Get Cash Deposit Store Locations List By Coordinates
+      parameters:
+      - name: latitude
+        in: query
+        schema:
+          type: number
+      - name: longitude
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          $ref: '#/components/responses/ResourceList'
+components:
+  schemas:
+    JsonApiSingleResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiResource'
+        included:
+          type: array
+          items:
+            $ref: '#/components/schemas/JsonApiResource'
+    JsonApiResource:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The JSON:API resource type, e.g. individualApplication, depositAccount, individualDebitCard, bookPayment, achPayment.
+        id:
+          type: string
+        attributes:
+          type: object
+          additionalProperties: true
+        relationships:
+          type: object
+          additionalProperties: true
+    JsonApiListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JsonApiResource'
+        meta:
+          type: object
+          properties:
+            pagination:
+              type: object
+              properties:
+                total:
+                  type: integer
+                limit:
+                  type: integer
+                offset:
+                  type: integer
+    CreatePaymentRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - type
+          - attributes
+          properties:
+            type:
+              type: string
+              enum:
+              - bookPayment
+              - achPayment
+              - wirePayment
+            attributes:
+              type: object
+              properties:
+                amount:
+                  type: integer
+                  description: Amount in cents.
+                direction:
+                  type: string
+                  enum:
+                  - Credit
+                  - Debit
+                description:
+                  type: string
+                idempotencyKey:
+                  type: string
+  responses:
+    ResourceList:
+      description: A page of JSON:API resources.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/JsonApiListResponse'
+    SingleResource:
+      description: A single JSON:API resource.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/JsonApiSingleResponse'
+  parameters:
+    PageOffset:
+      name: page[offset]
+      in: query
+      schema:
+        type: integer
+        default: 0
+    PageLimit:
+      name: page[limit]
+      in: query
+      schema:
+        type: integer
+        default: 100
+        maximum: 1000
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Bearer JWT issued as an org API token (Dashboard > Developers) or a customer API token. Sent as `Authorization: Bearer ${TOKEN}`. All request and response bodies use the `application/vnd.api+json` JSON:API media type.'

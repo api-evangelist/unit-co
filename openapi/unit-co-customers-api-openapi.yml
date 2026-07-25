@@ -1,0 +1,178 @@
+openapi: 3.0.3
+info:
+  title: Unit Accounts Customers API
+  description: Unit is a Banking-as-a-Service (BaaS) platform. This document is an API Evangelist consolidation of Unit's public REST surface, organized into logical groupings (Applications, Customers, Accounts, Cards, Authorizations, Payments, Counterparties, Checks, Transactions, Statements, Tax Forms, Events, Webhooks, Risk/Fraud, Credit/Repayments, Fees, Rewards, and API Tokens). All paths, methods, and the request/ response envelope below were confirmed against Unit's officially published OpenAPI 3.0.2 specification at github.com/unit-finance/openapi-unit-sdk (openapi.json, version 0.4.0); request/response bodies here are condensed and re-typed for readability rather than reproduced schema-for-schema. Unit's API follows the JSON:API specification - every request and response uses the `application/vnd.api+json` media type, wraps the primary resource in a top-level `data` object with `type`/`id`/`attributes`/`relationships`, and authenticates with a Bearer JWT obtained as an org API token or a customer API token.
+  version: '1.0'
+  contact:
+    name: Unit
+    url: https://www.unit.co
+  license:
+    name: Proprietary
+    url: https://www.unit.co/legal/
+servers:
+- url: https://api.s.unit.sh
+  description: Sandbox (confirmed - default server in Unit's published OpenAPI spec)
+- url: https://api.unit.co
+  description: Production (industry-standard Unit convention paired with the sandbox host; not independently re-confirmed against a live docs page in this research pass - verify with your Unit solution engineer)
+security:
+- bearerAuth: []
+tags:
+- name: Customers
+  description: Customer profiles created from approved applications.
+paths:
+  /customers:
+    get:
+      operationId: getCustomersList
+      tags:
+      - Customers
+      summary: Get Customers List
+      parameters:
+      - $ref: '#/components/parameters/PageLimit'
+      - $ref: '#/components/parameters/PageOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/ResourceList'
+  /customers/{customerId}:
+    parameters:
+    - $ref: '#/components/parameters/CustomerId'
+    get:
+      operationId: getCustomer
+      tags:
+      - Customers
+      summary: Get Customer by Id
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleResource'
+    patch:
+      operationId: updateCustomer
+      tags:
+      - Customers
+      summary: Update Customer
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleResource'
+  /customers/{customerId}/archive:
+    parameters:
+    - $ref: '#/components/parameters/CustomerId'
+    post:
+      operationId: archiveCustomer
+      tags:
+      - Customers
+      summary: Archive Customer by Id
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleResource'
+  /customers/{customerId}/authorized-users:
+    parameters:
+    - $ref: '#/components/parameters/CustomerId'
+    post:
+      operationId: addAuthorizedUsers
+      tags:
+      - Customers
+      summary: Add Authorized Users by Id
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleResource'
+    delete:
+      operationId: removeAuthorizedUsers
+      tags:
+      - Customers
+      summary: Remove Authorized Users by Id
+      responses:
+        '200':
+          $ref: '#/components/responses/SingleResource'
+components:
+  schemas:
+    JsonApiSingleResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiResource'
+        included:
+          type: array
+          items:
+            $ref: '#/components/schemas/JsonApiResource'
+    JsonApiResource:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The JSON:API resource type, e.g. individualApplication, depositAccount, individualDebitCard, bookPayment, achPayment.
+        id:
+          type: string
+        attributes:
+          type: object
+          additionalProperties: true
+        relationships:
+          type: object
+          additionalProperties: true
+    JsonApiListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JsonApiResource'
+        meta:
+          type: object
+          properties:
+            pagination:
+              type: object
+              properties:
+                total:
+                  type: integer
+                limit:
+                  type: integer
+                offset:
+                  type: integer
+  parameters:
+    CustomerId:
+      name: customerId
+      in: path
+      required: true
+      schema:
+        type: string
+    PageOffset:
+      name: page[offset]
+      in: query
+      schema:
+        type: integer
+        default: 0
+    PageLimit:
+      name: page[limit]
+      in: query
+      schema:
+        type: integer
+        default: 100
+        maximum: 1000
+  responses:
+    ResourceList:
+      description: A page of JSON:API resources.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/JsonApiListResponse'
+    SingleResource:
+      description: A single JSON:API resource.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/JsonApiSingleResponse'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Bearer JWT issued as an org API token (Dashboard > Developers) or a customer API token. Sent as `Authorization: Bearer ${TOKEN}`. All request and response bodies use the `application/vnd.api+json` JSON:API media type.'
