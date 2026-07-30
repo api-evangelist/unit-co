@@ -14,7 +14,20 @@ description: Unit is a Banking-as-a-Service (BaaS) platform that lets companies
   (github.com/unit-finance/openapi-unit-sdk) plus generated Node.js, Python,
   Ruby, and Java SDKs. Sandbox runs at api.s.unit.sh; production access is
   provisioned per signed BaaS agreement with Unit's partner banks.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/unit-co.png
 tags:
 - FinTech
 - BaaS
@@ -28,315 +41,1196 @@ created: '2026-07-02'
 modified: '2026-07-02'
 specificationVersion: '0.19'
 apis:
-- aid: unit-co:unit-co-applications-api
-  name: Unit Applications API
-  tags:
-  - Applications
-  - Onboarding
-  - KYC
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.unit.co/docs/api/applications/
-  baseURL: https://api.s.unit.sh
-  properties:
-  - url: https://www.unit.co/docs/api/
-    type: Documentation
-  - url: https://www.unit.co/docs/api/applications/
-    type: APIReference
-  - url: openapi/unit-co-openapi.yml
-    type: OpenAPI
-  description: Individual and business application onboarding - create, get, update,
-    list, and cancel applications; manage application forms, uploaded KYC/KYB
-    documents (front/back, verify, download), business beneficial owners, and
-    surface an application's missing fields. An approved application creates a
-    Customer resource.
-- aid: unit-co:unit-co-customers-api
-  name: Unit Customers API
-  tags:
-  - Customers
-  - Authorized Users
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.unit.co/docs/api/customers/
-  baseURL: https://api.s.unit.sh
-  properties:
-  - url: https://www.unit.co/docs/api/customers/
-    type: Documentation
-  - url: https://www.unit.co/docs/api/customers/
-    type: APIReference
-  - url: openapi/unit-co-openapi.yml
-    type: OpenAPI
-  description: Manage individual and business Customer resources created from
-    approved applications - get, update, list, and archive customers, and add
-    or remove authorized users who can transact on a customer's accounts and
-    cards.
 - aid: unit-co:unit-co-accounts-api
   name: Unit Accounts API
+  description: Deposit and credit accounts.
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
   tags:
   - Accounts
-  - Deposit Accounts
-  - Credit Accounts
-  - DACA
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
-  baseURL: https://api.s.unit.sh
   properties:
-  - url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
-    type: Documentation
-  - url: https://www.unit.co/docs/api/accounts/
-    type: APIReference
-  - url: openapi/unit-co-openapi.yml
-    type: OpenAPI
-  description: Create, get, update, list, freeze/unfreeze, close, and reopen
-    deposit and credit accounts; manage Deposit Account Control Agreements
-    (enter/activate/deactivate DACA); retrieve account limits, deposit products,
-    end-of-day balance history, credit repayment information, and add or remove
-    joint customers on an account.
-- aid: unit-co:unit-co-cards-api
-  name: Unit Cards API
-  tags:
-  - Cards
-  - Debit Cards
-  - Credit Cards
-  - Card Issuing
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.unit.co/docs/api/cards/
-  baseURL: https://api.s.unit.sh
-  properties:
-  - url: https://www.unit.co/docs/api/cards/
-    type: Documentation
-  - url: https://www.unit.co/docs/api/cards/
-    type: APIReference
-  - url: openapi/unit-co-openapi.yml
-    type: OpenAPI
-  description: Issue and manage individual and business debit and credit cards -
-    create, get, update, list, freeze/unfreeze, close, replace, and check PIN
-    status; report a card lost or stolen; retrieve card spending limits; and
-    look up nearby surcharge-free ATM locations.
-- aid: unit-co:unit-co-authorizations-api
-  name: Unit Card Authorizations API
-  tags:
-  - Authorizations
-  - Real-Time Decisioning
-  - Card Present
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.unit.co/docs/api/cards-authorizations/
-  baseURL: https://api.s.unit.sh
-  properties:
-  - url: https://docs.unit.co/cards-authorization-requests/
-    type: Documentation
-  - url: https://www.unit.co/docs/api/cards-authorizations/
-    type: APIReference
-  - url: openapi/unit-co-openapi.yml
-    type: OpenAPI
-  description: List and retrieve completed card Authorization resources, and
-    handle real-time Authorization Requests - Unit calls a configured webhook
-    for every attempt to use a card so you can approve or decline it inline
-    (with reasons such as InsufficientFunds, DoNotHonor, or RestrictedCard)
-    before the transaction is authorized.
-- aid: unit-co:unit-co-payments-api
-  name: Unit Payments API
-  tags:
-  - Payments
-  - ACH
-  - Wire
-  - Book Payments
-  - Cash Deposits
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.unit.co/docs/api/payments/book/
-  baseURL: https://api.s.unit.sh
-  properties:
-  - url: https://docs.unit.co/payments/
-    type: Documentation
-  - url: https://www.unit.co/docs/api/payments/book/
-    type: APIReference
-  - url: openapi/unit-co-openapi.yml
-    type: OpenAPI
-  description: Move money with Book Payments (instant internal transfers), ACH
-    (originating debit/credit) and Wire payments, one-time and Recurring
-    Payments, and retail Cash Deposits (barcode-based). Also manage incoming
-    Received Payments - advance, reprocess, or return an ACH transaction - and
-    cancel pending payments.
-- aid: unit-co:unit-co-counterparties-api
-  name: Unit Counterparties API
-  tags:
-  - Counterparties
-  - External Accounts
-  - Institutions
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.unit.co/docs/api/counterparties/overview/
-  baseURL: https://api.s.unit.sh
-  properties:
-  - url: https://www.unit.co/docs/api/counterparties/overview/
-    type: Documentation
-  - url: https://www.unit.co/docs/api/payments-counterparties/
-    type: APIReference
-  - url: openapi/unit-co-openapi.yml
-    type: OpenAPI
-  description: Create, get, update, list, and delete Counterparty resources -
-    external bank accounts (often verified via a Plaid processor token) that
-    can send or receive ACH payments - and check a Plaid-verified counterparty's
-    balance. Includes routing-number Institution lookups used to validate
-    counterparties.
-- aid: unit-co:unit-co-checks-api
-  name: Unit Checks API
-  tags:
-  - Checks
-  - Check Deposits
-  - Check Printing
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.unit.co/check-deposits/
-  baseURL: https://api.s.unit.sh
-  properties:
-  - url: https://docs.unit.co/check-deposits/
-    type: Documentation
-  - url: https://www.unit.co/docs/api/checks/
-    type: APIReference
-  - url: openapi/unit-co-openapi.yml
-    type: OpenAPI
-  description: Mobile Check Deposits - create, get, update, list, confirm, and
-    retrieve front/back images of a deposited check - and outbound Check
-    Payments (print-and-mail) - create, approve, cancel, return, and retrieve
-    front/back images.
-- aid: unit-co:unit-co-transactions-api
-  name: Unit Transactions API
-  tags:
-  - Transactions
-  - Ledger
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.unit.co/docs/api/transactions/overview/
-  baseURL: https://api.s.unit.sh
-  properties:
-  - url: https://www.unit.co/docs/api/transactions/overview/
-    type: Documentation
-  - url: https://www.unit.co/docs/api/transactions/
-    type: APIReference
-  - url: openapi/unit-co-openapi.yml
-    type: OpenAPI
-  description: Read-only ledger of confirmed, posted financial movements on an
-    account - list transactions with filtering and paging, get a single
-    transaction by account and transaction id, and update transaction tags.
-    Transactions are final and are never created directly through the API.
-- aid: unit-co:unit-co-statements-tax-forms-api
-  name: Unit Statements and Tax Forms API
-  tags:
-  - Statements
-  - Tax Forms
-  - Compliance
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.unit.co/statements/
-  baseURL: https://api.s.unit.sh
-  properties:
-  - url: https://docs.unit.co/statements/
-    type: Documentation
-  - url: https://www.unit.co/docs/api/statements/
-    type: APIReference
-  - url: openapi/unit-co-openapi.yml
-    type: OpenAPI
-  description: Retrieve auto-generated monthly account statements as HTML or
-    PDF, plus bank-verification PDFs, for deposit and credit accounts; list
-    and retrieve annual Tax Forms and their PDFs, with webhook events on
-    creation and updates for electronic delivery consent workflows.
-- aid: unit-co:unit-co-events-webhooks-api
-  name: Unit Events and Webhooks API
-  tags:
-  - Events
-  - Webhooks
-  - Notifications
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.unit.co/webhooks/
-  baseURL: https://api.s.unit.sh
-  properties:
-  - url: https://docs.unit.co/webhooks/
-    type: Documentation
-  - url: https://www.unit.co/docs/api/events/
-    type: APIReference
-  - url: openapi/unit-co-openapi.yml
-    type: OpenAPI
-  description: List and retrieve Event resources (resource.event-named, e.g.
-    application.created, account.frozen, card.authorization) going back up to
-    90 days, and manage Webhook subscriptions - create, get, update, list,
-    enable, and disable - that deliver those events as HMAC-signed HTTP POST
-    callbacks to your endpoint.
-- aid: unit-co:unit-co-risk-fraud-api
-  name: Unit Risk and Fraud Prevention API
-  tags:
-  - Fraud
-  - Disputes
-  - Stop Payments
-  - Positive Pay
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.unit.co/docs/api/stop-payments/apis/
-  baseURL: https://api.s.unit.sh
-  properties:
-  - url: https://www.unit.co/docs/api/stop-payments/apis/
-    type: Documentation
-  - url: https://www.unit.co/docs/api/disputes/
-    type: APIReference
-  - url: openapi/unit-co-openapi.yml
-    type: OpenAPI
-  description: Create, list, get, and disable ACH/check Stop Payments; list and
-    retrieve card transaction Disputes; and, through the dashboard-driven
-    white-label Card Fraud Outreach flow, notify customers of suspected fraud
-    and act on their response. Positive Pay check-matching rules are also
-    configured under this surface.
-- aid: unit-co:unit-co-credit-repayments-api
-  name: Unit Credit and Repayments API
-  tags:
-  - Credit
-  - Lending
-  - Repayments
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.unit.co/repayments/
-  baseURL: https://api.s.unit.sh
-  properties:
-  - url: https://docs.unit.co/repayments/
-    type: Documentation
-  - url: https://docs.unit.co/credit-accounts/
-    type: APIReference
-  - url: openapi/unit-co-openapi.yml
-    type: OpenAPI
-  description: Manage repayments on Unit credit accounts and receivables - create,
-    get, and list one-time Repayments; create, get, list, enable, and disable
-    Recurring Repayments. Works alongside Credit Accounts (a deposit-account
-    type) and Credit Applications for line-of-credit and charge card programs.
-- aid: unit-co:unit-co-fees-rewards-api
-  name: Unit Fees and Rewards API
-  tags:
-  - Fees
-  - Rewards
-  - Monetization
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.unit.co/docs/api/fees/overview/
-  baseURL: https://api.s.unit.sh
-  properties:
-  - url: https://www.unit.co/docs/api/fees/overview/
-    type: Documentation
-  - url: https://www.unit.co/docs/api/fees/
-    type: APIReference
-  - url: openapi/unit-co-openapi.yml
-    type: OpenAPI
-  description: Create and reverse one-off Fees against a customer's account for
-    activities not covered by Unit's native fee schedule, and create and list
-    Rewards (cashback-style credits) paid into a customer's account.
+  - type: OpenAPI
+    url: openapi/unit-co-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
 - aid: unit-co:unit-co-api-tokens-api
   name: Unit API Tokens API
+  description: Org-level and customer-level authentication tokens.
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
   tags:
   - API Tokens
-  - Authentication
-  - Org Tokens
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.unit.co/docs/tokens/
-  baseURL: https://api.s.unit.sh
   properties:
-  - url: https://www.unit.co/docs/tokens/
-    type: Documentation
-  - url: https://www.unit.co/docs/api/org-api-tokens/
-    type: APIReference
-  - url: openapi/unit-co-openapi.yml
-    type: OpenAPI
-  description: Issue and revoke org-level API tokens scoped to a Unit user, and
-    create short-lived Customer API Tokens (plus SMS/email verification
-    challenges) that let end users authenticate directly against Unit from a
-    client application with reduced scope.
+  - type: OpenAPI
+    url: openapi/unit-co-api-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
+- aid: unit-co:unit-co-applications-api
+  name: Unit Applications API
+  description: Individual and business application onboarding (KYC/KYB).
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
+  tags:
+  - Applications
+  properties:
+  - type: OpenAPI
+    url: openapi/unit-co-applications-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
+- aid: unit-co:unit-co-authorizations-api
+  name: Unit Authorizations API
+  description: Completed card authorizations and real-time authorization requests.
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
+  tags:
+  - Authorizations
+  properties:
+  - type: OpenAPI
+    url: openapi/unit-co-authorizations-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
+- aid: unit-co:unit-co-cards-api
+  name: Unit Cards API
+  description: Debit and credit card issuance and management.
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
+  tags:
+  - Cards
+  properties:
+  - type: OpenAPI
+    url: openapi/unit-co-cards-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
+- aid: unit-co:unit-co-checks-api
+  name: Unit Checks API
+  description: Check deposits and outbound check payments.
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
+  tags:
+  - Checks
+  properties:
+  - type: OpenAPI
+    url: openapi/unit-co-checks-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
+- aid: unit-co:unit-co-counterparties-api
+  name: Unit Counterparties API
+  description: External bank accounts and routing-number institution lookups.
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
+  tags:
+  - Counterparties
+  properties:
+  - type: OpenAPI
+    url: openapi/unit-co-counterparties-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
+- aid: unit-co:unit-co-credit-and-repayments-api
+  name: Unit Credit and Repayments API
+  description: Repayments on credit accounts and receivables.
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
+  tags:
+  - Credit and Repayments
+  properties:
+  - type: OpenAPI
+    url: openapi/unit-co-credit-and-repayments-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
+- aid: unit-co:unit-co-customers-api
+  name: Unit Customers API
+  description: Customer profiles created from approved applications.
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/unit-co-customers-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
+- aid: unit-co:unit-co-events-api
+  name: Unit Events API
+  description: Platform activity log.
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/unit-co-events-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
+- aid: unit-co:unit-co-fees-and-rewards-api
+  name: Unit Fees and Rewards API
+  description: Ad hoc fees and cashback-style rewards.
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
+  tags:
+  - Fees and Rewards
+  properties:
+  - type: OpenAPI
+    url: openapi/unit-co-fees-and-rewards-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
+- aid: unit-co:unit-co-payments-api
+  name: Unit Payments API
+  description: Book, ACH, wire, recurring, and cash-deposit payments.
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
+  tags:
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/unit-co-payments-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
+- aid: unit-co:unit-co-risk-and-fraud-api
+  name: Unit Risk and Fraud API
+  description: Stop payments and card/ACH disputes.
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
+  tags:
+  - Risk and Fraud
+  properties:
+  - type: OpenAPI
+    url: openapi/unit-co-risk-and-fraud-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
+- aid: unit-co:unit-co-statements-api
+  name: Unit Statements API
+  description: Monthly account statements.
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
+  tags:
+  - Statements
+  properties:
+  - type: OpenAPI
+    url: openapi/unit-co-statements-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
+- aid: unit-co:unit-co-tax-forms-api
+  name: Unit Tax Forms API
+  description: Annual tax documents.
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
+  tags:
+  - Tax Forms
+  properties:
+  - type: OpenAPI
+    url: openapi/unit-co-tax-forms-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
+- aid: unit-co:unit-co-transactions-api
+  name: Unit Transactions API
+  description: Posted, immutable ledger entries.
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/unit-co-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
+- aid: unit-co:unit-co-webhooks-api
+  name: Unit Webhooks API
+  description: Subscriptions that deliver events as signed HTTP callbacks.
+  humanURL: https://www.unit.co/docs/api/applications/
+  baseURL: https://api.s.unit.sh
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/unit-co-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://www.unit.co/docs/api/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/applications/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/customers/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/customers/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/accounts/deposit-accounts/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/cards/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards/
+  - type: Documentation
+    url: https://docs.unit.co/cards-authorization-requests/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/cards-authorizations/
+  - type: Documentation
+    url: https://docs.unit.co/payments/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments/book/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/counterparties/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/payments-counterparties/
+  - type: Documentation
+    url: https://docs.unit.co/check-deposits/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/checks/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/transactions/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/transactions/
+  - type: Documentation
+    url: https://docs.unit.co/statements/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/statements/
+  - type: Documentation
+    url: https://docs.unit.co/webhooks/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/events/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/stop-payments/apis/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/disputes/
+  - type: Documentation
+    url: https://docs.unit.co/repayments/
+  - type: APIReference
+    url: https://docs.unit.co/credit-accounts/
+  - type: Documentation
+    url: https://www.unit.co/docs/api/fees/overview/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/fees/
+  - type: Documentation
+    url: https://www.unit.co/docs/tokens/
+  - type: APIReference
+    url: https://www.unit.co/docs/api/org-api-tokens/
 common:
 - type: AgenticAccess
   url: agentic-access/unit-co-agentic-access.yml
