@@ -1,0 +1,16 @@
+generated: '2026-07-23'
+method: generated
+source: openapi/ operations + conventions/unit-conventions.yml + errors/
+skills:
+  - file: unit-onboard-customer-and-open-account.md
+    name: Onboard a customer and open a deposit account
+    api: openapi/unit-applications-openapi.json
+    operations: [applications, application, documents, uploadApplicationDocumentFile, listCustomers, customer, accounts, account]
+  - file: unit-originate-ach-payment.md
+    name: Originate an ACH payment
+    api: openapi/unit-payments-openapi.json
+    operations: [counterparties, getInstitution, getAndCreatePayments, getAndUpdatePayment, cancelPayment]
+  - file: unit-issue-and-manage-card.md
+    name: Issue and manage a debit card
+    api: openapi/unit-cards-openapi.json
+    operations: [cards, card, cardLimits, freezeCard, unfreezeCard, reportLostCard, reportStolenCard, replaceCard, closeCard]

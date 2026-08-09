@@ -1,0 +1,55 @@
+{
+  "info": {
+    "_postman_id": "8333bdd0-a397-42eb-9702-e8c5d271a6e6",
+    "name": "Unit Webhooks and Events API",
+    "description": "Register webhook endpoints, enable/disable delivery, and list/retrieve the Events (state changes) Unit emits.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:57.000Z",
+    "updatedAt": "2026-07-28T03:22:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8333bdd0-a397-42eb-9702-e8c5d271a6e6"
+  },
+  "item": [
+    {
+      "name": "events",
+      "item": [],
+      "id": "ccfa3657-427d-47ec-a299-9956d8a2a56c",
+      "createdAt": "2026-07-28T03:22:58.000Z",
+      "updatedAt": "2026-07-28T03:22:58.000Z",
+      "uid": "35240-ccfa3657-427d-47ec-a299-9956d8a2a56c"
+    },
+    {
+      "name": "webhooks",
+      "item": [
+        {
+          "name": "{webhookId}",
+          "item": [],
+          "id": "a378eef7-da33-41fb-abf2-8d954dc8dbcb",
+          "createdAt": "2026-07-28T03:22:58.000Z",
+          "updatedAt": "2026-07-28T03:22:58.000Z",
+          "uid": "35240-a378eef7-da33-41fb-abf2-8d954dc8dbcb"
+        }
+      ],
+      "id": "090fde25-a5eb-49d0-80e1-bc986b1cedb1",
+      "createdAt": "2026-07-28T03:22:58.000Z",
+      "updatedAt": "2026-07-28T03:22:58.000Z",
+      "uid": "35240-090fde25-a5eb-49d0-80e1-bc986b1cedb1"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.s.unit.sh"
+    }
+  ]
+}

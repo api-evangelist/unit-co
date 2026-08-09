@@ -1,0 +1,35 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Unit Disputes API",
+    "description": "Retrieve and list card transaction disputes and their status.",
+    "version": "0.4.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.s.unit.sh"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/disputes": {
+      "$ref": "./schemas/dispute/disputePaths.json#/listDisputes"
+    },
+    "/disputes/{disputeId}": {
+      "$ref": "./schemas/dispute/disputePaths.json#/getDispute"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

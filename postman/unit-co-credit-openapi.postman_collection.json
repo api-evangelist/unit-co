@@ -1,0 +1,55 @@
+{
+  "info": {
+    "_postman_id": "a20b6531-58c4-43c1-b118-5e3f238dd79e",
+    "name": "Unit Credit and Repayments API",
+    "description": "Credit account repayments and recurring repayments: create, retrieve, and enable/disable scheduled repayments.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:56.000Z",
+    "updatedAt": "2026-07-28T03:22:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a20b6531-58c4-43c1-b118-5e3f238dd79e"
+  },
+  "item": [
+    {
+      "name": "repayments",
+      "item": [],
+      "id": "89ef3004-f6aa-428d-9677-8841aa19ccb7",
+      "createdAt": "2026-07-28T03:22:56.000Z",
+      "updatedAt": "2026-07-28T03:22:56.000Z",
+      "uid": "35240-89ef3004-f6aa-428d-9677-8841aa19ccb7"
+    },
+    {
+      "name": "recurring-repayments",
+      "item": [
+        {
+          "name": "{recurringRepaymentId}",
+          "item": [],
+          "id": "5663b1a2-1fa1-4c65-b56c-9a7288456756",
+          "createdAt": "2026-07-28T03:22:56.000Z",
+          "updatedAt": "2026-07-28T03:22:56.000Z",
+          "uid": "35240-5663b1a2-1fa1-4c65-b56c-9a7288456756"
+        }
+      ],
+      "id": "90ce52a5-c3ca-4f08-83a4-12eee9e32338",
+      "createdAt": "2026-07-28T03:22:56.000Z",
+      "updatedAt": "2026-07-28T03:22:56.000Z",
+      "uid": "35240-90ce52a5-c3ca-4f08-83a4-12eee9e32338"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.s.unit.sh"
+    }
+  ]
+}

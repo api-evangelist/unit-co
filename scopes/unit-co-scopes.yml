@@ -1,0 +1,68 @@
+generated: '2026-07-23'
+method: searched
+source: https://www.unit.co/docs/api/using-the-api
+docs: https://www.unit.co/docs/api/using-the-api#scopes
+note: >-
+  Unit authenticates with OAuth 2.0 Bearer tokens (Org API tokens and short-lived
+  Customer tokens). Each token is minted with a set of scopes granting read/write
+  access per resource. The OpenAPI declares the transport as http bearer (JWT); the
+  scope catalog below is documented in the "Scopes" section of the docs, not in the
+  spec's securitySchemes. Fund-movement and PCI-sensitive scopes require Two-Factor
+  Authentication (OTP) within the prior 24 hours; Customer tokens execute the 2FA for you.
+token_types:
+  - name: Org API token
+    role: org
+    description: Broad, system-level token not restricted to a specific end customer.
+  - name: Customer token
+    role: customer
+    description: >-
+      End-customer specific, scoped to a single customer's resources, with built-in
+      OTP 2FA and a customizable expiry up to 24 hours. Required for PCI-sensitive
+      card data/actions unless the client is PCI Level 1 compliant.
+scopes:
+  - {scope: applications, access: read, resource: Application, accessible_using: [org]}
+  - {scope: applications-write, access: write, resource: Application, accessible_using: [org]}
+  - {scope: customer-token, access: read, resource: Customer Token, accessible_using: [org]}
+  - {scope: customer-token-write, access: write, resource: Customer Token, accessible_using: [org]}
+  - {scope: customers, access: read, resource: Customers, accessible_using: [org, customer]}
+  - {scope: customers-write, access: write, resource: Customers, accessible_using: [org, customer]}
+  - {scope: customer-tags-write, access: write, resource: Customer Tags, accessible_using: [org, customer]}
+  - {scope: accounts, access: read, resource: Accounts, accessible_using: [org, customer]}
+  - {scope: accounts-write, access: write, resource: Accounts, accessible_using: [org, customer], note: "Close Account requires Org API token"}
+  - {scope: cards, access: read, resource: Cards, accessible_using: [org, customer]}
+  - {scope: cards-write, access: write, resource: Cards, accessible_using: [org, customer]}
+  - {scope: cards-sensitive, access: read, resource: Cards Sensitive, accessible_using: [customer], sensitive: pci}
+  - {scope: cards-sensitive-write, access: write, resource: Cards Sensitive, accessible_using: [customer], sensitive: pci}
+  - {scope: transactions, access: read, resource: Transactions, accessible_using: [org, customer]}
+  - {scope: transactions-write, access: write, resource: Transactions, accessible_using: [org, customer]}
+  - {scope: authorizations, access: read, resource: Authorizations, accessible_using: [org, customer]}
+  - {scope: statements, access: read, resource: Statements, accessible_using: [org, customer]}
+  - {scope: payments, access: read, resource: Payments, accessible_using: [org, customer]}
+  - {scope: payments-write, access: write, resource: Payments, accessible_using: [org, customer], sensitive: funds}
+  - {scope: payments-write-counterparty, access: write, resource: Payments to a counterparty, accessible_using: [org, customer], sensitive: funds}
+  - {scope: payments-write-linked-account, access: write, resource: Payments to a linked account, accessible_using: [org, customer], sensitive: funds}
+  - {scope: payments-write-ach-debit, access: write, resource: Payments ACH Debit, accessible_using: [org, customer], sensitive: funds}
+  - {scope: ach-payments-write, access: write, resource: Payments ACH, accessible_using: [org, customer], sensitive: funds}
+  - {scope: wire-payments-write, access: write, resource: Payments Wire, accessible_using: [org, customer], sensitive: funds}
+  - {scope: counterparties, access: read, resource: Counterparties, accessible_using: [org, customer]}
+  - {scope: counterparties-write, access: write, resource: Counterparties, accessible_using: [org, customer]}
+  - {scope: events, access: read, resource: Events, accessible_using: [org, customer]}
+  - {scope: events-write, access: write, resource: Events, accessible_using: [org, customer]}
+  - {scope: webhooks, access: read, resource: Webhooks, accessible_using: [org]}
+  - {scope: webhooks-write, access: write, resource: Webhooks, accessible_using: [org]}
+  - {scope: authorization-requests, access: read, resource: Authorization Requests, accessible_using: [org]}
+  - {scope: authorization-requests-write, access: write, resource: Authorization Requests, accessible_using: [org]}
+  - {scope: batch-releases, access: read, resource: Batch Releases, accessible_using: [org]}
+  - {scope: batch-releases-write, access: write, resource: Batch Releases, accessible_using: [org]}
+  - {scope: check-deposits, access: read, resource: Check Deposits, accessible_using: [org, customer]}
+  - {scope: check-deposits-write, access: write, resource: Check Deposits, accessible_using: [org, customer]}
+  - {scope: check-payments, access: read, resource: Check Payments, accessible_using: [org, customer]}
+  - {scope: check-payments-write, access: write, resource: Check Payments, accessible_using: [org, customer]}
+  - {scope: received-payments, access: read, resource: Received Payment, accessible_using: [org]}
+  - {scope: received-payments-write, access: write, resource: Received Payment, accessible_using: [org]}
+  - {scope: chargebacks, access: read, resource: Chargeback, accessible_using: [org]}
+  - {scope: chargebacks-write, access: write, resource: Chargeback, accessible_using: [org]}
+  - {scope: rewards, access: read, resource: Reward, accessible_using: [org]}
+  - {scope: rewards-write, access: write, resource: Reward, accessible_using: [org]}
+  - {scope: wire-drawdowns, access: read, resource: Wire Drawdowns, accessible_using: [org, customer]}
+  - {scope: wire-drawdowns-write, access: write, resource: Wire Drawdowns, accessible_using: [org, customer]}

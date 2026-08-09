@@ -1,0 +1,67 @@
+generated: '2026-07-23'
+method: searched
+source: https://www.unit.co/docs/api/using-the-api
+docs: https://www.unit.co/docs/api/using-the-api
+authentication:
+  style: OAuth 2.0 Bearer token (Org / Customer / Cardholder tokens)
+  header: "Authorization: Bearer <token>"
+  scopes: scopes/unit-scopes.yml
+  detail: authentication/unit-authentication.yml
+media_type:
+  standard: JSON:API
+  content_type: application/vnd.api+json
+  spec: https://jsonapi.org/format/
+  structure: >-
+    Every request/response is a JSON:API document with a top-level `data` (single
+    resource object or array) or `errors`. Resource objects carry `type`, `id`,
+    `attributes`, and `relationships`.
+idempotency:
+  supported: true
+  scope: Supported on sensitive write operations (e.g. creating payments).
+  mechanism: Client-supplied idempotency key
+  key_format: Any string up to 255 characters; UUID v4 recommended.
+  retention: 48 hours from first successful use, after which keys are recycled.
+  cross_operation: >-
+    Keys are not shared between different API operations. Exception: physical and
+    virtual debit card creation share the idempotency key.
+  docs: https://www.unit.co/docs/api/using-the-api#intro-idempotency
+pagination:
+  style: offset
+  params:
+    limit: "page[limit]"   # 1-1000, defaults to 100
+    offset: "page[offset]" # number of resources to skip, defaults to 0
+  docs: https://www.unit.co/docs/api/using-the-api#intro-pagination
+including_related:
+  param: include
+  description: >-
+    GET operations on certain resources accept a comma-separated `include` query
+    param; related resources are returned under a top-level `included` key.
+full_text_search:
+  supported: true
+  operators: {and: "unquoted words", or: "OR", not: "-"}
+  resources: [Application, Customer, Transaction]
+error_envelope:
+  standard: JSON:API errors array
+  fields:
+    - {name: status, description: HTTP status code (required)}
+    - {name: code, description: Unit-specific underscored error code}
+    - {name: detail, description: Human-readable description}
+    - {name: meta.supportId, description: Unique error identifier for investigation}
+    - {name: meta.existingIds, description: Existing IDs of duplicate entries}
+  catalog: errors/unit-problem-types.yml
+rate_limits:
+  limit: 1000 requests per minute
+  scope: per IP address, per environment (sandbox and live counted separately)
+  exceeded_status: 429
+  detail: rate-limits/unit-rate-limits.yml
+retries:
+  retryable_status: [408, 429, "5xx"]
+  strategy: exponential backoff and/or jitter, plus an idempotency key where applicable
+timeouts:
+  short: 5 seconds (most APIs)
+  long: 60-120 seconds (few APIs)
+versioning:
+  scheme: Unversioned base path; breaking changes carry a minimum 6-month notice.
+  detail: lifecycle/unit-lifecycle.yml
+required_fields:
+  default: All request payload fields are required unless documented otherwise.

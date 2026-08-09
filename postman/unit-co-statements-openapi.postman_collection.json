@@ -1,0 +1,64 @@
+{
+  "info": {
+    "_postman_id": "3db468c0-2fda-497a-953b-954f1a0ac85e",
+    "name": "Unit Statements API",
+    "description": "Retrieve monthly account statements as HTML or PDF, including bank-branded PDF statements.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:53.000Z",
+    "updatedAt": "2026-07-28T03:22:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3db468c0-2fda-497a-953b-954f1a0ac85e"
+  },
+  "item": [
+    {
+      "name": "statements",
+      "item": [
+        {
+          "name": "{statementId}",
+          "item": [],
+          "id": "935e68c3-fb3a-40b8-b69d-350282c026af",
+          "createdAt": "2026-07-28T03:22:54.000Z",
+          "updatedAt": "2026-07-28T03:22:54.000Z",
+          "uid": "35240-935e68c3-fb3a-40b8-b69d-350282c026af"
+        },
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "bank",
+              "item": [],
+              "id": "90bf2045-30f9-4892-aafd-a6affe5fef47",
+              "createdAt": "2026-07-28T03:22:54.000Z",
+              "updatedAt": "2026-07-28T03:22:54.000Z",
+              "uid": "35240-90bf2045-30f9-4892-aafd-a6affe5fef47"
+            }
+          ],
+          "id": "d2d31ee3-171f-4cf1-91c2-aa5b7beec50b",
+          "createdAt": "2026-07-28T03:22:54.000Z",
+          "updatedAt": "2026-07-28T03:22:54.000Z",
+          "uid": "35240-d2d31ee3-171f-4cf1-91c2-aa5b7beec50b"
+        }
+      ],
+      "id": "38faf920-241a-4712-a0c3-f888ec4d2a7d",
+      "createdAt": "2026-07-28T03:22:54.000Z",
+      "updatedAt": "2026-07-28T03:22:54.000Z",
+      "uid": "35240-38faf920-241a-4712-a0c3-f888ec4d2a7d"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.s.unit.sh"
+    }
+  ]
+}

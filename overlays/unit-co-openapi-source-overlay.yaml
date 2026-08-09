@@ -1,0 +1,33 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Unit
+  version: 1.0.0
+extends: openapi/unit-openapi-source.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: unit
+      x-apievangelist-media-type: application/vnd.api+json
+      x-apievangelist-standard: JSON:API
+      x-apievangelist-idempotency:
+        supported: true
+        key: client-supplied string up to 255 chars (UUID v4 recommended)
+        retention: 48h
+        docs: https://www.unit.co/docs/api/using-the-api#intro-idempotency
+      x-apievangelist-pagination:
+        style: offset
+        limit_param: "page[limit]"
+        offset_param: "page[offset]"
+      x-apievangelist-rate-limit:
+        limit: 1000/min
+        scope: per IP, per environment
+        exceeded_status: 429
+      x-apievangelist-scopes: scopes/unit-scopes.yml
+      x-apievangelist-errors: errors/unit-problem-types.yml
+      x-apievangelist-webhooks: asyncapi/unit-events-webhooks.yml
+  - target: $.servers
+    update:
+      - url: https://api.unit.co
+        description: Live
+      - url: https://api.s.unit.sh
+        description: Sandbox

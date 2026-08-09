@@ -1,0 +1,56 @@
+{
+  "info": {
+    "_postman_id": "e10e7c10-e97c-4d09-8529-fe3db6da71ad",
+    "name": "Unit Sandbox and Reference API",
+    "description": "Sandbox-only simulation endpoints (received ACH, ATM deposits, card activation) plus store/ATM location reference data.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:58.000Z",
+    "updatedAt": "2026-07-28T03:22:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e10e7c10-e97c-4d09-8529-fe3db6da71ad"
+  },
+  "item": [
+    {
+      "name": "sandbox",
+      "item": [
+        {
+          "name": "cards",
+          "item": [
+            {
+              "name": "{cardId}",
+              "item": [],
+              "id": "79a0b9f3-caea-40c0-aac1-ebac4ebae560",
+              "createdAt": "2026-07-28T03:22:59.000Z",
+              "updatedAt": "2026-07-28T03:22:59.000Z",
+              "uid": "35240-79a0b9f3-caea-40c0-aac1-ebac4ebae560"
+            }
+          ],
+          "id": "2b17e41d-d8ea-4396-b06b-496548ca9bab",
+          "createdAt": "2026-07-28T03:22:59.000Z",
+          "updatedAt": "2026-07-28T03:22:59.000Z",
+          "uid": "35240-2b17e41d-d8ea-4396-b06b-496548ca9bab"
+        }
+      ],
+      "id": "f66c40e1-edbd-4ae7-a923-46ddb8b15508",
+      "createdAt": "2026-07-28T03:22:59.000Z",
+      "updatedAt": "2026-07-28T03:22:59.000Z",
+      "uid": "35240-f66c40e1-edbd-4ae7-a923-46ddb8b15508"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.s.unit.sh"
+    }
+  ]
+}

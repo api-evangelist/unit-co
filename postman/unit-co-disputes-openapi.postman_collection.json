@@ -1,0 +1,38 @@
+{
+  "info": {
+    "_postman_id": "d193ded8-0beb-43b8-a53a-4bc2dbba35dd",
+    "name": "Unit Disputes API",
+    "description": "Retrieve and list card transaction disputes and their status.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:51.000Z",
+    "updatedAt": "2026-07-28T03:22:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d193ded8-0beb-43b8-a53a-4bc2dbba35dd"
+  },
+  "item": [
+    {
+      "name": "disputes",
+      "item": [],
+      "id": "490cde0b-96bb-4cd8-a8d4-f8ce212e6c65",
+      "createdAt": "2026-07-28T03:22:52.000Z",
+      "updatedAt": "2026-07-28T03:22:52.000Z",
+      "uid": "35240-490cde0b-96bb-4cd8-a8d4-f8ce212e6c65"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.s.unit.sh"
+    }
+  ]
+}

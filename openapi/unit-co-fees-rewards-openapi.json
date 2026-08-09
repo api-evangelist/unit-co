@@ -1,0 +1,41 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Unit Fees and Rewards API",
+    "description": "Charge and reverse Fees and create/retrieve Rewards paid to accounts.",
+    "version": "0.4.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.s.unit.sh"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/rewards": {
+      "$ref": "./schemas/reward/rewardPaths.json#/rewards"
+    },
+    "/rewards/{rewardId}": {
+      "$ref": "./schemas/reward/rewardPaths.json#/getReward"
+    },
+    "/fees": {
+      "$ref": "./schemas/fee/feePaths.json#/createFee"
+    },
+    "/fees/reverse": {
+      "$ref": "./schemas/fee/feePaths.json#/reverseFee"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

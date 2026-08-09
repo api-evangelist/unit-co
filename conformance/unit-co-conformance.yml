@@ -1,0 +1,30 @@
+generated: '2026-07-23'
+method: searched
+source: https://www.unit.co/docs/api/using-the-api + https://www.unit.co/security
+standards:
+  - id: oauth2-bearer
+    conforms: true
+    evidence: Docs state the API uses OAuth 2.0 Bearer tokens; OpenAPI securityScheme http bearer (JWT).
+  - id: jsonapi
+    conforms: true
+    evidence: "API is REST-based and follows the JSON:API specification (media type application/vnd.api+json)."
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use JSON:API error objects (errors[] with status/code/detail/meta), not application/problem+json.
+  - id: idempotency-keys
+    conforms: true
+    evidence: Client-supplied idempotency keys on sensitive writes, 48h retention (conventions/unit-conventions.yml).
+  - id: nacha-ach
+    conforms: true
+    evidence: Full NACHA ACH return reason code set R01-R85 (errors/unit-ach-return-codes.yml).
+  - id: pci-dss
+    conforms: true
+    evidence: "PCI DSS Validated; card-sensitive scopes require a PCI-scoped Customer token (https://www.unit.co/security)."
+  - id: soc2
+    conforms: true
+    evidence: "SOC 2 (AICPA SOC) per https://www.unit.co/security."
+compliance:
+  published: true
+  certifications: [SOC 2, PCI DSS]
+  url: https://www.unit.co/security
+  detail: security/unit-trust-center.yml

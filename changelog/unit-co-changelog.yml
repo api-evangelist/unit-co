@@ -1,0 +1,52 @@
+generated: '2026-07-23'
+method: searched
+source: https://www.unit.co/docs/white-label-uis/white-label-changelog
+docs: https://www.unit.co/docs/white-label-uis/white-label-changelog
+scheme: semver
+surface: Unit white-label web components, application form, and SDKs
+note: >-
+  Unit publishes a dated, versioned changelog for its white-label UI (web components,
+  application form) and SDKs. The REST API itself is unversioned with a six-month
+  breaking-change notice (see lifecycle/unit-lifecycle.yml). Recent web-component
+  entries below (window as of Jul 2026); patch releases ship more frequently.
+current_version: 4.2.9
+entries:
+  - version: 4.2.9
+    date: '2026-07-19'
+    breaking: false
+    highlights:
+      - "Bill Pay: deduction explanation tooltip/modal for multi-bill deductions."
+      - "Payee Management: added MFA step to micro-deposit confirmation."
+      - "Document Collection: fixed document upload UI."
+  - version: 4.2.8
+    date: '2026-07-16'
+    breaking: false
+    highlights:
+      - "Application Form: multiple financing entries in MCA applications; AU10TIX selfie verification for all orgs."
+      - "Card Component: card name now required when saving edited card settings."
+      - "Capital: MCA prequalification banner/redirect improvements."
+  - version: 4.2.7
+    date: '2026-07-12'
+    breaking: false
+    highlights:
+      - "Capital: final offer screen and offering-phase polling for MCA applications."
+      - "White-Label App: Payment Intents overview panel with Getting Started widget."
+      - "Bill Pay: line items pre-populated from OCR; sticky action buttons."
+  - version: 4.2.6
+    date: '2026-07-06'
+    breaking: false
+    highlights:
+      - "Card Component: edit spending limits for an existing card."
+      - "Capital (White-Label App): improved MCA menu and routing."
+  - version: 4.2.5
+    date: '2026-07-02'
+    breaking: false
+    highlights:
+      - "Bill Pay: backend-sourced banking days; Plaid error dialog on link failure."
+      - "Application Form: updated application-flow copy."
+  - version: 4.2.4
+    date: '2026-06-30'
+    breaking: false
+    highlights:
+      - "Check Deposit: endorsement reminder on back-capture (web and native Veryfi)."
+      - "Capital: MCA decision screens (approved / declined / pending)."

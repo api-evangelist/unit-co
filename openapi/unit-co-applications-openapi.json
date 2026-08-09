@@ -1,0 +1,68 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Unit Applications API",
+    "description": "End-customer onboarding: create and manage individual and business Applications, application forms, document upload/verification, and beneficial owners.",
+    "version": "0.4.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.s.unit.sh"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/applications/{applicationId}": {
+      "$ref": "./schemas/application/applicationPaths.json#/application"
+    },
+    "/applications/{applicationId}/cancel": {
+      "$ref": "./schemas/application/applicationPaths.json#/cancelApplication"
+    },
+    "/applications": {
+      "$ref": "./schemas/application/applicationPaths.json#/applications"
+    },
+    "/application-forms": {
+      "$ref": "./schemas/application/applicationPaths.json#/applicationForms"
+    },
+    "/applications/{applicationId}/documents/{documentId}/multipart": {
+      "$ref": "./schemas/application/applicationPaths.json#/uploadApplicationDocumentFile"
+    },
+    "/applications/{applicationId}/documents/{documentId}/back/multipart": {
+      "$ref": "./schemas/application/applicationPaths.json#/uploadApplicationDocumentFileBack"
+    },
+    "/applications/{applicationId}/documents": {
+      "$ref": "./schemas/application/applicationPaths.json#/documents"
+    },
+    "/applications/{applicationId}/documents/{documentId}/verify": {
+      "$ref": "./schemas/application/applicationPaths.json#/verifyDocument"
+    },
+    "/applications/{applicationId}/documents/{documentId}/download": {
+      "$ref": "./schemas/application/applicationPaths.json#/downloadDocument"
+    },
+    "/applications/{applicationId}/documents/{documentId}/download/back": {
+      "$ref": "./schemas/application/applicationPaths.json#/downloadBackSideDocument"
+    },
+    "/application-forms/{applicationFormId}": {
+      "$ref": "./schemas/application/applicationPaths.json#/applicationForm"
+    },
+    "/beneficial-owner/{beneficialOwnerId}": {
+      "$ref": "./schemas/application/applicationPaths.json#/updateBusinessBeneficialOwner"
+    },
+    "/applications/{applicationId}/missing-fields": {
+      "$ref": "./schemas/application/applicationPaths.json#/applicationMissingFields"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

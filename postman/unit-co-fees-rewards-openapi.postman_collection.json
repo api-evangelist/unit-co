@@ -1,0 +1,46 @@
+{
+  "info": {
+    "_postman_id": "ed3e8da5-4b3b-4cf4-ba3d-0f2cd2255e06",
+    "name": "Unit Fees and Rewards API",
+    "description": "Charge and reverse Fees and create/retrieve Rewards paid to accounts.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:55.000Z",
+    "updatedAt": "2026-07-28T03:22:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ed3e8da5-4b3b-4cf4-ba3d-0f2cd2255e06"
+  },
+  "item": [
+    {
+      "name": "rewards",
+      "item": [],
+      "id": "1412914b-df5c-4a0f-a982-97889e53e585",
+      "createdAt": "2026-07-28T03:22:55.000Z",
+      "updatedAt": "2026-07-28T03:22:55.000Z",
+      "uid": "35240-1412914b-df5c-4a0f-a982-97889e53e585"
+    },
+    {
+      "name": "fees",
+      "item": [],
+      "id": "1db3c927-629f-4b56-8dd0-b803e5bbb244",
+      "createdAt": "2026-07-28T03:22:55.000Z",
+      "updatedAt": "2026-07-28T03:22:55.000Z",
+      "uid": "35240-1db3c927-629f-4b56-8dd0-b803e5bbb244"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.s.unit.sh"
+    }
+  ]
+}

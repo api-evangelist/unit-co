@@ -1,0 +1,47 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Unit Webhooks and Events API",
+    "description": "Register webhook endpoints, enable/disable delivery, and list/retrieve the Events (state changes) Unit emits.",
+    "version": "0.4.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.s.unit.sh"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/events": {
+      "$ref": "./schemas/event/eventPaths.json#/listEvents"
+    },
+    "/events/{eventId}": {
+      "$ref": "./schemas/event/eventPaths.json#/event"
+    },
+    "/webhooks": {
+      "$ref": "./schemas/webhook/webhookPaths.json#/webhooks"
+    },
+    "/webhooks/{webhookId}": {
+      "$ref": "./schemas/webhook/webhookPaths.json#/webhook"
+    },
+    "/webhooks/{webhookId}/enable": {
+      "$ref": "./schemas/webhook/webhookPaths.json#/enableWebhook"
+    },
+    "/webhooks/{webhookId}/disable": {
+      "$ref": "./schemas/webhook/webhookPaths.json#/disableWebhook"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

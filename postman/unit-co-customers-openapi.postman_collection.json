@@ -1,0 +1,82 @@
+{
+  "info": {
+    "_postman_id": "9d17f02c-821a-4e41-95e2-615f91d76d53",
+    "name": "Unit Customers API",
+    "description": "Manage created Customers (individual and business), authorized/API users, customer archival, and customer-scoped bearer tokens.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:46.000Z",
+    "updatedAt": "2026-07-28T03:22:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9d17f02c-821a-4e41-95e2-615f91d76d53"
+  },
+  "item": [
+    {
+      "name": "customers",
+      "item": [
+        {
+          "name": "{customerId}",
+          "item": [
+            {
+              "name": "token",
+              "item": [],
+              "id": "bef9aa50-711b-42c2-a2da-782efd833f4c",
+              "createdAt": "2026-07-28T03:22:47.000Z",
+              "updatedAt": "2026-07-28T03:22:47.000Z",
+              "uid": "35240-bef9aa50-711b-42c2-a2da-782efd833f4c"
+            }
+          ],
+          "id": "368efc8d-a5a0-4c79-b4f8-d492e9c90704",
+          "createdAt": "2026-07-28T03:22:47.000Z",
+          "updatedAt": "2026-07-28T03:22:47.000Z",
+          "uid": "35240-368efc8d-a5a0-4c79-b4f8-d492e9c90704"
+        }
+      ],
+      "id": "1b9d1749-32ad-4d82-9dea-7195ea3cbd4a",
+      "createdAt": "2026-07-28T03:22:47.000Z",
+      "updatedAt": "2026-07-28T03:22:47.000Z",
+      "uid": "35240-1b9d1749-32ad-4d82-9dea-7195ea3cbd4a"
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "{userId}",
+          "item": [
+            {
+              "name": "api-tokens",
+              "item": [],
+              "id": "d0fe75b7-05fc-4ddb-ad22-a67742db850d",
+              "createdAt": "2026-07-28T03:22:47.000Z",
+              "updatedAt": "2026-07-28T03:22:47.000Z",
+              "uid": "35240-d0fe75b7-05fc-4ddb-ad22-a67742db850d"
+            }
+          ],
+          "id": "e1aed92e-f263-431d-8fa5-f3f8e1dfe44a",
+          "createdAt": "2026-07-28T03:22:47.000Z",
+          "updatedAt": "2026-07-28T03:22:47.000Z",
+          "uid": "35240-e1aed92e-f263-431d-8fa5-f3f8e1dfe44a"
+        }
+      ],
+      "id": "061b1206-b49a-4ae7-99c2-8ba04be15693",
+      "createdAt": "2026-07-28T03:22:47.000Z",
+      "updatedAt": "2026-07-28T03:22:47.000Z",
+      "uid": "35240-061b1206-b49a-4ae7-99c2-8ba04be15693"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.s.unit.sh"
+    }
+  ]
+}

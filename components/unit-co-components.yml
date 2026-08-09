@@ -1,0 +1,38 @@
+generated: '2026-07-23'
+method: searched
+source: https://www.unit.co/docs/white-label-uis + https://www.unit.co/docs/api/getting-started/tooling
+docs: https://www.unit.co/docs/white-label-uis
+description: >-
+  Unit ships white-label UI as embeddable web components (the unit-elements custom
+  elements) plus native mobile SDKs (iOS, Android, React Native). They render fully
+  branded, PCI-compliant banking surfaces without the integrator handling card data.
+  Versioned via changelog/unit-changelog.yml.
+platforms: [web, ios, android, react-native]
+families:
+  - name: White-Label App
+    kind: web-component
+    tag: unit-elements-white-label-app
+    description: Full embedded banking experience (accounts, cards, payments, activity, Capital, Bill Pay).
+    docs: https://www.unit.co/docs/white-label-uis
+  - name: Application Form
+    kind: web-component
+    tag: unit-elements-application-form
+    description: Embedded end-customer onboarding/application flow that returns users to your app after submission.
+    docs: https://www.unit.co/docs/white-label-uis/white-label-application-form
+  - name: Create Card Component
+    kind: web-component
+    description: Prebuilt UI for issuing a card to an end customer.
+    docs: https://www.unit.co/blog/introducing-create-card-component
+  - name: Card Component
+    kind: web-component
+    description: View card details, reveal PAN/CVV for virtual cards, set/change PIN, manage spending limits (PCI-scoped via Customer token).
+  - name: Check Deposit Component
+    kind: web-component
+    description: Remote-deposit-capture flow for uploading and depositing check images (Veryfi-backed capture).
+    docs: https://www.unit.co/docs/api/check-deposits/overview
+theming:
+  mechanism: Unit Dashboard branding UI, or a theme object passed to the unit-elements-white-label-app web component.
+  docs: https://www.unit.co/docs/ready-to-launch/banking/advanced-implementation/theming
+events:
+  mechanism: Components emit custom DOM events for end-user interactions and lifecycle changes.
+  docs: https://www.unit.co/docs/ready-to-launch/banking/advanced-implementation/handling-end-user-events

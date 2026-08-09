@@ -1,0 +1,40 @@
+generated: '2026-07-23'
+method: searched
+source: https://www.unit.co/docs/api/errors
+docs: https://www.unit.co/docs/api/errors
+format: jsonapi
+envelope:
+  standard: JSON:API errors array
+  content_type: application/vnd.api+json
+  fields:
+    - {name: status, required: true, description: HTTP status code}
+    - {name: code, required: false, description: Unit-specific underscored error code}
+    - {name: detail, required: false, description: Human-readable description of the occurrence}
+    - {name: meta.supportId, required: false, description: Unique error identifier for further investigation}
+    - {name: meta.existingIds, required: false, description: Existing IDs of duplicate entries}
+  note: >-
+    Unit follows JSON:API error objects rather than RFC 9457 problem+json. A single
+    response may contain multiple error objects (schema-validation failures) or one
+    (server processing failures).
+problems:
+  - {code: feature_disabled, status: 400, title: Feature disabled, detail: The feature must be manually enabled for you by Unit. Contact Unit.}
+  - {code: invalid_value, status: 400, title: Invalid value, detail: A field's input value is incorrect (bad pattern, future DOB, invalid token, unsupported amount, etc.).}
+  - {code: limits_exceeded, status: 400, title: Limits exceeded, detail: The request cannot be completed because a limit has been exceeded.}
+  - {code: not_found, status: 400, title: Not found, detail: "The requested resource does not exist. May be prefixed, e.g. account_not_found, card_not_found, customer_not_found, document_not_found, pin_not_found, routing_number_not_found, user_not_found."}
+  - {code: account_customer_mismatch, status: 400, title: Account/customer mismatch, detail: The specified account is not owned by the specified customer.}
+  - {code: not_supported_for_account_status, status: 400, title: Not supported for account status, detail: The action is not supported for the account's current status.}
+  - {code: not_supported_for_account_type, status: 400, title: Not supported for account type, detail: The action is not supported for this type of account.}
+  - {code: not_supported_for_card, status: 400, title: Not supported for card, detail: This action is not supported for the card.}
+  - {code: not_supported_for_card_status, status: 400, title: Not supported for card status, detail: This action is not supported in the card's current status.}
+  - {code: not_supported_for_card_type, status: 400, title: Not supported for card type, detail: This action is not supported for cards of this type.}
+  - {code: invalid_nonce, status: 400, title: Invalid nonce, detail: The nonce is malformed or invalid for use.}
+  - {code: not_supported_for_payment_type, status: 400, title: Not supported for payment type, detail: This action is not supported for payments of this type.}
+  - {code: not_supported_for_stop_payment_status, status: 400, title: Not supported for stop payment status, detail: Disabled stop payments cannot be updated.}
+  - {code: not_supported_for_stop_payment_type, status: 400, title: Not supported for stop payment type, detail: The operation is not supported for the specified stop payment type.}
+  - {code: payment_invalid, status: 400, title: Payment invalid, detail: Payment cannot be created with the provided settings (e.g. paying the originating account).}
+  - {code: unauthorized, status: 401, title: Unauthorized, detail: Bearer token is invalid, missing, or has expired.}
+  - {code: forbidden, status: 403, title: Forbidden, detail: Requester not allowed (wrong token type, missing scope, wrong user role, or source IP not whitelisted).}
+  - {code: already_exists, status: 409, title: Already exists, detail: The result of the action or the resource already exists.}
+  - {code: customer_name_undeliverable, status: 422, title: Customer name undeliverable, detail: Check payment origination failed; customer name exceeds the 50-character mail-item limit.}
+  - {code: customer_address_undeliverable, status: 422, title: Customer address undeliverable, detail: The customer address cannot be used as a mailing address.}
+  - {code: counterparty_address_exceeds_max_length, status: 422, title: Counterparty address exceeds max length, detail: Once standardized, the counterparty address exceeded the character limit allowed on a check.}

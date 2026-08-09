@@ -1,0 +1,83 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Unit Payments API",
+    "description": "Move money via Book, ACH and wire Payments plus recurring, received (incoming ACH), and cash deposit flows, with counterparties, returns and institution lookups.",
+    "version": "0.4.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.s.unit.sh"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/payments": {
+      "$ref": "./schemas/payment/paymentsPaths.json#/getAndCreatePayments"
+    },
+    "/payments/{paymentId}": {
+      "$ref": "./schemas/payment/paymentsPaths.json#/getAndUpdatePayment"
+    },
+    "/payments/{paymentId}/cancel": {
+      "$ref": "./schemas/payment/paymentsPaths.json#/cancelPayment"
+    },
+    "/cash-deposits/barcodes": {
+      "$ref": "./schemas/cash-deposit/cashDepositPaths.json#/generateBarcode"
+    },
+    "/cash-deposits/barcodes/{barcodeNumber}/image": {
+      "$ref": "./schemas/cash-deposit/cashDepositPaths.json#/getBarcodeImage"
+    },
+    "/received-payments": {
+      "$ref": "./schemas/payment/paymentsPaths.json#/listReceivedPayments"
+    },
+    "/returns/{transactionId}": {
+      "$ref": "./schemas/payment/paymentsPaths.json#/returnReceivedACHTransaction"
+    },
+    "/received-payments/{paymentId}": {
+      "$ref": "./schemas/payment/paymentsPaths.json#/receivedPayments"
+    },
+    "/received-payments/{paymentId}/advance": {
+      "$ref": "./schemas/payment/paymentsPaths.json#/advanceReceivedPayment"
+    },
+    "/received-payments/{paymentId}/reprocess": {
+      "$ref": "./schemas/payment/paymentsPaths.json#/reprocessReceivedPayment"
+    },
+    "/counterparties": {
+      "$ref": "./schemas/counterparty/counterpartyPaths.json#/counterparties"
+    },
+    "/counterparties/{counterpartyId}": {
+      "$ref": "./schemas/counterparty/counterpartyPaths.json#/counterparty"
+    },
+    "/counterparties/{counterpartyId}/balance": {
+      "$ref": "./schemas/counterparty/counterpartyPaths.json#/counterpartyBalance"
+    },
+    "/recurring-payments": {
+      "$ref": "./schemas/payment/paymentsPaths.json#/recurringPayments"
+    },
+    "/recurring-payments/{paymentId}": {
+      "$ref": "./schemas/payment/paymentsPaths.json#/getRecurringPayment"
+    },
+    "/recurring-payments/{paymentId}/disable": {
+      "$ref": "./schemas/payment/paymentsPaths.json#/disableRecurringPayment"
+    },
+    "/recurring-payments/{paymentId}/enable": {
+      "$ref": "./schemas/payment/paymentsPaths.json#/enableRecurringPayment"
+    },
+    "/institutions/{routingNumber}": {
+      "$ref": "./schemas/institution/institutionPaths.json#/getInstitution"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

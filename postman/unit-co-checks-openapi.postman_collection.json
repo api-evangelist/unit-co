@@ -1,0 +1,64 @@
+{
+  "info": {
+    "_postman_id": "031772ee-68c6-42d5-af81-585f6cbce707",
+    "name": "Unit Checks API",
+    "description": "Check payments (print-and-mail) and mobile check deposits: create, approve, cancel, return, confirm, and manage front/back check images.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:50.000Z",
+    "updatedAt": "2026-07-28T03:22:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-031772ee-68c6-42d5-af81-585f6cbce707"
+  },
+  "item": [
+    {
+      "name": "check-deposits",
+      "item": [
+        {
+          "name": "{checkDepositId}",
+          "item": [],
+          "id": "1c313af7-896c-434c-963f-29e7aa7245f4",
+          "createdAt": "2026-07-28T03:22:50.000Z",
+          "updatedAt": "2026-07-28T03:22:50.000Z",
+          "uid": "35240-1c313af7-896c-434c-963f-29e7aa7245f4"
+        }
+      ],
+      "id": "cb3089ff-bce6-4a5d-baa4-04612675f52a",
+      "createdAt": "2026-07-28T03:22:50.000Z",
+      "updatedAt": "2026-07-28T03:22:50.000Z",
+      "uid": "35240-cb3089ff-bce6-4a5d-baa4-04612675f52a"
+    },
+    {
+      "name": "check-payments",
+      "item": [
+        {
+          "name": "{checkPaymentId}",
+          "item": [],
+          "id": "a055a6e3-8879-4342-aa58-07133bb32aa9",
+          "createdAt": "2026-07-28T03:22:50.000Z",
+          "updatedAt": "2026-07-28T03:22:50.000Z",
+          "uid": "35240-a055a6e3-8879-4342-aa58-07133bb32aa9"
+        }
+      ],
+      "id": "2a0be8b7-44b0-420d-b41b-910ec78f265c",
+      "createdAt": "2026-07-28T03:22:50.000Z",
+      "updatedAt": "2026-07-28T03:22:50.000Z",
+      "uid": "35240-2a0be8b7-44b0-420d-b41b-910ec78f265c"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.s.unit.sh"
+    }
+  ]
+}

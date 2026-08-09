@@ -1,0 +1,47 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Unit Sandbox and Reference API",
+    "description": "Sandbox-only simulation endpoints (received ACH, ATM deposits, card activation) plus store/ATM location reference data.",
+    "version": "0.4.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.s.unit.sh"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/store-locations": {
+      "$ref": "./schemas/cash-deposit/cashDepositPaths.json#/listCashDepositStoreLocations"
+    },
+    "/atm-locations": {
+      "$ref": "./schemas/atm/atmLocationPaths.json#/listAtmLocations"
+    },
+    "/sandbox/atm-deposits": {
+      "$ref": "./schemas/simulation/simulationPaths.json#/createAtmDeposit"
+    },
+    "/sandbox/cards/{cardId}/activate": {
+      "$ref": "./schemas/simulation/simulationPaths.json#/activateCard"
+    },
+    "/sandbox/received-payments": {
+      "$ref": "./schemas/simulation/simulationPaths.json#/receivedPaymentTransaction"
+    },
+    "/sandbox/received-ach-payment": {
+      "$ref": "./schemas/simulation/simulationPaths.json#/createIncomingAchPayment"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

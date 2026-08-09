@@ -1,0 +1,140 @@
+{
+  "info": {
+    "_postman_id": "28f7b60b-21b8-4c2f-91a2-8663f6218424",
+    "name": "Unit Payments API",
+    "description": "Move money via Book, ACH and wire Payments plus recurring, received (incoming ACH), and cash deposit flows, with counterparties, returns and institution lookups.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:49.000Z",
+    "updatedAt": "2026-07-28T03:22:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-28f7b60b-21b8-4c2f-91a2-8663f6218424"
+  },
+  "item": [
+    {
+      "name": "payments",
+      "item": [
+        {
+          "name": "{paymentId}",
+          "item": [],
+          "id": "9aaf3d34-0f9f-47d8-a277-b5896bd9a4c4",
+          "createdAt": "2026-07-28T03:22:49.000Z",
+          "updatedAt": "2026-07-28T03:22:49.000Z",
+          "uid": "35240-9aaf3d34-0f9f-47d8-a277-b5896bd9a4c4"
+        }
+      ],
+      "id": "b351b0ea-c0c6-4108-a0d2-a953cb29e63b",
+      "createdAt": "2026-07-28T03:22:49.000Z",
+      "updatedAt": "2026-07-28T03:22:49.000Z",
+      "uid": "35240-b351b0ea-c0c6-4108-a0d2-a953cb29e63b"
+    },
+    {
+      "name": "cash-deposits",
+      "item": [
+        {
+          "name": "barcodes",
+          "item": [
+            {
+              "name": "{barcodeNumber}",
+              "item": [],
+              "id": "8c1ad423-54a5-4d1a-ac59-6b3ea6bca41a",
+              "createdAt": "2026-07-28T03:22:49.000Z",
+              "updatedAt": "2026-07-28T03:22:49.000Z",
+              "uid": "35240-8c1ad423-54a5-4d1a-ac59-6b3ea6bca41a"
+            }
+          ],
+          "id": "7a4f1afa-32bb-4d7d-9d2d-0a506df7407e",
+          "createdAt": "2026-07-28T03:22:49.000Z",
+          "updatedAt": "2026-07-28T03:22:49.000Z",
+          "uid": "35240-7a4f1afa-32bb-4d7d-9d2d-0a506df7407e"
+        }
+      ],
+      "id": "ddd17ca9-4c46-4963-8b08-b37adf5321a5",
+      "createdAt": "2026-07-28T03:22:49.000Z",
+      "updatedAt": "2026-07-28T03:22:49.000Z",
+      "uid": "35240-ddd17ca9-4c46-4963-8b08-b37adf5321a5"
+    },
+    {
+      "name": "returns",
+      "item": [],
+      "id": "4a24aa3e-9744-4fb1-bb40-03ba0baadd60",
+      "createdAt": "2026-07-28T03:22:49.000Z",
+      "updatedAt": "2026-07-28T03:22:49.000Z",
+      "uid": "35240-4a24aa3e-9744-4fb1-bb40-03ba0baadd60"
+    },
+    {
+      "name": "received-payments",
+      "item": [
+        {
+          "name": "{paymentId}",
+          "item": [],
+          "id": "077cb002-5fc9-49d7-b8fb-25acac692b71",
+          "createdAt": "2026-07-28T03:22:49.000Z",
+          "updatedAt": "2026-07-28T03:22:49.000Z",
+          "uid": "35240-077cb002-5fc9-49d7-b8fb-25acac692b71"
+        }
+      ],
+      "id": "bc9e51d4-8dc8-4984-b65d-9fc766b490ec",
+      "createdAt": "2026-07-28T03:22:49.000Z",
+      "updatedAt": "2026-07-28T03:22:49.000Z",
+      "uid": "35240-bc9e51d4-8dc8-4984-b65d-9fc766b490ec"
+    },
+    {
+      "name": "counterparties",
+      "item": [
+        {
+          "name": "{counterpartyId}",
+          "item": [],
+          "id": "c885bc59-f171-4f19-b7fb-4d1859280814",
+          "createdAt": "2026-07-28T03:22:49.000Z",
+          "updatedAt": "2026-07-28T03:22:49.000Z",
+          "uid": "35240-c885bc59-f171-4f19-b7fb-4d1859280814"
+        }
+      ],
+      "id": "6428d350-93f5-486c-968a-0a064f73fc2c",
+      "createdAt": "2026-07-28T03:22:49.000Z",
+      "updatedAt": "2026-07-28T03:22:49.000Z",
+      "uid": "35240-6428d350-93f5-486c-968a-0a064f73fc2c"
+    },
+    {
+      "name": "recurring-payments",
+      "item": [
+        {
+          "name": "{paymentId}",
+          "item": [],
+          "id": "b5313165-2542-4d8e-ada7-4d86ee1a759b",
+          "createdAt": "2026-07-28T03:22:49.000Z",
+          "updatedAt": "2026-07-28T03:22:49.000Z",
+          "uid": "35240-b5313165-2542-4d8e-ada7-4d86ee1a759b"
+        }
+      ],
+      "id": "f5ae9ae2-200d-4e9d-86bd-df35c29e6ef7",
+      "createdAt": "2026-07-28T03:22:49.000Z",
+      "updatedAt": "2026-07-28T03:22:49.000Z",
+      "uid": "35240-f5ae9ae2-200d-4e9d-86bd-df35c29e6ef7"
+    },
+    {
+      "name": "institutions",
+      "item": [],
+      "id": "4fcae5fc-740b-429c-96cb-3a62a27d1492",
+      "createdAt": "2026-07-28T03:22:49.000Z",
+      "updatedAt": "2026-07-28T03:22:49.000Z",
+      "uid": "35240-4fcae5fc-740b-429c-96cb-3a62a27d1492"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.s.unit.sh"
+    }
+  ]
+}

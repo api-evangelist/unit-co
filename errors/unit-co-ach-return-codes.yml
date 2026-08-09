@@ -1,0 +1,52 @@
+generated: '2026-07-23'
+method: searched
+source: https://www.unit.co/docs/api/ach-returns
+docs: https://www.unit.co/docs/api/ach-returns
+description: >-
+  NACHA ACH return reason codes recognized by Unit for both originated and received
+  ACH payments. A return fires the payment.returned webhook event and creates an
+  offsetting Returned ACH Transaction. The `reason` string is used when returning a
+  Received ACH transaction (returnReceivedACHTransaction, POST /returns/{transactionId}).
+envelope_field: reason
+return_codes:
+  - {reason: InsufficientFunds, code: R01, description: The available balance isn't enough to cover the value of the ACH debit.}
+  - {reason: AccountClosed, code: R02, description: The counterparty account has been closed.}
+  - {reason: NoAccount, code: R03, description: Owner details don't match the account, or the account isn't open.}
+  - {reason: InvalidAccountNumberStructure, code: R04, description: The structure of the account number isn't valid.}
+  - {reason: UnauthorizedDebitToConsumer, code: R05, description: Debit to a consumer account not authorized by the consumer.}
+  - {reason: ReturnedPerOdfiRequest, code: R06, description: The originator requested the payment be returned.}
+  - {reason: AuthorizationRevokedByCustomer, code: R07, description: The authorizing customer has revoked authorization.}
+  - {reason: PaymentStopped, code: R08, description: The receiver of a recurring debit requested to stop the payment.}
+  - {reason: UncollectedFunds, code: R09, description: Available (spendable) balance is below the dollar value.}
+  - {reason: ConsumerPaymentUnauthorized, code: R10, description: Customer reports the ACH payment as unauthorized/improper/ineligible.}
+  - {reason: CheckTruncationEntryReturned, code: R11, description: Check Truncation Early Return.}
+  - {reason: BranchSoldToAnotherDfi, code: R12, description: Branch sold to another DFI.}
+  - {reason: RdfiNotQualifiedToParticipate, code: R13, description: RDFI not qualified to participate.}
+  - {reason: RepresentativePayeeDeceasedOrUnableToContinue, code: R14, description: Representative payee deceased or unable to continue.}
+  - {reason: BeneficiaryOrBankAccountHolderDeceased, code: R15, description: Beneficiary or account holder deceased.}
+  - {reason: AccountFrozen, code: R16, description: Account frozen / entry returned per OFAC instruction.}
+  - {reason: FileRecordEditCriteria, code: R17, description: File record edit criteria.}
+  - {reason: ImproperEffectiveEntryDate, code: R18, description: Improper effective entry date.}
+  - {reason: AmountFieldError, code: R19, description: Amount field error.}
+  - {reason: NonTransactionAccount, code: R20, description: Non-transaction account.}
+  - {reason: InvalidCompanyIdentification, code: R21, description: Invalid company identification.}
+  - {reason: InvalidIndividualIdNumber, code: R22, description: Invalid individual ID number.}
+  - {reason: CreditEntryRefusedByReceiver, code: R23, description: Credit entry refused by receiver.}
+  - {reason: DuplicateEntry, code: R24, description: Duplicate entry.}
+  - {reason: AddendaError, code: R25, description: Addenda error.}
+  - {reason: MandatoryFieldError, code: R26, description: Mandatory field error.}
+  - {reason: TraceNumberError, code: R27, description: Trace number error.}
+  - {reason: RoutingNumberCheckDigitError, code: R28, description: Routing number check digit error.}
+  - {reason: CorporatePaymentUnauthorized, code: R29, description: Corporate customer advises not authorized.}
+  - {reason: RdfiNotParticipantInCheckTruncationProgram, code: R30, description: RDFI not participant in check truncation program.}
+  - {reason: PermissibleReturnEntry, code: R31, description: Permissible return entry (CCD and CTX only).}
+  - {reason: RdfiNonSettlement, code: R32, description: RDFI non-settlement.}
+  - {reason: ReturnOfXckEntry, code: R33, description: Return of XCK entry.}
+  - {reason: LimitedParticipationDfi, code: R34, description: Limited participation DFI.}
+  - {reason: ReturnOfImproperDebitEntry, code: R35, description: Return of improper debit entry.}
+  - {reason: ReturnOfImproperCreditEntry, code: R36, description: Return of improper credit entry.}
+  - {reason: SourceDocumentPresentedForPayment, code: R37, description: Source document presented for payment.}
+  - {reason: StopPaymentOnSourceDocument, code: R38, description: Stop payment on source document.}
+  - {reason: ImproperSourceDocument, code: R39, description: Improper source document / source document presented for payment.}
+  - {reason: InvalidIndividualOrCompanyName, code: R45, description: Invalid individual name / company name.}
+  - {reason: IncorrectlyCodedOutboundInternationalPayment, code: R85, description: Incorrectly coded outbound international payment.}

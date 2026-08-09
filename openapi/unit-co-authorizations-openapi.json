@@ -1,0 +1,47 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Unit Card Authorizations API",
+    "description": "Real-time card authorization requests (approve/decline for programmatic auth control) and completed card authorizations.",
+    "version": "0.4.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.s.unit.sh"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/authorizations": {
+      "$ref": "./schemas/authorization/authorizationPaths.json#/authorizations"
+    },
+    "/authorizations/{authorizationId}": {
+      "$ref": "./schemas/authorization/authorizationPaths.json#/authorization"
+    },
+    "/authorization-requests": {
+      "$ref": "./schemas/authorization/authorizationPaths.json#/authorizationsRequests"
+    },
+    "/authorization-requests/{authorizationId}": {
+      "$ref": "./schemas/authorization/authorizationPaths.json#/authorizationRequest"
+    },
+    "/authorization-requests/{authorizationId}/approve": {
+      "$ref": "./schemas/authorization/authorizationPaths.json#/approveAuthorizationRequests"
+    },
+    "/authorization-requests/{authorizationId}/decline": {
+      "$ref": "./schemas/authorization/authorizationPaths.json#/declineAuthorizationRequests"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

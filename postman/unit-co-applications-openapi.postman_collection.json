@@ -1,0 +1,98 @@
+{
+  "info": {
+    "_postman_id": "3cfbec41-4ec9-4359-b050-37757c4a0f25",
+    "name": "Unit Applications API",
+    "description": "End-customer onboarding: create and manage individual and business Applications, application forms, document upload/verification, and beneficial owners.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:45.000Z",
+    "updatedAt": "2026-07-28T03:22:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3cfbec41-4ec9-4359-b050-37757c4a0f25"
+  },
+  "item": [
+    {
+      "name": "applications",
+      "item": [
+        {
+          "name": "{applicationId}",
+          "item": [
+            {
+              "name": "documents",
+              "item": [
+                {
+                  "name": "{documentId}",
+                  "item": [
+                    {
+                      "name": "back",
+                      "item": [],
+                      "id": "3fbb3371-f590-4575-8baf-818986293011",
+                      "createdAt": "2026-07-28T03:22:46.000Z",
+                      "updatedAt": "2026-07-28T03:22:46.000Z",
+                      "uid": "35240-3fbb3371-f590-4575-8baf-818986293011"
+                    },
+                    {
+                      "name": "download",
+                      "item": [],
+                      "id": "4299bea0-2cf2-4916-a710-365064062fb3",
+                      "createdAt": "2026-07-28T03:22:46.000Z",
+                      "updatedAt": "2026-07-28T03:22:46.000Z",
+                      "uid": "35240-4299bea0-2cf2-4916-a710-365064062fb3"
+                    }
+                  ],
+                  "id": "ea784414-7201-4065-8fdd-0f4fe51ca4c4",
+                  "createdAt": "2026-07-28T03:22:46.000Z",
+                  "updatedAt": "2026-07-28T03:22:46.000Z",
+                  "uid": "35240-ea784414-7201-4065-8fdd-0f4fe51ca4c4"
+                }
+              ],
+              "id": "287c14f4-2208-4d83-a78a-745e88e71d43",
+              "createdAt": "2026-07-28T03:22:46.000Z",
+              "updatedAt": "2026-07-28T03:22:46.000Z",
+              "uid": "35240-287c14f4-2208-4d83-a78a-745e88e71d43"
+            }
+          ],
+          "id": "62c3b197-fff6-4bde-82d8-6b73b1299417",
+          "createdAt": "2026-07-28T03:22:46.000Z",
+          "updatedAt": "2026-07-28T03:22:46.000Z",
+          "uid": "35240-62c3b197-fff6-4bde-82d8-6b73b1299417"
+        }
+      ],
+      "id": "78efdb88-fe8d-4571-9a61-59da53364c76",
+      "createdAt": "2026-07-28T03:22:46.000Z",
+      "updatedAt": "2026-07-28T03:22:46.000Z",
+      "uid": "35240-78efdb88-fe8d-4571-9a61-59da53364c76"
+    },
+    {
+      "name": "application-forms",
+      "item": [],
+      "id": "dff06e28-3b9a-4541-a139-11eacf849b49",
+      "createdAt": "2026-07-28T03:22:46.000Z",
+      "updatedAt": "2026-07-28T03:22:46.000Z",
+      "uid": "35240-dff06e28-3b9a-4541-a139-11eacf849b49"
+    },
+    {
+      "name": "beneficial-owner",
+      "item": [],
+      "id": "0093931a-7611-4dc3-9bb1-9c302ec81715",
+      "createdAt": "2026-07-28T03:22:46.000Z",
+      "updatedAt": "2026-07-28T03:22:46.000Z",
+      "uid": "35240-0093931a-7611-4dc3-9bb1-9c302ec81715"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.s.unit.sh"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+generated: '2026-07-23'
+method: searched
+source: https://www.unit.co/docs/api/using-the-api + https://status.unit.co/
+versioning:
+  scheme: unversioned-base-path
+  current: "0.4.0"  # OpenAPI info.version of the published spec
+  note: >-
+    The Unit REST API uses a single unversioned base path (api.unit.co / api.s.unit.sh).
+    The published OpenAPI spec is versioned (0.4.0). White-label web components carry
+    their own semantic version stream (see changelog/unit-changelog.yml).
+  docs: https://www.unit.co/docs/api/using-the-api
+deprecation:
+  policy: >-
+    Deprecating an endpoint means it is no longer the recommended implementation and
+    Unit will not update it. Deprecated endpoints may be retired later, subject to a
+    minimum six-month notice period (like all breaking changes) unless an urgent
+    security or compliance change requires otherwise.
+  minimum_notice: 6 months
+  policy_url: https://www.unit.co/docs/api/using-the-api#deprecations
+  deprecated_operations:
+    - openapi/unit-authorizations-openapi.json  # legacy webhook-based Authorization Requests flow superseded by the programmatic API
+sla:
+  timeouts:
+    short: 5 seconds
+    long: 60-120 seconds
+  note: Explicit uptime SLA is bank-partner/contract specific; not published on the public docs.
+status_page: https://status.unit.co/

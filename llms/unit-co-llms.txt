@@ -1,0 +1,581 @@
+# Unit Docs
+
+## docs
+
+### accounts
+
+- [Deposit Account Control Agreements (DACAs)](https://unit.co/docs/accounts/deposit-account-control-agreements.md): How Deposit Account Control Agreements (DACAs) are handled at Unit — the tri-party legal structure between accountholder, secured party, and bank partner, and the secured party's enforcement rights.
+- [Interest](https://unit.co/docs/accounts/interest.md): How Unit calculates and distributes account interest — Daily Balance method, monthly payment cycle, and how to share interest with end customers or claim it as revenue.
+- [Introduction](https://unit.co/docs/accounts/wallets.md): How Wallet Accounts (FBO) on Unit let you store and move funds for use cases that don't require a traditional bank account, alongside Deposit and Credit Accounts.
+
+### ach
+
+Concept guide to ACH at Unit — how the network works (NACHA, ODFI/RDFI), the difference between ACH credit and debit, and how Unit handles originating and received ACH payments.
+
+- [ACH Overview](https://unit.co/docs/ach.md): Concept guide to ACH at Unit — how the network works (NACHA, ODFI/RDFI), the difference between ACH credit and debit, and how Unit handles originating and received ACH payments.
+
+### add-to-mobile-wallet
+
+How to enable Unit-issued physical and virtual cards for Apple Pay, Google Pay, and Samsung Pay — covering the setup process, required Mobile Wallet metadata, and timelines.
+
+- [Enabling Cards for Mobile Wallet](https://unit.co/docs/add-to-mobile-wallet.md): How to enable Unit-issued physical and virtual cards for Apple Pay, Google Pay, and Samsung Pay — covering the setup process, required Mobile Wallet metadata, and timelines.
+
+### api
+
+Welcome and orientation to the Unit API — what Unit is, the bank-partner model, and how the platform works.
+
+- [Overview](https://unit.co/docs/api.md): Welcome and orientation to the Unit API — what Unit is, the bank-partner model, and how the platform works.
+- [Deposit Account APIs](https://unit.co/docs/api/accounts/deposit-accounts/api.md): REST API endpoints for the full Deposit Account lifecycle — create, close, reopen, freeze, unfreeze, fetch, list, update — plus account holds, balance history, and owner management.
+- [Webhook Events](https://unit.co/docs/api/accounts/deposit-accounts/events.md): Webhook events fired during the Deposit Account lifecycle — account.created, account.closed, account.frozen, account.unfrozen, account.reopened, and account.updated.
+- [Deposit Accounts](https://unit.co/docs/api/accounts/deposit-accounts/overview.md): Concepts behind Unit's Deposit Account resource — checking, savings, and joint accounts that customers deposit to and withdraw from, including statuses, balances, and the link to applications.
+- [Resources](https://unit.co/docs/api/accounts/deposit-accounts/resources.md): JSON:API resource schemas for deposit-account data — DepositAccount, AccountHold, and AccountEndOfDay, including key attributes for each.
+- [Accounts](https://unit.co/docs/api/accounts/overview.md): Overview of Unit Accounts — deposit accounts, wallet accounts, and credit accounts created under a customer and used to store balances, move money, and support cards and payments.
+- [ACH Returns](https://unit.co/docs/api/ach-returns.md): Reference of ACH return reason codes (R01–R85) covering both originated and received ACH payments, including how Unit fires payment.returned and creates the offsetting transaction.
+- [Receiving ACH Payments](https://unit.co/docs/api/api/payments/ach/receiving-opt-out.md): Legacy single-page guide for receiving ACH payments without opting in to the receivedPayment lifecycle — covers automatic processing, transaction creation, and webhooks.
+- [Application Documents APIs](https://unit.co/docs/api/application-documents/api.md): REST API endpoints for managing Application Documents — upload front and back sides, list, download, create new document requirements, and verify uploaded documents.
+- [Application Documents](https://unit.co/docs/api/application-documents/overview.md): How application documents work when an application requires verification — Unit creates document resources that the customer must satisfy via the Upload Document API before a final decision is made.
+- [Application Documents Resources](https://unit.co/docs/api/application-documents/resources.md): JSON:API resource schema for the ApplicationDocument resource — attributes describing each document required by an application.
+- [Applications APIs](https://unit.co/docs/api/applications/api.md): REST API endpoints for creating, retrieving, updating, and cancelling individual, sole-proprietorship, and business applications, plus uploading required application documents.
+- [Application Webhook Events](https://unit.co/docs/api/applications/events.md): Webhook events fired during the application lifecycle — created, approved, denied, awaitingDocuments, pendingReview, canceled — plus related customer.created and document.* events.
+- [Applications](https://unit.co/docs/api/applications/overview.md): Concepts and statuses behind Unit's individual and business application flow — from creation through automatic approval, document collection, manual review, and final approval or denial.
+- [Application Resources](https://unit.co/docs/api/applications/resources.md): JSON:API resource schemas used in the Applications API — IndividualApplication, BusinessApplication, BeneficialOwner, ApplicationDocument, plus related resources and relationships.
+- [Sandbox Simulations](https://unit.co/docs/api/applications/simulations.md): Sandbox-only API endpoints for driving applications through approve/deny outcomes, completing 2FA, simulating registered-agent address checks, and approving/rejecting required documents without external review.
+- [Authorization Requests](https://unit.co/docs/api/authorization-requests-deprecated.md): Deprecated webhook-based authorization request flow — superseded by the new programmatic Authorization Requests API that supports concurrent requests.
+- [Authorized Users APIs](https://unit.co/docs/api/authorized-users/api.md): REST API endpoints for managing Authorized Users on a customer — Add Authorized Users, Get by Id, List, and Remove Authorized Users.
+- [Authorized Users](https://unit.co/docs/api/authorized-users/overview.md): Concepts behind Unit's Authorized User type — individuals who can authenticate as a business or sole-proprietor customer, create customer tokens, and act on the customer's behalf for both API and exchange-network access.
+- [Authorized User Resources](https://unit.co/docs/api/authorized-users/resources.md): JSON:API resource schema for the AuthorizedUser resource and the related resources used by the Authorized Users API.
+- [Bill Pay](https://unit.co/docs/api/bill-pay.md): REST API endpoints for managing Bill Pay vendors and originating bill payments from a Unit deposit account, covering vendor creation, payment lifecycle, and supported payment methods (ACH, Check).
+- [Card Fraud Outreach APIs](https://unit.co/docs/api/card-fraud-outreach/api.md): REST API endpoints for managing Card Fraud Outreach — get and list cases, mark cases as fraud or no-fraud, and create, update, and retrieve outreach policies.
+- [Card Fraud Outreach](https://unit.co/docs/api/card-fraud-outreach/overview.md): How to programmatically notify customers about suspicious card transactions and let them confirm or report each one through branded outreach messages.
+- [Card Fraud Outreach Resources](https://unit.co/docs/api/card-fraud-outreach/resources.md): JSON:API resource schemas for Card Fraud Outreach — Card Fraud Case and Card Fraud Outreach Policy, including key attributes and relationships.
+- [Card Holder API Tokens APIs](https://unit.co/docs/api/card-holder-api-tokens/api.md): REST API endpoints for issuing single-card-scoped Cardholder Tokens — Create Cardholder Token Verification (sends an OTP) and Create Cardholder Token (exchanges the verification for a bearer token).
+- [Card Holder API Tokens](https://unit.co/docs/api/card-holder-api-tokens/overview.md): How to create Card Holder Tokens — short-lived tokens scoped to a single card that grant a non-account-holder user access to perform sensitive card actions such as viewing card details or managing the PIN.
+- [Add To Mobile Wallet APIs](https://unit.co/docs/api/cards-add-to-mobile-wallet/api.md): REST API endpoint for issuing the encrypted Apple Pay or Google Pay payload used to provision a card to a mobile wallet — Get Mobile Wallet Payload.
+- [Add To Mobile Wallet](https://unit.co/docs/api/cards-add-to-mobile-wallet/overview.md): How to enable Apple Pay, Google Pay, and Samsung Pay provisioning for Unit-issued debit cards by integrating Visa's In-App Provisioning SDK in your mobile app.
+- [ATM Locations APIs](https://unit.co/docs/api/cards-atm-locations/api.md): REST API endpoints for searching ATM Locations — List By Coordinates, List By Postal Code, and List By Address, each accepting a configurable radius.
+- [ATM Locations](https://unit.co/docs/api/cards-atm-locations/overview.md): API for finding nearby ATMs that work with Unit-issued cards — supports searching by coordinates, postal code, or address with a configurable radius.
+- [API](https://unit.co/docs/api/cards-authorization-requests/api.md): REST API endpoints for responding to and inspecting authorization requests — Authorization Request (approve/decline), Get by Id, and List.
+- [Authorization Request Webhook Events](https://unit.co/docs/api/cards-authorization-requests/events.md): Webhook events fired during real-time card authorization decisioning — authorizationRequest.approved, declined, and pending.
+- [Authorization Requests](https://unit.co/docs/api/cards-authorization-requests/overview.md): How to programmatically approve or decline card transactions in real time by responding to Unit's authorization-request webhooks — useful for spend controls, custom fraud logic, and just-in-time funding.
+- [Authorization Request Resources](https://unit.co/docs/api/cards-authorization-requests/resources.md): JSON:API schemas for authorization request resources — PurchaseAuthorizationRequest, CardTransactionAuthorizationRequest, and AtmAuthorizationRequest.
+- [API](https://unit.co/docs/api/cards-authorizations/api.md): REST API endpoints for inspecting card authorizations — Get by Id and List authorizations placed against a card or account.
+- [Authorization Webhook Events](https://unit.co/docs/api/cards-authorizations/events.md): Webhook events fired across the card authorization lifecycle — authorization.created, canceled, amountChanged, declined, and updated.
+- [Authorizations](https://unit.co/docs/api/cards-authorizations/overview.md): How card authorizations (authorization holds) work on Unit-issued cards, including authorization statuses, common decline reasons, and how holds affect a deposit account's available balance.
+- [Authorization Resources](https://unit.co/docs/api/cards-authorizations/resources.md): JSON:API schema for the Authorization resource — attributes, relationships, and lifecycle states for card authorizations.
+- [Cards APIs](https://unit.co/docs/api/cards/api.md): REST API endpoints covering the full Card lifecycle — issuing physical and virtual debit/credit cards, viewing sensitive details, activation, PIN management, freeze/unfreeze, lost/stolen, replace, close, fetch, list, and update.
+- [Card Webhook Events](https://unit.co/docs/api/cards/events.md): Webhook events covering the card lifecycle, plus authorization, authorization-request, and card-fraud-case events triggered by activity on Unit-issued cards.
+- [Cards](https://unit.co/docs/api/cards/overview.md): Concepts behind Unit's Card resource, including card types (debit vs charge, virtual vs physical), statuses, design and shipping options, security features, and how cards relate to deposit accounts and authorized users.
+- [Card Resources](https://unit.co/docs/api/cards/resources.md): JSON:API resource schemas for Unit-issued cards — every card type (Individual/Business, debit/credit, physical/virtual) plus the Authorization and PinStatus resources.
+- [Sandbox Simulations](https://unit.co/docs/api/cards/simulations.md): Sandbox-only API endpoints for simulating card authorizations, settlements, reversals, and merchant interactions so card flows can be tested end-to-end without touching real payment networks.
+- [Chargebacks](https://unit.co/docs/api/chargebacks.md): API endpoints for creating chargebacks — used to charge a customer back for card payments they collected via a third-party processor that were later successfully disputed by the payer.
+- [Check Deposits APIs](https://unit.co/docs/api/check-deposits/api.md): REST API endpoints for the Check Deposit lifecycle — create, get, list, update, plus front/back image upload and retrieval, send-link generation, clear, and confirm-details.
+- [Check Deposit Webhook Events](https://unit.co/docs/api/check-deposits/events.md): Webhook events covering the Check Deposit lifecycle and related transaction events fired as the deposit is processed and credited to the customer's account.
+- [Check Deposits](https://unit.co/docs/api/check-deposits/overview.md): How Unit's Check Deposit (Remote Deposit Capture) flow works end-to-end — image upload, validation, processing, and crediting the customer's deposit account, optionally via the Check Deposits white-label component.
+- [Check Deposit Resources](https://unit.co/docs/api/check-deposits/resources.md): JSON:API resource schemas for check deposits — CheckDeposit and CheckDepositTransaction, including key attributes and relationships.
+- [Sandbox Simulations](https://unit.co/docs/api/check-deposits/simulations.md): Sandbox-only API endpoints for simulating Check Deposit lifecycle outcomes — approve, transmit, clear, return — plus generating sample front and back check images for testing.
+- [API](https://unit.co/docs/api/check-payments/api.md): REST API endpoints for the Check Payment (Print & Mail) lifecycle — originate, get, list, retrieve check image, return, approve additional verification, and cancel.
+- [Check Payment Webhook Events](https://unit.co/docs/api/check-payments/events.md): Webhook events covering every Check Payment status transition — created, pending, inProduction, inDelivery, delivered, returned, processed, canceled, and additional-verification flows.
+- [Overview](https://unit.co/docs/api/check-payments/overview.md): How Check Payments (Print & Mail) work on Unit — issuing checks drawn from a Deposit Account either via API or by the customer manually writing one using the account's routing and account number.
+- [Check Payment Resources](https://unit.co/docs/api/check-payments/resources.md): JSON:API resource schemas for check payments — CheckPayment, CheckPaymentTransaction, and ReturnedCheckPaymentTransaction.
+- [Sandbox Simulations](https://unit.co/docs/api/check-payments/simulations.md): Sandbox-only API endpoints for advancing Check Payments through their lifecycle — Mailed, In Production, ReRouted, In Local Area, Delivered, and Returned to Sender delivery statuses.
+- [Counterparty APIs](https://unit.co/docs/api/counterparties/api.md): REST API endpoints for managing counterparties — Create Counterparty, Create with Plaid token, Delete, Get by Id, Get Counterparty Balance, List, and Update.
+- [Counterparty Webhook Events](https://unit.co/docs/api/counterparties/events.md): How webhook events relate to counterparties — listening for relevant events and the typical event flow when paying a counterparty.
+- [Counterparties](https://unit.co/docs/api/counterparties/overview.md): How counterparties represent reusable external parties for payments, plus security recommendations around scopes like payments-write-counterparty and customer tokens.
+- [Counterparty Resources](https://unit.co/docs/api/counterparties/resources.md): JSON:API schemas for counterparty resources — ACH Counterparty, Counterparty Balance, the embedded Counterparty Type object, and related resources.
+- [Credit Account APIs](https://unit.co/docs/api/credit-accounts/api.md): REST API endpoints for managing credit accounts — create, close, freeze, unfreeze, get, list, update, and read limits, balance history, and repayment information.
+- [Credit Account Webhook Events](https://unit.co/docs/api/credit-accounts/events.md): Webhook events fired across the credit account lifecycle — creation, status changes, freezes, and closure.
+- [Credit Accounts](https://unit.co/docs/api/credit-accounts/overview.md): Concepts behind Unit's Credit Account resource — loaned-funds accounts with a credit limit, balance, and hold; currently used to back Business Charge Cards and configurable via Credit Terms.
+- [Credit Account Resources](https://unit.co/docs/api/credit-accounts/resources.md): JSON:API schema for the CreditAccount resource — key fields, related resources, and lifecycle states.
+- [API](https://unit.co/docs/api/credit-applications/api.md): REST API endpoints for credit applications — Create Onboarding or Existing Customer credit applications, Update, Get by Id, and List.
+- [Credit Application Webhook Events](https://unit.co/docs/api/credit-applications/events.md): Webhook events fired across the credit application lifecycle, with payload examples and related events.
+- [Credit Applications](https://unit.co/docs/api/credit-applications/overview.md): How credit applications work on Unit — for both existing customers (ExistingCustomerCreditApplication) and new applicants (OnboardingCustomerCreditApplication), including application types and the status flow.
+- [Credit Application Resources](https://unit.co/docs/api/credit-applications/resources.md): JSON:API schemas for credit application resources — Existing Customer Credit Application and Onboarding Credit Application, with shared attributes and relationships.
+- [Credit Decisions APIs](https://unit.co/docs/api/credit-decisions/api.md): REST API endpoints for recording credit application and credit limit decisions — manual review, approved, and denied variants, plus Get by Id and List.
+- [Webhook Events](https://unit.co/docs/api/credit-decisions/events.md): Webhook events fired when a credit decision is recorded — creditDecision.approved, creditDecision.denied, and creditDecision.manualReview.
+- [Credit Decisions](https://unit.co/docs/api/credit-decisions/overview.md): How to record bank-required daily credit decisions on credit applications and credit accounts — Approved, Denied, or ManualReview, with attribute requirements specific to each outcome.
+- [Resources](https://unit.co/docs/api/credit-decisions/resources.md): JSON:API schemas for credit application and credit limit decisions — manual review, approved, and denied variants, with shared attributes and relationships.
+- [Credit Terms](https://unit.co/docs/api/credit-terms.md): Credit Terms define the set of terms applied to a Credit Account. When creating a credit account, you select which Credit Terms apply to it.
+- [Customer API Tokens](https://unit.co/docs/api/customer-api-tokens.md): How to create and use Customer API Tokens — short-lived bearer tokens that grant a single end-customer scoped, time-limited access to their own Unit resources for safe client-side calls.
+- [Customer APIs](https://unit.co/docs/api/customers/api.md): REST API endpoints for managing Customers post-application — create Business Wallet customers, update Individual/Business customers, archive, fetch by id, and list.
+- [Customer Webhook Events](https://unit.co/docs/api/customers/events.md): Webhook events fired during the Customer lifecycle — customer.created (after an application is approved), customer.updated, and customer.archived.
+- [Customers](https://unit.co/docs/api/customers/overview.md): Concepts behind Unit's Customer resource — individuals, businesses, and business wallets created automatically when an application is approved, used to anchor accounts, cards, and payments.
+- [Customer Resources](https://unit.co/docs/api/customers/resources.md): JSON:API resource schemas for Unit's customer types — IndividualCustomer, BusinessCustomer, and BusinessWalletCustomer.
+- [DACA APIs](https://unit.co/docs/api/daca/api.md): REST API endpoints for entering, activating, and deactivating a Deposit Account Control Agreement (DACA) on a customer's deposit account.
+- [Webhook Events](https://unit.co/docs/api/daca/events.md): Webhook event (account.updated) fired when a Deposit Account's DACA status changes — used to react to entering, activating, or deactivating a control agreement.
+- [Deposit Account Control Agreement (DACA)](https://unit.co/docs/api/daca/overview.md): How Deposit Account Control Agreements (DACAs) work on Unit — three endpoints for entering, activating, and deactivating an agreement that grants a secured party control over a deposit account's funds.
+- [Resources](https://unit.co/docs/api/daca/resources.md): JSON:API attribute reference for the DACA-related fields on a DepositAccount resource — DACA status values and an example response.
+- [Disputes APIs](https://unit.co/docs/api/disputes/api.md): REST API endpoints for retrieving card disputes — Get by Id and List, with filtering by customer, status, type, and other criteria.
+- [Webhook Events](https://unit.co/docs/api/disputes/events.md): Webhook events fired during a card dispute's lifecycle — dispute.created when a dispute is filed and dispute.statusChanged on each investigation status change.
+- [Disputes](https://unit.co/docs/api/disputes/overview.md): Concepts behind Unit's Dispute resource — how cardholders contest transactions for fraud, unauthorized charges, or non-delivery, including dispute statuses, types, and the investigation lifecycle.
+- [Resources](https://unit.co/docs/api/disputes/resources.md): JSON:API resource schema for the Dispute resource — key attributes and relationships used in the Disputes API.
+- [Sandbox Simulations](https://unit.co/docs/api/disputes/simulations.md): Sandbox-only API endpoints for simulating dispute outcomes — create, apply provisional credit, resolve won, resolve lost, and deny.
+- [Overview](https://unit.co/docs/api/errors-full.md): Comprehensive reference of every Unit API error — error object structure (status, code, detail, meta) and the full list of error codes returned across the API.
+- [Overview](https://unit.co/docs/api/errors.md): How Unit API errors are structured — HTTP status codes, error code, detail, and meta fields, plus the most common error codes you'll encounter.
+- [Webhook Events](https://unit.co/docs/api/events.md): Comprehensive reference of every Unit Events API endpoint and webhook event payload — how events are structured (resource.event), how to fetch them, and the full catalog of event types.
+- [API](https://unit.co/docs/api/fees/api.md): REST API endpoints for managing fees on a Unit deposit account — Create Fee for one-off charges and Reverse Fee for refunds.
+- [Fee Webhook Events](https://unit.co/docs/api/fees/events.md): How fees surface in webhooks — fees do not emit dedicated events; instead, every Create or Reverse Fee triggers a transaction.created event with a feeTransaction or feeReversalTransaction type.
+- [Fees](https://unit.co/docs/api/fees/overview.md): How to bill customers for activity on Unit — both native platform fees (ACH, wire, card issuance, etc.) and custom fees you create, all paid into your Revenue Account and surfaced on customer statements.
+- [Fee Resources](https://unit.co/docs/api/fees/resources.md): JSON:API resource schemas for fees — Fee and Fee Reversal, plus the related transaction types they generate on the account ledger.
+- [Financial Business FBO Accounts](https://unit.co/docs/api/financial-business-fbo-Accounts.md): How Financial Business For-Benefit-Of (FBO) accounts work at Unit — creating an FBO business customer and account to hold funds on behalf of third-party beneficiaries.
+- [Basic Entities](https://unit.co/docs/api/getting-started/basic-entities.md): The building blocks of the Unit platform — applications, customers, accounts, payments, cards, and transactions.
+- [Tooling](https://unit.co/docs/api/getting-started/tooling.md): The tools available to you as a Unit developer — API, Dashboard, and white-label UI components.
+- [Instant Payout](https://unit.co/docs/api/instant-payouts-worldpay.md): Worldpay-specific variant of the Create Instant Payout endpoint for advancing merchant funds before processor settlement.
+- [Instant Payout](https://unit.co/docs/api/instant-payouts.md): How Instant Payouts advance funds to a merchant account ahead of a payment processor's settlement — including the Create Instant Payout endpoint and repayment expectations.
+- [Institutions APIs](https://unit.co/docs/api/institutions/api.md): REST API endpoint for looking up a financial institution by ABA routing number — returns the institution's name and supported payment types.
+- [Institutions](https://unit.co/docs/api/institutions/overview.md): API for looking up financial-institution metadata (name, supported payment types) by ABA routing number — used to validate counterparties before originating ACH or wire payments.
+- [Institution Resources](https://unit.co/docs/api/institutions/resources.md): Pointer to the Institution resource schema and attributes — fields are documented on the central Resources reference page.
+- [API](https://unit.co/docs/api/interest/api.md): REST API endpoint for retrieving the Total Accrued Interest on a Unit deposit account — interest accumulated since the last monthly payout.
+- [Interest Webhook Events](https://unit.co/docs/api/interest/events.md): How interest payments surface in webhooks — interest does not emit dedicated events; instead, each monthly payout fires a transaction.created event with an interestTransaction type.
+- [Interest](https://unit.co/docs/api/interest/overview.md): How interest accrues and is paid on Unit deposit accounts — daily-balance accrual based on the account's interest rate, with monthly payouts around the first of the following month.
+- [Interest Resources](https://unit.co/docs/api/interest/resources.md): JSON:API resource schema for the Total Accrued Interest resource returned by the Interest API.
+- [API](https://unit.co/docs/api/lending-programs/api.md): REST API endpoints for inspecting lending programs — Get by Id, Get Extended Information by Id, and List.
+- [Lending Programs](https://unit.co/docs/api/lending-programs/overview.md): How a Lending Program represents the bank-approved credit line that backs your lending products — the program's size caps the total credit you can extend across all customer credit accounts.
+- [Resources](https://unit.co/docs/api/lending-programs/resources.md): JSON:API schemas for the Lending Program and Lending Program Extended Information resources.
+- [Org API Tokens](https://unit.co/docs/api/org-api-tokens.md): REST API endpoints for managing organization API tokens — Create Org API Token, List, and Revoke.
+- [Linked Accounts](https://unit.co/docs/api/payments-linked-accounts-internal.md): How linked-account resources represent customer-owned external accounts for ACH transfers — security recommendations, scopes (payments-write-linked-account), and the create/use flow.
+- [Overview](https://unit.co/docs/api/payments.md): How payments work at Unit — the shared lifecycle (Pending, Pending Review, Canceled, Rejected, Clearing, Sent, Returned) and concepts that apply across ACH, wires, book, checks, and other rails.
+- [Overview](https://unit.co/docs/api/payments/ach/originating.md): How to originate next-day and same-day ACH credit and debit payments from a Unit deposit account, including counterparty setup, idempotency, daily limits, and same-day cutoff windows.
+- [Advanced](https://unit.co/docs/api/payments/ach/originating/advanced.md): Advanced ACH origination features such as custom Standard Entry Class (SEC) codes, addenda records, and same-day ACH controls — for use cases beyond the default flow.
+- [APIs](https://unit.co/docs/api/payments/ach/originating/api.md): REST API endpoints for originating ACH payments — create payments with an existing counterparty, a Plaid token, or an inline counterparty, plus update, cancel, clear, and get expected completion date.
+- [Error Codes](https://unit.co/docs/api/payments/ach/originating/errors.md): Reference of rejection reasons returned when an originated ACH payment is declined — including insufficient funds, counterparty issues, and compliance triggers.
+- [Webhook Events](https://unit.co/docs/api/payments/ach/originating/events.md): Webhook events fired during the originated ACH payment lifecycle — payment.created, pendingReview, rejected, clearing, sent, canceled, plus the related transaction.created event.
+- [Resources](https://unit.co/docs/api/payments/ach/originating/resources.md): JSON:API resource schemas for originated ACH payments — ACH Payment, Originated ACH Transaction, and Payment Canceled Transaction, with attributes and relationships.
+- [Sandbox Simulations](https://unit.co/docs/api/payments/ach/originating/simulations.md): Sandbox-only API endpoints for advancing originated ACH payments through their lifecycle — Transmit ACH Payment and Clear ACH Payment.
+- [Overview](https://unit.co/docs/api/payments/ach/receiving.md): How Unit processes incoming ACH credits and debits into deposit accounts — automatic processing, balance handling, and the webhooks that fire when payments arrive.
+- [Advanced Features](https://unit.co/docs/api/payments/ach/receiving/advanced.md): Advanced received ACH endpoints — Advance Received Payment for early access to funds, Reprocess Received Payment, and Return Received ACH Transaction.
+- [APIs](https://unit.co/docs/api/payments/ach/receiving/api.md): REST API endpoints for inspecting and managing received ACH payments — Get by Id, List, and Update.
+- [Error Codes](https://unit.co/docs/api/payments/ach/receiving/errors.md): Reference of ACH return reason codes (R01–R85) used when received ACH payments are returned by Unit or initiated as returns by you.
+- [Webhook Events](https://unit.co/docs/api/payments/ach/receiving/events.md): Webhook events fired across the received ACH payment lifecycle — receivedPayment.created/pending/pendingReview/advanced/completed/markedForReturn/returned, plus declinedIncomingPayment.created and transaction.created.
+- [Resources](https://unit.co/docs/api/payments/ach/receiving/resources.md): JSON:API resource schemas for received ACH payments — ACH Received Payment, Received ACH Transaction, Returned Received ACH Transaction, and Payment Advance Transaction.
+- [Sandbox Simulations](https://unit.co/docs/api/payments/ach/receiving/simulations.md): Sandbox-only API endpoints for simulating incoming ACH activity — Receive ACH Payment, Create ACH Received Payment Transaction, Complete Received Payment, and Create Incoming ACH Payment.
+- [Overview](https://unit.co/docs/api/payments/batch-payments.md): How batch accounts hold short-lived organization funds and are then released across multiple customer accounts — typical use cases include splitting payment-processor settlements.
+- [APIs](https://unit.co/docs/api/payments/batch-payments/api.md): REST API endpoint for splitting funds out of a batch account into multiple customer accounts — Create Batch Releases.
+- [Webhook Events](https://unit.co/docs/api/payments/batch-payments/events.md): The transaction.created webhook event fired when a batch release posts a Release Transaction to a customer account.
+- [Resources](https://unit.co/docs/api/payments/batch-payments/resources.md): JSON:API schemas for batch payment resources — BatchRelease and Release Transaction.
+- [Overview](https://unit.co/docs/api/payments/book.md): How to make instant, free internal transfers between two accounts on Unit's ledger — typical for moving funds between customer accounts, clearing accounts, and your operational accounts.
+- [APIs](https://unit.co/docs/api/payments/book/api.md): REST API endpoints for Book payments — instantly move funds between two Unit-held deposit accounts via Create a Book Payment and Update Book Payment.
+- [Error Codes](https://unit.co/docs/api/payments/book/errors.md): Reference of rejection reasons returned when a Book payment is declined, such as insufficient funds or invalid counterparty account.
+- [Webhook Events](https://unit.co/docs/api/payments/book/events.md): Webhook events fired during the Book payment lifecycle — payment.created, payment.rejected, and the resulting transaction.created event.
+- [Resources](https://unit.co/docs/api/payments/book/resources.md): JSON:API resource schemas for Book payments — Book Payment and Book Transaction, with their attributes and relationships.
+- [Overview](https://unit.co/docs/api/payments/cash-deposits.md): How customers fund accounts via cash deposits — searching nearby store locations by coordinates or postal code and depositing with a card swipe or generated barcode.
+- [APIs](https://unit.co/docs/api/payments/cash-deposits/api.md): REST API endpoints for cash deposits — List Store Locations by Coordinates or Postal Code, Generate Barcode, and Get Barcode Image.
+- [Webhook Events](https://unit.co/docs/api/payments/cash-deposits/events.md): The transaction.created webhook event fired when an in-store cash deposit posts to a customer account.
+- [Resources](https://unit.co/docs/api/payments/cash-deposits/resources.md): JSON:API schemas for cash deposit resources — Store Location, Cash Deposit Barcode, and Cash Deposit Transaction.
+- [Overview](https://unit.co/docs/api/payments/recurring-payments.md): How to schedule future ACH (Credit and Debit) and book payments at weekly or monthly intervals — used for subscriptions, savings transfers, rent collection, and other repeating use cases.
+- [APIs](https://unit.co/docs/api/payments/recurring-payments/api.md): REST API endpoints for scheduling recurring payments — Create Recurring Credit/Debit ACH and Book payments, Disable, Enable, Delete, Get by Id, and List.
+- [Webhook Events](https://unit.co/docs/api/payments/recurring-payments/events.md): Webhook events for recurring payments — recurringPayment.created, failed, statusChanged, and the related underlying payment events.
+- [Resources](https://unit.co/docs/api/payments/recurring-payments/resources.md): JSON:API schemas for recurring payment resources — Recurring Credit ACH, Recurring Debit ACH, and Recurring Credit Book payments, with attributes and relationships.
+- [Overview](https://unit.co/docs/api/payments/rtp/receiving.md): How Unit processes incoming Real-Time Payments (RTP) into deposit accounts — automatic processing, balance handling, and the webhooks that fire when payments arrive.
+- [APIs](https://unit.co/docs/api/payments/rtp/receiving/api.md): REST API endpoints for inspecting and managing received RTP payments — Get by Id, List, and Update.
+- [Error Codes](https://unit.co/docs/api/payments/rtp/receiving/errors.md): Reference of RTP reject and return reason codes used when received Real-Time Payments are rejected or returned.
+- [Webhook Events](https://unit.co/docs/api/payments/rtp/receiving/events.md): Webhook events fired across the received RTP payment lifecycle — receivedPayment.created/completed/returned/rejected/timedOut and transaction.created.
+- [Resources](https://unit.co/docs/api/payments/rtp/receiving/resources.md): JSON:API resource schemas for received RTP payments — Realtime Received Payment and Received RealTime Payment Transaction.
+- [Overview](https://unit.co/docs/api/payments/wire-drawdowns.md): How wire drawdowns (reverse wires) work on Unit — currently supporting incoming drawdown requests where another party pulls funds from a Unit account, subject to bank-partner availability.
+- [APIs](https://unit.co/docs/api/payments/wire-drawdowns/api.md): REST API endpoints for wire drawdowns — Get by Id, List, and Send Drawdown Payment in response to an incoming drawdown request.
+- [Webhook Events](https://unit.co/docs/api/payments/wire-drawdowns/events.md): Webhook events for wire drawdowns — wireDrawdown.created and the related downstream payment events.
+- [Resources](https://unit.co/docs/api/payments/wire-drawdowns/resources.md): JSON:API schema for the Wire Drawdown resource — attributes and relationships.
+- [Sandbox Simulations](https://unit.co/docs/api/payments/wire-drawdowns/simulations.md): Sandbox-only API endpoint for simulating an inbound wire drawdown request — Create Wire Drawdown.
+- [Overview](https://unit.co/docs/api/payments/wires.md): How to originate Credit-direction wire payments from a Unit deposit account, including pending-review flows, customer re-authentication best practices, and bank-partner-specific risk rules.
+- [APIs](https://unit.co/docs/api/payments/wires/api.md): REST API endpoints for sending domestic wire payments via Fedwire — Create a Wire Payment and Cancel Wire Payment.
+- [Error Codes](https://unit.co/docs/api/payments/wires/errors.md): Reference of wire rejection reasons returned when an outgoing Fedwire payment is declined.
+- [Webhook Events](https://unit.co/docs/api/payments/wires/events.md): Webhook events for outgoing and incoming wire payments — payment.created/rejected/returned/sent, receivedPayment.created/completed/pendingReview/markedForReturn/returned, and transaction.created.
+- [Resources](https://unit.co/docs/api/payments/wires/resources.md): JSON:API resource schemas for wires — Wire Payment, Wire Transaction, and Wire Received Payment, with attributes and relationships.
+- [Sandbox Simulations](https://unit.co/docs/api/payments/wires/simulations.md): Sandbox-only API endpoints for advancing wire payments through their lifecycle — Receive Wire Payment and Transmit Wire Payment.
+- [API](https://unit.co/docs/api/positive-pay/api.md): REST API endpoints for managing Positive Pay rules — configure the per-account policy, create rules for received ACH debits, check payments, and wire drawdowns, upload supporting documents, and get/list/cancel rules.
+- [Positive Pay Webhook Events](https://unit.co/docs/api/positive-pay/events.md): Webhook event (positivePay.cancelled) fired when a Positive Pay rule is cancelled.
+- [Positive Pay](https://unit.co/docs/api/positive-pay/overview.md): How Positive Pay protects accounts from unexpected payments — customers pre-approve allowed ACH originators, check payments, and wire drawdowns, and Unit blocks anything that doesn't match an active rule.
+- [Quickstart](https://unit.co/docs/api/quickstart.md): A hands-on sandbox walkthrough for Peter Parker — create an account, fund it with $1,000, issue a virtual debit card, and spend $500 at Amazon.
+- [Receivables Management APIs](https://unit.co/docs/api/receivables-management/api.md): REST API endpoints for receivables management — Get receivable by Id, List, and Get Receivables Balance Report.
+- [Receivables Management](https://unit.co/docs/api/receivables-management/overview.md): API for tracking and reporting receivables in your lending program — list and filter by customer, type, status, or due date, and generate balance reports for upcoming purchase obligations.
+- [Receivable Resources](https://unit.co/docs/api/receivables-management/resources.md): Pointers to the JSON:API schemas for the Receivable and Receivables Balance resources used in receivables management.
+- [Recurring Repayments APIs](https://unit.co/docs/api/recurring-repayments/api.md): REST API endpoints for scheduling recurring credit repayments — Create Recurring ACH/Book and Capital Partner ACH/Book repayments, Disable, Enable, Get by Id, and List.
+- [Recurring Repayment Webhook Events](https://unit.co/docs/api/recurring-repayments/events.md): Webhook events fired across the recurring credit repayment lifecycle, with payload examples and related events.
+- [Recurring Repayments](https://unit.co/docs/api/recurring-repayments/overview.md): How to schedule recurring repayments toward a Credit Account — runs continuously while Active, automatically rejects repayments when the account is frozen, and disables itself when the account closes.
+- [Recurring Repayment Resources](https://unit.co/docs/api/recurring-repayments/resources.md): JSON:API schemas for recurring repayment resources — Recurring ACH, Book, Capital Partner ACH, and Capital Partner Book repayments, with shared attributes and relationships.
+- [API](https://unit.co/docs/api/repayments/api.md): REST API endpoints for credit repayments — create Book, ACH, Capital Partner ACH/Book, and External repayments, return external repayments, and read by Id or list.
+- [Repayment Webhook Events](https://unit.co/docs/api/repayments/events.md): Webhook events fired across the credit repayment lifecycle, with payload examples and related events.
+- [Repayments](https://unit.co/docs/api/repayments/overview.md): Concepts behind Unit's Repayment resource — Native repayments that move funds via Book or ACH within Unit, and External repayments that just record off-platform money movement on the credit ledger.
+- [Repayment Resources](https://unit.co/docs/api/repayments/resources.md): JSON:API schemas for repayment resources — ACH, Book, Capital Partner ACH, Capital Partner Book, and External repayments, with shared attributes and relationships.
+- [Sandbox Simulations](https://unit.co/docs/api/repayments/simulations.md): Sandbox-only API endpoints for advancing repayments through their lifecycle — Transmit, Clear, and Return ACH repayments, plus Simulate Originating Recurring Repayment.
+- [Resources](https://unit.co/docs/api/resources.md): Comprehensive JSON:API schema reference for every resource exposed by the Unit API — accounts, transactions, payments, applications, customers, cards, and more.
+- [Rewards APIs](https://unit.co/docs/api/rewards/api.md): REST API endpoints for the rewards program — Create Reward, Get by Id, and List rewards.
+- [Rewards Webhook Events](https://unit.co/docs/api/rewards/events.md): Webhook events for rewards — reward.sent and reward.rejected, plus related transaction events.
+- [Rewards](https://unit.co/docs/api/rewards/overview.md): How to use the Rewards API to credit cashback, referral bonuses, and other promotional payouts to deposit and credit accounts, including funding sources and transaction linkage.
+- [Rewards Resources](https://unit.co/docs/api/rewards/resources.md): JSON:API schemas for reward resources — Reward and Reward Transaction.
+- [Testing in Sandbox](https://unit.co/docs/api/sandbox.md): Unit's Sandbox environment is a full replica of production — all standard API endpoints work the same way, with additional simulation-specific endpoints for triggering events that require external activity or time to occur.
+- [Simulations (Sandbox only)](https://unit.co/docs/api/simulations-old.md): Legacy single-page index of every Sandbox-only simulation operation that lets you fast-forward applications, payments, cards, and other lifecycle events for testing.
+- [API](https://unit.co/docs/api/statements/api.md): REST API endpoints for retrieving account statements — List, Get HTML by Id, Get PDF by Id, and Get Bank Verification PDF.
+- [Webhook Events](https://unit.co/docs/api/statements/events.md): The statements.created webhook event fired when a new monthly account statement has been generated.
+- [Statements](https://unit.co/docs/api/statements/overview.md): How Unit auto-generates monthly statements for deposit and credit accounts to meet regulatory requirements, and how to retrieve and distribute them to your end customers.
+- [Resources](https://unit.co/docs/api/statements/resources.md): JSON:API schema for the Statement resource — attributes, relationships, and supported formats.
+- [Sandbox Simulations](https://unit.co/docs/api/statements/simulations.md): Sandbox-only API endpoints for generating statements on demand — Generate Account Statement and Generate Customer Account Statement.
+- [API](https://unit.co/docs/api/stop-payments/api.md): REST API endpoints for managing stop payments — Create Check or ACH Stop Payment, Get by Id, List, Update ACH Stop Payment, and Disable.
+- [Stop Payment Webhook Events](https://unit.co/docs/api/stop-payments/events.md): Webhook events for stop payment lifecycle — stopPayment.created, disabled, paymentStopped, and updated.
+- [Stop Payments](https://unit.co/docs/api/stop-payments/overview.md): How Unit stop payments work — block check payments by amount and check number, manage ACH stops, and the Active vs. Disabled lifecycle.
+- [Stop Payment Resources](https://unit.co/docs/api/stop-payments/resources.md): JSON:API schemas for stop payment resources — Check Stop Payment and ACH Stop Payment, with attributes and relationships.
+- [Tags](https://unit.co/docs/api/tags.md): Attach metadata to Unit resources using key-value tags — inheritance, searching, updating, and constraints.
+- [API](https://unit.co/docs/api/tax-forms/api.md): REST API endpoints for retrieving generated tax forms — List, Get Tax Form by Id, and Get Tax Form PDF by Id.
+- [Tax Form Webhook Events](https://unit.co/docs/api/tax-forms/events.md): Webhook events for tax forms — taxForm.created when a new form is generated, and taxForm.updated when an issued form is amended.
+- [Tax Forms](https://unit.co/docs/api/tax-forms/overview.md): How Unit auto-generates supported tax forms (e.g. 1099-INT) at the start of each year, and your responsibility for IRS-compliant distribution to end customers.
+- [Tax Form Resources](https://unit.co/docs/api/tax-forms/resources.md): JSON:API schema for the Tax Form resource — attributes, relationships, and supported form types.
+- [Transactions APIs](https://unit.co/docs/api/transactions/api.md): REST API endpoints for inspecting and amending transactions — Get by Id, List, Update Tags, Update Book Transaction, and Update Chargeback Transaction.
+- [Webhook Events](https://unit.co/docs/api/transactions/events.md): Webhook events fired when transactions are posted or modified — transaction.created and transaction.updated.
+- [Transactions](https://unit.co/docs/api/transactions/overview.md): How transactions work in Unit — confirmed, immutable financial movements that result from payments and other activity, and how they're created and reversed.
+- [Resources](https://unit.co/docs/api/transactions/resources.md): JSON:API schema reference for transaction resources — full list of transaction types, common attributes, and relationships shared across all transactions.
+- [Types](https://unit.co/docs/api/types.md): Reference of shared embedded types reused across the Unit API — names, addresses, phone numbers, monetary amounts, dates, and other common building blocks.
+- [Using the API](https://unit.co/docs/api/using-the-api.md): Environments, authentication, SDKs, Postman, JSON:API, scopes, rate limits, pagination, idempotency, and other operational guidance for working with the Unit API.
+- [APIs](https://unit.co/docs/api/wallets/api.md): REST API endpoints for managing Wallet (FBO) accounts — Create, Update, Close, Reopen, Freeze, Unfreeze, Get by Id, List, Limits, and Get Balance History.
+- [Webhook Events](https://unit.co/docs/api/wallets/events.md): Webhook events fired across the wallet account lifecycle — account.created, closed, frozen, unfrozen, and reopened.
+- [Wallet Accounts (FBO)](https://unit.co/docs/api/wallets/overview.md): Concepts behind Unit Wallet (FBO) accounts — wallet terms, lifecycle states (Open, Frozen, Closed), and when to use wallets versus standard deposit accounts.
+- [Resources](https://unit.co/docs/api/wallets/resources.md): JSON:API schemas for the WalletAccount and Account End-Of-Day resources, with key attributes and relationships.
+- [Overview](https://unit.co/docs/api/webhooks.md): How to subscribe to and secure Unit webhooks — delivery method, signature verification, subscription types, testing, and APIs to Create, Get, List, Update, Enable, and Disable webhooks.
+
+### applications
+
+- [android](https://unit.co/docs/applications/fraud-sdk/android.md): Installation
+- [ios](https://unit.co/docs/applications/fraud-sdk/ios.md): Installation
+- [react-native](https://unit.co/docs/applications/fraud-sdk/react-native.md): Installation
+- [web](https://unit.co/docs/applications/fraud-sdk/web.md): Installation
+
+### ATMs
+
+How Unit cards work at ATMs — supported networks (Visa, Plus, Interlink, Accel, Allpoint), surcharge-free Allpoint access, and which transactions (cash withdrawals, deposits) are supported.
+
+- [ATMs](https://unit.co/docs/ATMs.md): How Unit cards work at ATMs — supported networks (Visa, Plus, Interlink, Accel, Allpoint), surcharge-free Allpoint access, and which transactions (cash withdrawals, deposits) are supported.
+
+### building-with-bill-pay-api
+
+Technical overview of Unit's Bill Pay API — core concepts, flow of funds, end-to-end integration steps, bill lifecycle events, and what Unit handles for you.
+
+- [Overview](https://unit.co/docs/building-with-bill-pay-api.md): Technical overview of Unit's Bill Pay API — core concepts, flow of funds, end-to-end integration steps, bill lifecycle events, and what Unit handles for you.
+
+### business-charge-cards
+
+How Unit's Bank-Sponsored Business Charge Card program works — fixed-cycle credit cards with no APR, full Unit card features, and how clients purchase the resulting receivables.
+
+- [Business Charge Cards](https://unit.co/docs/business-charge-cards.md): How Unit's Bank-Sponsored Business Charge Card program works — fixed-cycle credit cards with no APR, full Unit card features, and how clients purchase the resulting receivables.
+
+### card-fraud-outreach
+
+How Unit's Card Fraud Outreach service contacts cardholders to verify suspected fraud transactions across physical, virtual, and mobile-wallet cards — full transaction-flow lifecycle and customer experience.
+
+- [Card Fraud Outreach for Suspected Fraud Transactions Monitoring](https://unit.co/docs/card-fraud-outreach.md): How Unit's Card Fraud Outreach service contacts cardholders to verify suspected fraud transactions across physical, virtual, and mobile-wallet cards — full transaction-flow lifecycle and customer experience.
+
+### card-issuance
+
+Overview of Unit's card issuance program — debit, credit, and prepaid options, physical and virtual cards, ATM access, and design choices that drive interchange revenue.
+
+- [Card Issuance Guide](https://unit.co/docs/card-issuance.md): Overview of Unit's card issuance program — debit, credit, and prepaid options, physical and virtual cards, ATM access, and design choices that drive interchange revenue.
+
+### cards
+
+- [Network & Processor Fees](https://unit.co/docs/cards/interchange.md): How interchange revenue is calculated — gross interchange, network fees, processor fees, and your contracted share that produce net interchange.
+
+### cash-deposits
+
+How customers can fund their accounts with cash deposits at 90,000+ Green Dot retail locations — including the card swipe and barcode flows, limits, and availability with Thread Bank.
+
+- [Cash Deposits](https://unit.co/docs/cash-deposits.md): How customers can fund their accounts with cash deposits at 90,000+ Green Dot retail locations — including the card swipe and barcode flows, limits, and availability with Thread Bank.
+
+### check-deposits
+
+Concept guide to check deposits at Unit — including Mobile Remote Deposit Capture (mRDC), how customers submit front and back images of a check, and how Unit processes and clears the deposit.
+
+- [Overview](https://unit.co/docs/check-deposits.md): Concept guide to check deposits at Unit — including Mobile Remote Deposit Capture (mRDC), how customers submit front and back images of a check, and how Unit processes and clears the deposit.
+
+### check-payments
+
+Concept guide to outbound check payments — let customers originate physical checks from their account that Unit prints and mails to specified recipients.
+
+- [Check Payments (Print & Mail)](https://unit.co/docs/check-payments.md): Concept guide to outbound check payments — let customers originate physical checks from their account that Unit prints and mails to specified recipients.
+
+### custom-authentication
+
+How to authenticate end customers using your own JWTs in place of Unit-managed 2FA — letting you create customer tokens directly from your identity provider.
+
+- [Overview](https://unit.co/docs/custom-authentication.md): How to authenticate end customers using your own JWTs in place of Unit-managed 2FA — letting you create customer tokens directly from your identity provider.
+
+### customers
+
+How customer resources work at Unit — IndividualCustomer and BusinessCustomer types are auto-created from approved applications, plus how Authorized Users let multiple individuals manage a Business customer.
+
+- [Customers](https://unit.co/docs/customers.md): How customer resources work at Unit — IndividualCustomer and BusinessCustomer types are auto-created from approved applications, plus how Authorized Users let multiple individuals manage a Business customer.
+
+### data-export
+
+- [AWS S3 Requirements](https://unit.co/docs/data-export/aws-s3.md): How to provision an AWS S3 bucket for Unit's data export — bucket policy, IAM role permissions, and the configuration steps required for Unit to write your raw data.
+- [Data Structure](https://unit.co/docs/data-export/data-structure.md): How Unit's data export is laid out in your bucket — partitioned Parquet file paths, hourly increments, and how INSERT/UPDATE/DELETE rows are encoded in the CDC pipeline.
+- [Google GCS Requirements](https://unit.co/docs/data-export/google-gcs.md): How to provision a Google Cloud Storage bucket for Unit's data export — GCP project setup and access permissions required for Unit to deliver data daily.
+- [Overview](https://unit.co/docs/data-export/overview.md): How Unit's CDC-based data export pipeline writes raw data to your AWS S3, GCP, or Azure bucket in Parquet format — including support for PII and use cases for analytics on top of it.
+
+### device-fingerprint-sdk
+
+How to install and integrate Unit's Device Fingerprint SDK to capture device attributes during application creation and improve fraud detection.
+
+- [Introduction](https://unit.co/docs/device-fingerprint-sdk.md): How to install and integrate Unit's Device Fingerprint SDK to capture device attributes during application creation and improve fraud detection.
+
+### disclosures
+
+The disclosures bank partners require Unit clients to provide to end customers before opening an account — including Consent to Electronic Disclosures and other required notices.
+
+- [Disclosures](https://unit.co/docs/disclosures.md): The disclosures bank partners require Unit clients to provide to end customers before opening an account — including Consent to Electronic Disclosures and other required notices.
+
+### disputes-overview
+
+How card and ACH disputes work under Regulation E and card-network Zero Liability policies — dispute types, provisional credit timelines, and the roles of the customer, you, Unit, and the processor.
+
+- [Disputes Overview](https://unit.co/docs/disputes-overview.md): How card and ACH disputes work under Regulation E and card-network Zero Liability policies — dispute types, provisional credit timelines, and the roles of the customer, you, Unit, and the processor.
+
+### end-customer-applications
+
+How Unit's end-customer onboarding works — the information collected for individual and business applications, common reasons for manual review, and why submitted documentation may be rejected.
+
+- [Introduction](https://unit.co/docs/end-customer-applications.md): How Unit's end-customer onboarding works — the information collected for individual and business applications, common reasons for manual review, and why submitted documentation may be rejected.
+
+### end-customer-terms
+
+How to define end-customer terms (Fees and Credits) at Unit — designing fee schedules and interest credits, and offering different terms to different customer segments.
+
+- [End-Customer Terms](https://unit.co/docs/end-customer-terms.md): How to define end-customer terms (Fees and Credits) at Unit — designing fee schedules and interest credits, and offering different terms to different customer segments.
+
+### fraud-and-disputes
+
+How to build a fraud-prevention strategy at Unit — first-, second-, and third-party fraud patterns, prevention and detection tools, and how disputes interact with fraud handling.
+
+- [Introduction](https://unit.co/docs/fraud-and-disputes.md): How to build a fraud-prevention strategy at Unit — first-, second-, and third-party fraud patterns, prevention and detection tools, and how disputes interact with fraud handling.
+
+### guides
+
+- [Abound](https://unit.co/docs/guides/partnerships/abound.md): How Unit's Abound integration helps freelance and gig customers automatically detect income, set aside tax withholdings, and pay taxes from their Unit deposit account.
+- [Apex](https://unit.co/docs/guides/partnerships/apex.md): Stub page for Unit's Apex Clearing partnership, intended to enable brokerage and investing experiences alongside Unit deposit accounts.
+- [Checkout.com](https://unit.co/docs/guides/partnerships/checkout.md): How Unit's Checkout.com integration enables ecommerce and online payment acceptance (cards, PayPal, etc.) with funds settling into Unit deposit accounts.
+- [Knot](https://unit.co/docs/guides/partnerships/knot.md): How Unit's Knot integration uses Card Switcher to automatically set the customer's Unit card as the default payment method across the merchants where they shop.
+- [Partnerships](https://unit.co/docs/guides/partnerships/overview.md): Overview of Unit's partner ecosystem — three integration models (Native, Partner Token, Manual) covering money movement, rewards, accounting, and other capabilities you can layer on top of Unit accounts.
+- [Tight](https://unit.co/docs/guides/partnerships/tight.md): How Unit's Tight (formerly Hurdlr) integration embeds white-label expense tracking, invoicing, accounting, and tax tools using account and transaction data from Unit.
+
+### insurance
+
+Insurance coverage requirements clients must satisfy before launching on the Unit platform — coverage types, limits scaled to user base, and typical annual cost.
+
+- [Introduction](https://unit.co/docs/insurance.md): Insurance coverage requirements clients must satisfy before launching on the Unit platform — coverage types, limits scaled to user base, and typical annual cost.
+
+### introduction
+
+Introduction to Unit's Banking-as-a-Service mission and the onboarding process, with pointers to the technical guides clients need during launch — designed to take 90% of the traditional bank-integration burden off your team.
+
+- [Introduction](https://unit.co/docs/introduction.md): Introduction to Unit's Banking-as-a-Service mission and the onboarding process, with pointers to the technical guides clients need during launch — designed to take 90% of the traditional bank-integration burden off your team.
+
+### limits
+
+How account limits work at Unit — recommended per-deposit-product limits for ACH, check, card, ATM, and wire activity, and how they protect you and the bank from risk.
+
+- [Limits](https://unit.co/docs/limits.md): How account limits work at Unit — recommended per-deposit-product limits for ACH, check, card, ATM, and wire activity, and how they protect you and the bank from risk.
+
+### onboarding
+
+- [Introduction](https://unit.co/docs/onboarding/incident-response-policy.md): Guidance for drafting an Incident Response Policy required by Unit's bank partners — the key elements your policy should cover to identify, contain, and recover from cybersecurity incidents.
+- [Introduction](https://unit.co/docs/onboarding/information-security-policy.md): Guidance for drafting the Information Security Policy required by Unit's bank partners — the policies, procedures, and controls that protect your company and customer data.
+- [Introduction](https://unit.co/docs/onboarding/penetration-testing.md): Unit's penetration testing requirements — Gray/White-box scope, network and app coverage, 12-month validity, approved vendors, and remediation expectations for medium-or-higher findings.
+- [Introduction](https://unit.co/docs/onboarding/vendor-management-policy.md): Guidance for drafting the Vendor Management Policy required by Unit's bank partners — identifying, prioritizing, and controlling third-party vendor risk.
+
+### partnership
+
+- [Incremental Raw Data for Self-Reporting](https://unit.co/docs/partnership/Incremental Raw Data for Self-Reporting.md): Overview of Unit's ETL V2 incremental data migration pipeline — scalability improvements, four-hour data freshness, and historical data tracking compared to V1.
+- [Raw Data for Self-Reporting](https://unit.co/docs/partnership/Raw Data for Self-Reporting.md): How Unit's raw data export delivers banking data (authorization requests, payments, applications, cards, counterparties, and more) to your bucket for self-reporting and analytics.
+
+### partnerships
+
+- [Alpaca](https://unit.co/docs/partnerships/alpaca.md): How Unit's Alpaca integration enables commission-free stock trading funded by Unit deposit accounts so end customers can manage banking and investments in one app.
+- [Argyle](https://unit.co/docs/partnerships/argyle.md): How Unit's Argyle integration lets end customers redirect all or part of their payroll into a Unit deposit account through Direct Deposit switching with no manual paperwork.
+- [Atomic](https://unit.co/docs/partnerships/atomic.md): How Unit's Atomic integration drives top-of-wallet usage by switching end-customer payroll into a Unit deposit account, with broad coverage of major payroll providers and gig platforms.
+- [Bumped](https://unit.co/docs/partnerships/bumped.md): How Unit's Bumped integration rewards end customers with fractional stock shares of public companies they shop with, driving engagement and spend.
+- [Third Party Card Payment Processors](https://unit.co/docs/partnerships/card-processing.md): How to handle card-payment chargebacks and other flows when collecting payments through third-party processors like Stripe, Checkout, or Adyen alongside Unit accounts.
+- [Heron Data](https://unit.co/docs/partnerships/heron.md): Stub page for Unit's Heron Data partnership for transaction enrichment and small-business cash-flow analysis on top of Unit accounts.
+- [Intuit](https://unit.co/docs/partnerships/intuit.md): How Unit's Intuit integration lets end customers connect their Unit deposit and credit accounts to Quickbooks Online, Mint, and other Intuit products for budgeting and accounting.
+- [Kard](https://unit.co/docs/partnerships/kard.md): How Unit's Kard integration delivers merchant-funded cashback rewards to end customers when they use their Unit card at participating in-store and online merchants.
+- [Alliance PS (Lockbox)](https://unit.co/docs/partnerships/lockbox.md): How Unit's Alliance PS lockbox integration outsources physical mail handling and check scanning while you continue to use Unit's APIs to initiate the resulting deposits.
+- [Partner API Tokens](https://unit.co/docs/partnerships/partner-tokens.md): How Partner API Tokens let your ecosystem partners (e.g. Hurdlr, Kard, Patch) directly access user-permissioned Unit data on shared customers without round-tripping through your servers.
+- [Plaid](https://unit.co/docs/partnerships/plaid.md): How Unit's Plaid integration powers bank-account connectivity — letting end customers link external accounts for ACH funding and letting third parties access Unit accounts via Plaid.
+- [Rainforest](https://unit.co/docs/partnerships/rainforest.md): How Unit's Rainforest integration enables online and in-person payment acceptance for end customers, with proceeds settling directly into Unit deposit accounts.
+- [Tabapay](https://unit.co/docs/partnerships/tabapay.md): How Unit's Tabapay integration lets end customers instantly fund their Unit deposit account with a debit card, avoiding ACH processing time.
+- [Yodlee](https://unit.co/docs/partnerships/yodlee.md): How Unit's native Yodlee integration lets end customers link their Unit deposit and credit accounts to platforms like Xero and other Yodlee-powered apps.
+
+### positive-pay
+
+How Positive Pay lets you pre-define allowed payment activity to block unexpected money movement — covering received ACH debits/credits, check payments, and wire drawdowns.
+
+- [Positive Pay](https://unit.co/docs/positive-pay.md): How Positive Pay lets you pre-define allowed payment activity to block unexpected money movement — covering received ACH debits/credits, check payments, and wire drawdowns.
+
+### ready-to-launch
+
+- [Banking overview](https://unit.co/docs/ready-to-launch/banking.md): Overview of Unit's Ready-to-Launch Banking — a pre-built embedded banking experience that lets platforms ship branded checking, payments, and cards without building banking infrastructure in-house.
+- [Advanced Implementation](https://unit.co/docs/ready-to-launch/banking/advanced-implementation.md): Hub of optional Ready-to-Launch Banking enhancements — theming, custom JWT, pre-fill, multi-user access, webhooks, unified onboarding, and more — that you can layer on top of the core implementation.
+- [API Calls](https://unit.co/docs/ready-to-launch/banking/advanced-implementation/api-reference.md): API reference for Ready-to-Launch Banking, covering endpoints to manage accounts, transactions, and payments across the Sandbox and Live environments.
+- [Custom JWT Authentication](https://unit.co/docs/ready-to-launch/banking/advanced-implementation/custom-jwt-authentication.md): How to authenticate Ready-to-Launch Banking using a custom JWT implementation that follows RFC 7519, including required claims and the RS256 public-key setup with Unit.
+- [Integrate the embedded application form within partner registration](https://unit.co/docs/ready-to-launch/banking/advanced-implementation/embedded-application-form.md): How to embed only Ready-to-Launch's onboarding flow with the unit-elements-application-form component, returning end users to your app after submission instead of transitioning into the full White-Label App.
+- [Handling End-User Events](https://unit.co/docs/ready-to-launch/banking/advanced-implementation/handling-end-user-events.md): How to listen for custom DOM events emitted by the unit-elements-white-label-app and unit-elements-application-form components to react to end-user interactions and lifecycle events.
+- [Inviting additional users to Banking](https://unit.co/docs/ready-to-launch/banking/advanced-implementation/multi-user-access.md): How to enable multi-user access for business accounts in Ready-to-Launch Banking, including team roles, permissions, and the API endpoint Unit calls to fetch eligible users from your platform.
+- [Multiple Accounts](https://unit.co/docs/ready-to-launch/banking/advanced-implementation/multiple-accounts.md): How Ready-to-Launch Banking handles deposit accounts — a checking account is opened by default on approval, partners can request a custom default account set (e.g. checking, savings, and taxes), and customers can open additional accounts themselves at any time.
+- [Pre-filling end-user information](https://unit.co/docs/ready-to-launch/banking/advanced-implementation/pre-filling-user-information.md): How to expose an HTTPS endpoint that returns end-customer data so Unit can pre-fill the Ready-to-Launch Banking application form, including JWT validation, response shape, and Dashboard configuration.
+- [Standalone Components](https://unit.co/docs/ready-to-launch/banking/advanced-implementation/standalone-components.md): Embed Activity and Balance Summary banking components outside the White-Label App using a JWT token.
+- [Theming](https://unit.co/docs/ready-to-launch/banking/advanced-implementation/theming.md): How to brand the Ready-to-Launch Banking experience either through the Unit Dashboard's Ready-to-Launch branding UI or by passing a theme object on the unit-elements-white-label-app web component.
+- [Unified Onboarding](https://unit.co/docs/ready-to-launch/banking/advanced-implementation/unified-onboarding.md): How Unified Onboarding lets a single application onboard customers to both Ready-to-Launch Banking and a configured payment processor, with a unified status, document syncing, and webhook-driven updates.
+- [Unit Dashboard Access](https://unit.co/docs/ready-to-launch/banking/advanced-implementation/unit-dashboard-access.md): How operational accounts and the Unit Dashboard work for Ready-to-Launch Banking, providing visual management of the same capabilities exposed through the API.
+- [Webhook Events](https://unit.co/docs/ready-to-launch/banking/advanced-implementation/webhook-events.md): How to consume Ready-to-Launch Banking webhooks for real-time notifications about applications, customers, and transactions, including setup, delivery, and idempotent handling.
+- [Customer Outreach](https://unit.co/docs/ready-to-launch/banking/customer-outreach.md): Customer communication and outreach options for Ready-to-Launch Banking — marketing banners, automated customer emails, and a customizable marketing landing page.
+- [Customer Emails](https://unit.co/docs/ready-to-launch/banking/customer-outreach/customer-emails.md): Reference for the timed, conditional outreach emails Unit sends to Ready-to-Launch Banking customers to guide activation and engagement throughout their journey.
+- [Marketing Banners](https://unit.co/docs/ready-to-launch/banking/customer-outreach/marketing-banners.md): Ready-to-use promotional banners, sidebar recommendations, and hero banners that Unit partners can embed to drive customer adoption and increase account funding.
+- [Marketing Landing Page](https://unit.co/docs/ready-to-launch/banking/customer-outreach/marketing-landing-page.md): How to create and customize a marketing external landing page for your Ready-to-Launch Banking product using the unit-elements-banking-external-landing web component.
+- [Prospect Emails](https://unit.co/docs/ready-to-launch/banking/customer-outreach/prospect-emails.md): Marketing email templates for end customer prospects who have not yet started the banking application form.
+- [Banking FAQs](https://unit.co/docs/ready-to-launch/banking/faqs.md): Frequently asked questions about Unit's Ready-to-Launch Banking product, including launch timelines, customization, supported features, and how it compares to a custom build.
+- [Getting Started](https://unit.co/docs/ready-to-launch/banking/getting-started.md): A 5-minute guide to embedding Ready-to-Launch Banking in your app and trying it end-to-end with sandbox data.
+- [Implementation](https://unit.co/docs/ready-to-launch/banking/implementation.md): Step-by-step implementation guide for embedding Ready-to-Launch Banking across web, iOS, Android, and React Native, including authentication and platform-specific setup.
+- [android](https://unit.co/docs/ready-to-launch/banking/implementations/android.md): How to install and embed the Ready-to-Launch Banking Android SDK (un-components) in your native Android app via Gradle.
+- [ios](https://unit.co/docs/ready-to-launch/banking/implementations/ios.md): How to install and embed the Ready-to-Launch Banking iOS SDK in your native iOS app via Swift Package Manager or CocoaPods.
+- [react-native](https://unit.co/docs/ready-to-launch/banking/implementations/react-native.md): How to install and embed the Ready-to-Launch Banking React Native SDK using react-native-unit-components and react-native-webview.
+- [web-components](https://unit.co/docs/ready-to-launch/banking/implementations/web-components.md): How to embed Ready-to-Launch Banking on the web by adding the components-extended.es.js script and the unit-elements-white-label-app web component to your page.
+- [Bill Pay overview](https://unit.co/docs/ready-to-launch/bill-pay.md): Overview of Unit's Ready-to-Launch Bill Pay — a pre-built embedded bill-pay experience that lets platforms add vendor management, scheduled payments, and bill capture without custom development.
+- [Advanced Implementation](https://unit.co/docs/ready-to-launch/bill-pay/advanced-implementation.md): Hub of optional Ready-to-Launch Bill Pay enhancements — theming, pre-fill, programmatic bills and vendors, linked-account control, webhooks, and Custom Banking integration — that you can layer on top of the core implementation.
+- [API Calls](https://unit.co/docs/ready-to-launch/bill-pay/advanced-implementation/api-reference.md): API reference for Ready-to-Launch Bill Pay, covering optional endpoints for pre-fill, programmatic bill and vendor management, categories, and linked-account control.
+- [Pre-filling end-user information](https://unit.co/docs/ready-to-launch/bill-pay/advanced-implementation/pre-filling-user-information.md): How to expose an HTTPS endpoint that returns end-customer data so Unit can pre-fill the Ready-to-Launch Bill Pay application form, including JWT validation, response shape, and contacting Unit to register your endpoint.
+- [Theming](https://unit.co/docs/ready-to-launch/bill-pay/advanced-implementation/theming.md): How to brand the Ready-to-Launch Bill Pay experience either through the Unit Dashboard's Ready-to-Launch branding UI or by passing a theme object on the unit-elements-white-label-app web component.
+- [Webhook Events](https://unit.co/docs/ready-to-launch/bill-pay/advanced-implementation/webhook-events.md): How to consume Ready-to-Launch Bill Pay webhooks for real-time notifications about bills, vendors, and repayments, including setup, delivery, and idempotent handling.
+- [Getting Started](https://unit.co/docs/ready-to-launch/bill-pay/getting-started.md): A 5-minute guide to embedding Ready-to-Launch Bill Pay in your app and trying it end-to-end with sandbox data.
+- [Implementation](https://unit.co/docs/ready-to-launch/bill-pay/implementation.md): Step-by-step guide to integrating Unit's Ready-to-Launch Bill Pay product into your app, covering sandbox setup, embedding the web component, and authenticating end users.
+- [With Custom Banking](https://unit.co/docs/ready-to-launch/bill-pay/with-custom-banking.md): How to add Ready-to-Launch Bill Pay to an existing Unit Custom Banking integration, including requesting BillPay on applications and wiring up the Bill Pay experience.
+- [Capital overview](https://unit.co/docs/ready-to-launch/capital.md): Overview of Unit's Ready-to-Launch Capital — pre-built embedded financing for small businesses, including Merchant Cash Advance and Business Line of Credit products.
+- [Advanced Implementation](https://unit.co/docs/ready-to-launch/capital/advanced-implementation.md): Optional implementation steps for Ready-to-Launch Capital — including prequalification checks via the Prospect API — to refine branding, streamline the customer experience, and unlock richer functionality.
+- [Coverage Testing](https://unit.co/docs/ready-to-launch/capital/coverage-testing.md): How Unit can run a coverage test against anonymized customer data to estimate how many of your customers qualify for capital and what their offers might look like.
+- [Getting Started](https://unit.co/docs/ready-to-launch/capital/getting-started.md): Compare Ready-to-Launch Capital products (Merchant Cash Advance vs. Business Line of Credit) and the No Code vs. Embedded Components implementation paths to choose the right way to launch financing on your platform.
+- [Implementation](https://unit.co/docs/ready-to-launch/capital/implementation.md): Step-by-step guide to integrating Unit's Ready-to-Launch Capital product, including embedding the component, sandbox setup, and how the flow relates to existing Ready-to-Launch Banking integrations.
+- [Advanced Implementation](https://unit.co/docs/ready-to-launch/capital/loc/advanced-implementation.md): Optional implementation steps for the Ready-to-Launch Business Line of Credit, including theming via the Dashboard or web component to align the experience with your brand.
+- [Custom JWT Authentication](https://unit.co/docs/ready-to-launch/capital/loc/advanced-implementation/custom-jwt-authentication.md): Unit can rely on a custom implementation of JWT token that adheres to the specifications outlined in RFC 7519.
+- [Pre-filling end-user information](https://unit.co/docs/ready-to-launch/capital/loc/advanced-implementation/pre-filling-user-information.md): {" "}
+- [Theming](https://unit.co/docs/ready-to-launch/capital/loc/advanced-implementation/theming.md): You can align the capital experience with your brand in either of these ways — use one or both:
+- [Business Line of Credit Guide](https://unit.co/docs/ready-to-launch/capital/loc/guide.md): Everything platforms need to evaluate and launch Unit's Business Line of Credit — covering eligibility, underwriting, offer structure, draw and repayment lifecycle, and integration paths.
+- [Embedded Components Implementation](https://unit.co/docs/ready-to-launch/capital/loc/implementation.md): How to launch a Business Line of Credit program by embedding the Ready-to-Launch component into your platform's UI so customers can apply, accept offers, sign terms, draw funds, and manage the line directly.
+- [No Code Implementation](https://unit.co/docs/ready-to-launch/capital/loc/quickstart.md): How to launch a Business Line of Credit program with no code by configuring the Unit Dashboard so eligible customers receive email invitations to apply via a Unit-hosted experience on your platform's domain.
+- [Advanced Implementation](https://unit.co/docs/ready-to-launch/capital/mca/advanced-implementation.md): Optional implementation steps for the Ready-to-Launch Merchant Cash Advance, including theming via the Dashboard or web component to align the experience with your brand.
+- [Custom JWT Authentication](https://unit.co/docs/ready-to-launch/capital/mca/advanced-implementation/custom-jwt-authentication.md): Unit can rely on a custom implementation of JWT token that adheres to the specifications outlined in RFC 7519.
+- [Pre-filling end-user information](https://unit.co/docs/ready-to-launch/capital/mca/advanced-implementation/pre-filling-user-information.md): {" "}
+- [Theming](https://unit.co/docs/ready-to-launch/capital/mca/advanced-implementation/theming.md): You can align the capital experience with your brand in either of these ways — use one or both:
+- [Merchant Cash Advance Guide](https://unit.co/docs/ready-to-launch/capital/mca/guide.md): Everything platforms need to evaluate and launch Unit's Merchant Cash Advance — covering eligibility, sales-based underwriting, offer structure, repayment from processor payouts, and integration paths.
+- [Embedded Components Implementation](https://unit.co/docs/ready-to-launch/capital/mca/implementation.md): How to launch a Merchant Cash Advance program by embedding prebuilt components in your platform's UI, including configuring payment processor settings for prequalification and underwriting.
+- [No Code Implementation](https://unit.co/docs/ready-to-launch/capital/mca/quickstart.md): How to launch a Merchant Cash Advance program with no code by configuring the Unit Dashboard so eligible customers receive emailed financing offers and apply via a Unit-hosted experience on your platform's domain.
+
+### received-payment-advance
+
+How Early Payment Access lets you advance future-dated incoming ACH credits to your customers using a dedicated reserve account, including the ReceivedPayment lifecycle and APIs to call.
+
+- [Early Payment Access](https://unit.co/docs/received-payment-advance.md): How Early Payment Access lets you advance future-dated incoming ACH credits to your customers using a dedicated reserve account, including the ReceivedPayment lifecycle and APIs to call.
+
+### reprocess-received-ach
+
+How to reprocess received ACH debits that are MarkedForReturn for InsufficientFunds — enabling just-in-time funding from another customer account before the return is sent.
+
+- [Reprocess Received ACH Debits](https://unit.co/docs/reprocess-received-ach.md): How to reprocess received ACH debits that are MarkedForReturn for InsufficientFunds — enabling just-in-time funding from another customer account before the return is sent.
+
+### reserve-account
+
+Why Unit requires you to maintain a Reserve Account to cover disputes and negative balances, including minimum balance expectations and how the account integrates with the Dashboard.
+
+- [Reserve Account](https://unit.co/docs/reserve-account.md): Why Unit requires you to maintain a Reserve Account to cover disputes and negative balances, including minimum balance expectations and how the account integrates with the Dashboard.
+
+### rewards
+
+Compliance and operational guidance for running rewards programs (cashback, referrals, loyalty, points) at Unit — required disclosures, circuit-breaker thresholds, and reserve-funding expectations.
+
+- [Rewards Guide](https://unit.co/docs/rewards.md): Compliance and operational guidance for running rewards programs (cashback, referrals, loyalty, points) at Unit — required disclosures, circuit-breaker thresholds, and reserve-funding expectations.
+
+### roles-and-responsibilities
+
+How Unit's Roles and Responsibilities feature lets you take ownership of operational decisions — such as application reviews and payment decisioning — that would otherwise be handled by your bank or by Unit.
+
+- [Roles and Responsibilities](https://unit.co/docs/roles-and-responsibilities.md): How Unit's Roles and Responsibilities feature lets you take ownership of operational decisions — such as application reviews and payment decisioning — that would otherwise be handled by your bank or by Unit.
+
+### scim
+
+How to use Unit's SCIM API to sync user provisioning, deprovisioning, and updates from your identity provider into the Unit Dashboard.
+
+- [SCIM](https://unit.co/docs/scim.md): How to use Unit's SCIM API to sync user provisioning, deprovisioning, and updates from your identity provider into the Unit Dashboard.
+
+### selfie-verification
+
+How to integrate Selfie Identity Verification (powered by Vouched) into the application flow — comparing a live selfie to a photo ID for real-time identity confirmation.
+
+- [Selfie Verification](https://unit.co/docs/selfie-verification.md): How to integrate Selfie Identity Verification (powered by Vouched) into the application flow — comparing a live selfie to a photo ID for real-time identity confirmation.
+
+### sso
+
+How to enable SAML 2.0 SSO into the Unit Dashboard with Okta, Google Workspace, Microsoft AD, and other IdPs, with Unit acting as the Service Provider.
+
+- [Overview](https://unit.co/docs/sso.md): How to enable SAML 2.0 SSO into the Unit Dashboard with Okta, Google Workspace, Microsoft AD, and other IdPs, with Unit acting as the Service Provider.
+
+### stop-payments
+
+How to use Stop Payments to block incoming check payments and received ACH debits before they post — common use cases and the customer flow.
+
+- [Stop Payments](https://unit.co/docs/stop-payments.md): How to use Stop Payments to block incoming check payments and received ACH debits before they post — common use cases and the customer flow.
+
+### system-diagram-guide
+
+- [Introduction](https://unit.co/docs/system-diagram-guide/system-diagram-guide.md): What to include in a system diagram describing the security, infrastructure, data flows, and storage of your solution — particularly the handling of PII and other sensitive information.
+
+### tokens
+
+How Unit's API tokens work — Org API Tokens for server-side access and Customer Tokens for end-customer actions, including 2FA flows and recommended scope strategies.
+
+- [API Tokens](https://unit.co/docs/tokens.md): How Unit's API tokens work — Org API Tokens for server-side access and Customer Tokens for end-customer actions, including 2FA flows and recommended scope strategies.
+
+### transaction-enrichment
+
+How Transaction Enrichment cleans and structures card transaction data — better merchant names, spend categories, logos, locations, and third-party facilitator info.
+
+- [Transaction Enrichment](https://unit.co/docs/transaction-enrichment.md): How Transaction Enrichment cleans and structures card transaction data — better merchant names, spend categories, logos, locations, and third-party facilitator info.
+
+### wallets
+
+How Wallet (FBO) accounts work at Unit — bank-held custodial accounts that track funds on behalf of clients and end customers via sub-ledger wallet entries, ideal for limited-balance programs.
+
+- [Introduction](https://unit.co/docs/wallets.md): How Wallet (FBO) accounts work at Unit — bank-held custodial accounts that track funds on behalf of clients and end customers via sub-ledger wallet entries, ideal for limited-balance programs.
+
+### white-label-uis
+
+Overview of Unit's White-Label UI Components — pre-built banking and payments interfaces shipped for Web, iOS, Android, and React Native that shorten time-to-market while keeping full branding control.
+
+- [White-Label UIs](https://unit.co/docs/white-label-uis.md): Overview of Unit's White-Label UI Components — pre-built banking and payments interfaces shipped for Web, iOS, Android, and React Native that shorten time-to-market while keeping full branding control.
+- [Account](https://unit.co/docs/white-label-uis/account.md): Embed the white-label Account component to let end customers view account details, switch between accounts, and download statements and bank verification letters.
+- [ACH Credit](https://unit.co/docs/white-label-uis/ach-credit.md): Embed the white-label ACH Credit component to let end customers push funds from a Unit account to an external counterparty via ACH, including counterparty creation and saving.
+- [ACH Debit](https://unit.co/docs/white-label-uis/ach-debit.md): Embed the white-label ACH Debit component to let end customers pull funds from an external bank account into a Unit account via ACH, using Plaid Link to connect counterparties.
+- [ACH Repayment](https://unit.co/docs/white-label-uis/ach-repayment.md): Embed the white-label ACH Repayment component to let end customers create Capital Partner ACH repayments toward a credit account.
+- [Activity](https://unit.co/docs/white-label-uis/activity.md): Embed the white-label Activity component to show transactional activity at the customer, account, or card level — including final transactions, pending card payments, and Transaction Enrichment.
+- [Android SDK](https://unit.co/docs/white-label-uis/android-sdk.md): Install and integrate the Unit Android SDK (un-components) for embedding white-label UI components in native Android apps — Gradle setup, initialization, and component usage.
+- [Authentication and customer token](https://unit.co/docs/white-label-uis/authentication.md): How to authenticate Unit's white-label UI components using customer tokens and scopes — choosing component-driven 2FA via upgradableScope or relying on your app's own 2FA.
+- [Book Payment](https://unit.co/docs/white-label-uis/book-payments.md): Embed the white-label Book Payment component to let end customers send free, instant transfers between two Unit-held accounts on your platform.
+- [Cards](https://unit.co/docs/white-label-uis/cards.md): Embed the white-label Card component to let end customers manage their card lifecycle — reveal details, activate, set/change PIN, freeze/unfreeze, replace, report lost/stolen, and add to mobile wallet.
+- [Check Deposits](https://unit.co/docs/white-label-uis/check-deposits.md): Embed the white-label Check Deposit component to walk end customers through the full mobile check deposit flow — set amount, capture front and back photos, review, and submit.
+- [Check Payments](https://unit.co/docs/white-label-uis/check-payments.md): Embed the white-label Check Payment component to let end customers originate outbound checks — set amount, review, and submit the payment.
+- [Create Account](https://unit.co/docs/white-label-uis/create-account.md): Embed the white-label Create Account component to let end customers create a new account.
+- [Create Card](https://unit.co/docs/white-label-uis/create-card.md): Embed the white-label Create Card component to let end customers issue a new debit or charge card directly from your app.
+- [Document Collection](https://unit.co/docs/white-label-uis/document-collection.md): White-label UI component that prompts end-customers to upload required identification and verification documents during the application process, available as a Web Component.
+- [iOS SDK](https://unit.co/docs/white-label-uis/ios-sdk.md): Install and integrate the Unit iOS SDK for embedding white-label UI components in native iOS apps — Swift Package Manager setup, requirements, and component usage.
+- [Language](https://unit.co/docs/white-label-uis/language.md): How to configure custom language strings for Unit's white-label UI components — upload a JSON via the Languages API and reference its URL in each component's language attribute.
+- [Multi-Factor Authentication](https://unit.co/docs/white-label-uis/multifactor-authentication.md): Embed the white-label MFA component to manage the SMS-based 2FA flow that upgrades a customer token's scopes — used to unlock sensitive operations like ACH debit.
+- [Multiple Cards](https://unit.co/docs/white-label-uis/multiple-cards.md): Embed the white-label MultipleCards component to display a list of an end customer's cards with full lifecycle management for each.
+- [Next Repayment](https://unit.co/docs/white-label-uis/next-repayment.md): Embed the white-label NextRepayment component to show end customers the details of their next scheduled repayment for a credit account.
+- [Payee Management](https://unit.co/docs/white-label-uis/payee-management.md): Embed the white-label Payee Management component to let end customers list, add, and delete counterparties via Plaid Link, Same-day Micro-Deposits, or routing/account numbers.
+- [React Native SDK](https://unit.co/docs/white-label-uis/react-native-sdk.md): Install and integrate react-native-unit-components for embedding white-label UI components in React Native apps — npm/yarn setup and component usage.
+- [Recurring Repayment](https://unit.co/docs/white-label-uis/recurring-repayment.md): Embed the white-label Recurring Repayment component to let end customers schedule recurring repayments toward a credit account.
+- [Themes](https://unit.co/docs/white-label-uis/themes.md): How to brand Unit's white-label UI components by uploading a theme JSON via the Themes API and referencing its URL in each component's theme attribute.
+- [Web Components](https://unit.co/docs/white-label-uis/web-components.md): How Unit's framework-agnostic web components work — shadow-DOM isolation, ES module / classic bundle installation, performance and accessibility characteristics, and basic integration.
+- [White-Label App](https://unit.co/docs/white-label-uis/white-label-app.md): Drop-in white-label banking app you can embed with web components, iOS, Android, or React Native — covers integration patterns and platform-specific setup.
+- [White-Label Application Form](https://unit.co/docs/white-label-uis/white-label-application-form.md): Embed Unit's customizable white-label onboarding flow for individuals, sole-props, and businesses — including support for Credit Applications used in lending products like Charge Cards.
+- [Changelog](https://unit.co/docs/white-label-uis/white-label-changelog.md): Versioned changelog for Unit's white-label web components, application form, and SDKs — major and minor release notes covering new features, behavior changes, and deprecations.
+- [White Label Outreach](https://unit.co/docs/white-label-uis/white-label-outreach.md): How to set up white-label outreach for fraud, tax, and other end-customer communications — configure email domain, web domain for landing pages, and an optional white-label theme.
+- [Wire Payment](https://unit.co/docs/white-label-uis/wire-payment.md): Embed the white-label Wire Payment component to let end customers send domestic Fedwire payments from a Unit account.
+
+### wires
+
+Concept guide to wire payments at Unit — when to use them (high-value, time-sensitive, or international transfers), how they differ from ACH, and the wire payment lifecycle.
+
+- [Wires Overview](https://unit.co/docs/wires.md): Concept guide to wire payments at Unit — when to use them (high-value, time-sensitive, or international transfers), how they differ from ACH, and the wire payment lifecycle.

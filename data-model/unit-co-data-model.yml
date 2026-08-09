@@ -1,0 +1,65 @@
+generated: '2026-07-23'
+method: derived
+source: openapi/ paths + https://www.unit.co/docs/api/resources (JSON:API relationships)
+description: >-
+  Entity-relationship graph for Unit's JSON:API resources, derived from the OpenAPI
+  path structure and the documented JSON:API relationships (customer, account, org).
+  All resources carry JSON:API type + id and reference each other through the
+  top-level relationships object.
+entities:
+  - name: Application
+    id_prefix: null
+    kind: [individualApplication, businessApplication, soleProprietorApplication]
+    relationships:
+      - {to: Customer, cardinality: has_one, via: customer, note: Approved application produces a customer.}
+      - {to: ApplicationDocument, cardinality: has_many, via: documents}
+      - {to: BeneficialOwner, cardinality: has_many, via: beneficialOwners}
+  - name: Customer
+    kind: [individualCustomer, businessCustomer]
+    relationships:
+      - {to: Application, cardinality: belongs_to, via: application}
+      - {to: Org, cardinality: belongs_to, via: org}
+      - {to: Account, cardinality: has_many, via: account}
+      - {to: AuthorizedUser, cardinality: has_many, via: authorizedUsers}
+  - name: Account
+    kind: [depositAccount, creditAccount, walletAccount]
+    relationships:
+      - {to: Customer, cardinality: belongs_to, via: customer}
+      - {to: Card, cardinality: has_many, via: account}
+      - {to: Transaction, cardinality: has_many, via: account}
+  - name: Card
+    kind: [individualDebitCard, businessDebitCard, individualVirtualDebitCard, businessCreditCard]
+    relationships:
+      - {to: Account, cardinality: belongs_to, via: account}
+      - {to: Customer, cardinality: belongs_to, via: customer}
+  - name: Payment
+    kind: [bookPayment, achPayment, wirePayment, billPayment]
+    relationships:
+      - {to: Account, cardinality: belongs_to, via: account}
+      - {to: Counterparty, cardinality: has_one, via: counterparty}
+      - {to: Transaction, cardinality: has_one, via: transaction}
+  - name: Counterparty
+    relationships:
+      - {to: Customer, cardinality: belongs_to, via: customer}
+  - name: Transaction
+    relationships:
+      - {to: Account, cardinality: belongs_to, via: account}
+      - {to: Customer, cardinality: belongs_to, via: customer}
+      - {to: Payment, cardinality: has_one, via: payment}
+  - name: Authorization
+    relationships:
+      - {to: Card, cardinality: belongs_to, via: card}
+      - {to: Account, cardinality: belongs_to, via: account}
+  - name: CheckDeposit
+    relationships:
+      - {to: Account, cardinality: belongs_to, via: account}
+      - {to: Customer, cardinality: belongs_to, via: customer}
+  - name: Dispute
+    relationships:
+      - {to: Transaction, cardinality: belongs_to, via: transaction}
+  - name: Statement
+    relationships:
+      - {to: Account, cardinality: belongs_to, via: account}
+  - name: Event
+    relationships:
+      - {to: Webhook, cardinality: has_many, via: webhook, note: Events are delivered to webhook endpoints.}

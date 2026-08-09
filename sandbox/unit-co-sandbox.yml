@@ -1,0 +1,55 @@
+generated: '2026-07-23'
+method: searched
+source: https://www.unit.co/docs/api/using-the-api + https://www.unit.co/docs/api/sandbox
+docs: https://www.unit.co/docs/api/sandbox
+environments:
+  - name: Sandbox
+    dashboard_url: https://app.s.unit.sh/
+    api_url: https://api.s.unit.sh/
+  - name: Live
+    dashboard_url: https://app.unit.co/
+    api_url: https://api.unit.co/
+separation:
+  note: >-
+    Sandbox and Live are fully separate environments with separate tokens, data, and
+    rate-limit counters. Tokens minted in one environment do not work in the other.
+simulation_endpoints:
+  description: >-
+    Sandbox-only operations let you drive activity that would otherwise require external
+    networks or physical events. Available under openapi/unit-sandbox-openapi.json.
+  operations:
+    - name: createIncomingAchPayment
+      method: POST
+      path: "/sandbox/received-ach-payment"
+      purpose: Simulate an incoming (received) ACH payment.
+    - name: receivedPaymentTransaction
+      method: POST
+      path: "/sandbox/received-payments"
+      purpose: Simulate a received-payment transaction.
+    - name: createAtmDeposit
+      method: POST
+      path: "/sandbox/atm-deposits"
+      purpose: Simulate an ATM cash deposit.
+    - name: activateCard
+      method: POST
+      path: "/sandbox/cards/{cardId}/activate"
+      purpose: Activate a card without a physical terminal.
+  application_simulations:
+    docs: https://www.unit.co/docs/api/applications/simulations
+    purpose: Drive applications through approve/deny outcomes, complete 2FA, simulate registered-agent address checks, and approve/reject required documents without external review.
+reference_data:
+  - name: listAtmLocations
+    method: GET
+    path: "/atm-locations"
+    purpose: Find nearby ATMs (by coordinates, postal code, or address).
+  - name: listCashDepositStoreLocations
+    method: GET
+    path: "/store-locations"
+    purpose: Cash-deposit store locations.
+tooling:
+  postman_collection: https://unit.co/docs/UnitAPI.postman_collection.json
+  postman_starter_collection: "https://unit.co/docs/Unit API Starter Collection.postman_collection.json"
+  json_schemas: https://unit.co/docs/json-schemas.zip
+notes:
+  - No published static test card numbers; sandbox behavior is driven via the simulation endpoints and Dashboard.
+  - Idempotency keys and all conventions behave identically in sandbox and live.

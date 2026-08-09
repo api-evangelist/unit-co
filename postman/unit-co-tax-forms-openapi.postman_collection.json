@@ -1,0 +1,47 @@
+{
+  "info": {
+    "_postman_id": "b9bf4cde-02ba-4c4d-82b3-92c3dfff249b",
+    "name": "Unit Tax Forms API",
+    "description": "List and retrieve customer tax forms and download their PDF renderings.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:54.000Z",
+    "updatedAt": "2026-07-28T03:22:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b9bf4cde-02ba-4c4d-82b3-92c3dfff249b"
+  },
+  "item": [
+    {
+      "name": "tax-forms",
+      "item": [
+        {
+          "name": "{taxFormId}",
+          "item": [],
+          "id": "8a2bcf9f-c7ce-4e13-a959-b35289929169",
+          "createdAt": "2026-07-28T03:22:55.000Z",
+          "updatedAt": "2026-07-28T03:22:55.000Z",
+          "uid": "35240-8a2bcf9f-c7ce-4e13-a959-b35289929169"
+        }
+      ],
+      "id": "329b4d41-3b10-4c77-a608-a7327e467e18",
+      "createdAt": "2026-07-28T03:22:55.000Z",
+      "updatedAt": "2026-07-28T03:22:55.000Z",
+      "uid": "35240-329b4d41-3b10-4c77-a608-a7327e467e18"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.s.unit.sh"
+    }
+  ]
+}

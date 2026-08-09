@@ -1,0 +1,59 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Unit Cards API",
+    "description": "Issue and manage debit/credit cards: create, close, freeze/unfreeze, replace, report lost/stolen, per-card limits, and secure PIN status.",
+    "version": "0.4.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.s.unit.sh"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/cards": {
+      "$ref": "./schemas/card/cardPaths.json#/cards"
+    },
+    "/cards/{cardId}": {
+      "$ref": "./schemas/card/cardPaths.json#/card"
+    },
+    "/cards/{cardId}/secure-data/pin/status": {
+      "$ref": "./schemas/card/cardPaths.json#/cardPinStatus"
+    },
+    "/cards/{cardId}/report-stolen": {
+      "$ref": "./schemas/card/cardPaths.json#/reportStolenCard"
+    },
+    "/cards/{cardId}/report-lost": {
+      "$ref": "./schemas/card/cardPaths.json#/reportLostCard"
+    },
+    "/cards/{cardId}/close": {
+      "$ref": "./schemas/card/cardPaths.json#/closeCard"
+    },
+    "/cards/{cardId}/freeze": {
+      "$ref": "./schemas/card/cardPaths.json#/freezeCard"
+    },
+    "/cards/{cardId}/unfreeze": {
+      "$ref": "./schemas/card/cardPaths.json#/unfreezeCard"
+    },
+    "/cards/{cardId}/limits": {
+      "$ref": "./schemas/card/cardPaths.json#/cardLimits"
+    },
+    "/cards/{cardId}/replace": {
+      "$ref": "./schemas/card/cardPaths.json#/replaceCard"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

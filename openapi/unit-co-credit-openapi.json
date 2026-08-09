@@ -1,0 +1,47 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Unit Credit and Repayments API",
+    "description": "Credit account repayments and recurring repayments: create, retrieve, and enable/disable scheduled repayments.",
+    "version": "0.4.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.s.unit.sh"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/repayments": {
+      "$ref": "./schemas/repayment/repaymentPaths.json#/repayments"
+    },
+    "/repayments/{repaymentId}": {
+      "$ref": "./schemas/repayment/repaymentPaths.json#/repayment"
+    },
+    "/recurring-repayments": {
+      "$ref": "./schemas/repayment/recurring-repayment/recurringRepaymentPaths.json#/recurringRepayments"
+    },
+    "/recurring-repayments/{recurringRepaymentId}": {
+      "$ref": "./schemas/repayment/recurring-repayment/recurringRepaymentPaths.json#/recurringRepayment"
+    },
+    "/recurring-repayments/{recurringRepaymentId}/disable": {
+      "$ref": "./schemas/repayment/recurring-repayment/recurringRepaymentPaths.json#/disableRecurringRepayment"
+    },
+    "/recurring-repayments/{recurringRepaymentId}/enable": {
+      "$ref": "./schemas/repayment/recurring-repayment/recurringRepaymentPaths.json#/enableRecurringRepayment"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

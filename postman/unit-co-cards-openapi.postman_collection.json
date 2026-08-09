@@ -1,0 +1,65 @@
+{
+  "info": {
+    "_postman_id": "b2867fa0-ed41-4a3f-9458-53dffc20f61d",
+    "name": "Unit Cards API",
+    "description": "Issue and manage debit/credit cards: create, close, freeze/unfreeze, replace, report lost/stolen, per-card limits, and secure PIN status.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:48.000Z",
+    "updatedAt": "2026-07-28T03:22:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b2867fa0-ed41-4a3f-9458-53dffc20f61d"
+  },
+  "item": [
+    {
+      "name": "cards",
+      "item": [
+        {
+          "name": "{cardId}",
+          "item": [
+            {
+              "name": "secure-data",
+              "item": [
+                {
+                  "name": "pin",
+                  "item": [],
+                  "id": "328f2639-8620-4823-a75c-a21d69a3bd08",
+                  "createdAt": "2026-07-28T03:22:48.000Z",
+                  "updatedAt": "2026-07-28T03:22:48.000Z",
+                  "uid": "35240-328f2639-8620-4823-a75c-a21d69a3bd08"
+                }
+              ],
+              "id": "1fc5f8f0-7618-4495-8407-6cfb4af7b49b",
+              "createdAt": "2026-07-28T03:22:48.000Z",
+              "updatedAt": "2026-07-28T03:22:48.000Z",
+              "uid": "35240-1fc5f8f0-7618-4495-8407-6cfb4af7b49b"
+            }
+          ],
+          "id": "9dfaf1fb-eb0b-4912-ba86-ecd4057c9d41",
+          "createdAt": "2026-07-28T03:22:48.000Z",
+          "updatedAt": "2026-07-28T03:22:48.000Z",
+          "uid": "35240-9dfaf1fb-eb0b-4912-ba86-ecd4057c9d41"
+        }
+      ],
+      "id": "50673c4f-6e09-4e20-b65c-80b2593c1496",
+      "createdAt": "2026-07-28T03:22:48.000Z",
+      "updatedAt": "2026-07-28T03:22:48.000Z",
+      "uid": "35240-50673c4f-6e09-4e20-b65c-80b2593c1496"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.s.unit.sh"
+    }
+  ]
+}

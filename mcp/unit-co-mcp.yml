@@ -1,0 +1,49 @@
+generated: '2026-07-23'
+method: derived
+status: candidate
+source: openapi/ operations (Unit publishes no official MCP server as of this round)
+server:
+  name: unit
+  transport: http
+  description: >-
+    Candidate MCP tool surface derived one-to-one from the Unit OpenAPI operations.
+    Unit does not publish a hosted/remote MCP server; this is a proposed mapping so
+    the operations can be exposed as agent tools. Input schemas would be inherited
+    from each backing operation's parameters/requestBody in the referenced spec.
+tools:
+  - {name: list_applications, description: List onboarding applications, source_operation: "openapi/unit-applications-openapi.json#applications"}
+  - {name: get_application, description: Retrieve an application, source_operation: "openapi/unit-applications-openapi.json#application"}
+  - {name: cancel_application, description: Cancel an application, source_operation: "openapi/unit-applications-openapi.json#cancelApplication"}
+  - {name: list_customers, description: List customers, source_operation: "openapi/unit-customers-openapi.json#listCustomers"}
+  - {name: get_customer, description: Retrieve a customer, source_operation: "openapi/unit-customers-openapi.json#customer"}
+  - {name: archive_customer, description: Archive a customer, source_operation: "openapi/unit-customers-openapi.json#archiveCustomer"}
+  - {name: create_customer_token, description: Create a customer bearer token, source_operation: "openapi/unit-customers-openapi.json#createCustomerToken"}
+  - {name: list_accounts, description: List accounts, source_operation: "openapi/unit-accounts-openapi.json#accounts"}
+  - {name: get_account, description: Retrieve an account, source_operation: "openapi/unit-accounts-openapi.json#account"}
+  - {name: freeze_account, description: Freeze an account, source_operation: "openapi/unit-accounts-openapi.json#freezeAccount"}
+  - {name: unfreeze_account, description: Unfreeze an account, source_operation: "openapi/unit-accounts-openapi.json#unfreezeAccount"}
+  - {name: close_account, description: Close an account, source_operation: "openapi/unit-accounts-openapi.json#closeAccount"}
+  - {name: get_account_limits, description: Get per-account limits, source_operation: "openapi/unit-accounts-openapi.json#getAccountLimits"}
+  - {name: list_cards, description: List cards, source_operation: "openapi/unit-cards-openapi.json#cards"}
+  - {name: get_card, description: Retrieve a card, source_operation: "openapi/unit-cards-openapi.json#card"}
+  - {name: freeze_card, description: Freeze a card, source_operation: "openapi/unit-cards-openapi.json#freezeCard"}
+  - {name: report_lost_card, description: Report a card lost, source_operation: "openapi/unit-cards-openapi.json#reportLostCard"}
+  - {name: report_stolen_card, description: Report a card stolen, source_operation: "openapi/unit-cards-openapi.json#reportStolenCard"}
+  - {name: replace_card, description: Replace a card, source_operation: "openapi/unit-cards-openapi.json#replaceCard"}
+  - {name: create_payment, description: Create a Book/ACH/wire payment, source_operation: "openapi/unit-payments-openapi.json#getAndCreatePayments"}
+  - {name: get_payment, description: Retrieve/update a payment, source_operation: "openapi/unit-payments-openapi.json#getAndUpdatePayment"}
+  - {name: cancel_payment, description: Cancel a payment, source_operation: "openapi/unit-payments-openapi.json#cancelPayment"}
+  - {name: list_counterparties, description: List counterparties, source_operation: "openapi/unit-payments-openapi.json#counterparties"}
+  - {name: get_institution, description: Look up a routing number, source_operation: "openapi/unit-payments-openapi.json#getInstitution"}
+  - {name: list_transactions, description: List transactions, source_operation: "openapi/unit-transactions-openapi.json#listTransactions"}
+  - {name: list_check_deposits, description: List check deposits, source_operation: "openapi/unit-checks-openapi.json#checkDeposits"}
+  - {name: create_check_payment, description: Create a check payment, source_operation: "openapi/unit-checks-openapi.json#checkPayments"}
+  - {name: approve_authorization_request, description: Approve a real-time card authorization, source_operation: "openapi/unit-authorizations-openapi.json#approveAuthorizationRequests"}
+  - {name: decline_authorization_request, description: Decline a real-time card authorization, source_operation: "openapi/unit-authorizations-openapi.json#declineAuthorizationRequests"}
+  - {name: list_disputes, description: List disputes, source_operation: "openapi/unit-disputes-openapi.json#listDisputes"}
+  - {name: get_statements, description: List statements, source_operation: "openapi/unit-statements-openapi.json#getStatements"}
+  - {name: list_tax_forms, description: List tax forms, source_operation: "openapi/unit-tax-forms-openapi.json#taxForms"}
+  - {name: create_fee, description: Charge a fee, source_operation: "openapi/unit-fees-rewards-openapi.json#createFee"}
+  - {name: create_stop_payment, description: Create a stop payment, source_operation: "openapi/unit-stop-payments-openapi.json#stopPayments"}
+  - {name: list_webhooks, description: List/create webhook endpoints, source_operation: "openapi/unit-webhooks-openapi.json#webhooks"}
+  - {name: list_events, description: List platform events, source_operation: "openapi/unit-webhooks-openapi.json#listEvents"}

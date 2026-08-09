@@ -1,0 +1,38 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Unit Tax Forms API",
+    "description": "List and retrieve customer tax forms and download their PDF renderings.",
+    "version": "0.4.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.s.unit.sh"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/tax-forms": {
+      "$ref": "./schemas/tax-forms/taxFormsPaths.json#/taxForms"
+    },
+    "/tax-forms/{taxFormId}": {
+      "$ref": "./schemas/tax-forms/taxFormsPaths.json#/getTaxForm"
+    },
+    "/tax-forms/{taxFormId}/pdf": {
+      "$ref": "./schemas/tax-forms/taxFormsPaths.json#/getTaxFormPdf"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

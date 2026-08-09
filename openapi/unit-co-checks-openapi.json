@@ -1,0 +1,65 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Unit Checks API",
+    "description": "Check payments (print-and-mail) and mobile check deposits: create, approve, cancel, return, confirm, and manage front/back check images.",
+    "version": "0.4.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.s.unit.sh"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/check-deposits": {
+      "$ref": "./schemas/check/checkDepositPaths.json#/checkDeposits"
+    },
+    "/check-deposits/{checkDepositId}": {
+      "$ref": "./schemas/check/checkDepositPaths.json#/checkDeposit"
+    },
+    "/check-deposits/{checkDepositId}/confirm": {
+      "$ref": "./schemas/check/checkDepositPaths.json#/confirmCheckDeposit"
+    },
+    "/check-deposits/{checkDepositId}/front": {
+      "$ref": "./schemas/check/checkDepositPaths.json#/getFrontCheckDeposit"
+    },
+    "/check-deposits/{checkDepositId}/back": {
+      "$ref": "./schemas/check/checkDepositPaths.json#/getBackCheckDeposit"
+    },
+    "/check-payments": {
+      "$ref": "./schemas/check/checkPaymentPaths.json#/checkPayments"
+    },
+    "/check-payments/{checkPaymentId}": {
+      "$ref": "./schemas/check/checkPaymentPaths.json#/checkPayment"
+    },
+    "/check-payments/{checkPaymentId}/approve": {
+      "$ref": "./schemas/check/checkPaymentPaths.json#/checkPaymentApprove"
+    },
+    "/check-payments/{checkPaymentId}/cancel": {
+      "$ref": "./schemas/check/checkPaymentPaths.json#/checkPaymentCancel"
+    },
+    "/check-payments/{checkPaymentId}/return": {
+      "$ref": "./schemas/check/checkPaymentPaths.json#/checkPaymentReturn"
+    },
+    "/check-payments/{checkPaymentId}/front": {
+      "$ref": "./schemas/check/checkPaymentPaths.json#/getCheckPaymentFront"
+    },
+    "/check-payments/{checkPaymentId}/back": {
+      "$ref": "./schemas/check/checkPaymentPaths.json#/getCheckPaymentBack"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

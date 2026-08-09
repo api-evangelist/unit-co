@@ -1,0 +1,38 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Unit Stop Payments API",
+    "description": "Create, retrieve, and disable stop payments and positive-pay controls on accounts.",
+    "version": "0.4.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.s.unit.sh"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/stop-payments": {
+      "$ref": "./schemas/payment/stopPaymentPaths.json#/stopPayments"
+    },
+    "/stop-payments/{stopPaymentId}": {
+      "$ref": "./schemas/payment/stopPaymentPaths.json#/stopPayment"
+    },
+    "/stop-payments/{stopPaymentId}/disable": {
+      "$ref": "./schemas/payment/stopPaymentPaths.json#/disableStopPayment"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

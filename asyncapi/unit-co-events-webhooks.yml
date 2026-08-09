@@ -1,0 +1,133 @@
+generated: '2026-07-23'
+method: searched
+source: https://www.unit.co/docs/api/events + https://www.unit.co/docs/api/webhooks
+spec_type: Webhooks
+docs: https://www.unit.co/docs/api/webhooks
+description: >-
+  Unit emits Events (resource state changes) and delivers them to registered webhook
+  endpoints. Events are also retrievable via the REST API (listEvents GET /events,
+  event GET /events/{eventId}). Webhooks are managed through the Webhooks API
+  (openapi/unit-webhooks-openapi.json). Delivery should be handled idempotently.
+delivery:
+  transport: HTTPS POST to a registered webhook endpoint
+  format: JSON:API resource objects (type event)
+  retrieval_api: openapi/unit-webhooks-openapi.json
+management_operations:
+  - name: webhooks
+    method: POST/GET
+    path: "/webhooks"
+    purpose: Create and list webhook endpoints.
+  - name: webhook
+    method: GET/PATCH
+    path: "/webhooks/{webhookId}"
+    purpose: Get and update a webhook.
+  - name: enableWebhook
+    method: POST
+    path: "/webhooks/{webhookId}/enable"
+    purpose: Enable delivery.
+  - name: disableWebhook
+    method: POST
+    path: "/webhooks/{webhookId}/disable"
+    purpose: Disable delivery.
+  - name: listEvents
+    method: GET
+    path: "/events"
+    purpose: List emitted events.
+  - name: event
+    method: GET
+    path: "/events/{eventId}"
+    purpose: Retrieve a single event.
+event_categories:
+  application:
+    - application.created
+    - application.approved
+    - application.denied
+    - application.awaitingDocuments
+    - application.pendingReview
+    - application.canceled
+    - document.approved
+    - document.rejected
+  customer:
+    - customer.created
+    - customer.updated
+  account:
+    - account.created
+    - account.closed
+    - account.frozen
+    - account.unfrozen
+    - account.reopened
+    - account.updated
+  card:
+    - card.created
+    - card.activated
+    - cardFraudCase.created
+    - cardFraudCase.activated
+  authorization:
+    - authorization.created
+    - authorization.canceled
+    - authorization.amountChanged
+    - authorization.declined
+    - authorization.updated
+    - authorizationRequest.approved
+    - authorizationRequest.declined
+    - authorizationRequest.pending
+  payment:
+    - payment.created
+    - payment.clearing
+    - payment.sent
+    - payment.canceled
+    - payment.returned
+    - payment.rejected
+    - payment.pendingReview
+    - bulkPayments.failed
+    - recurringPayment.created
+    - recurringPayment.failed
+  received_payment:
+    - receivedPayment.created
+    - receivedPayment.pending
+    - receivedPayment.pendingReview
+    - receivedPayment.completed
+    - receivedPayment.returned
+    - declinedIncomingPayment.created
+  check:
+    - checkDeposit.created
+    - checkDeposit.pending
+    - checkDeposit.pendingReview
+    - checkDeposit.clearing
+    - checkDeposit.sent
+    - checkDeposit.rejected
+    - checkDeposit.returned
+    - checkPayment.created
+    - checkPayment.pending
+    - checkPayment.canceled
+    - checkPayment.rejected
+    - checkPayment.returned
+  credit:
+    - creditApplication.created
+    - creditApplication.approved
+    - creditApplication.denied
+    - creditApplication.pending
+    - creditApplication.canceled
+    - creditDecision.approved
+    - creditDecision.denied
+    - repayment.created
+    - recurringRepayment.created
+    - recurringRepayment.failed
+  dispute_chargeback:
+    - dispute.created
+    - chargeback.created
+  stop_payment:
+    - stopPayment.created
+    - stopPayment.updated
+  documents_statements:
+    - statement.created
+    - taxForm.created
+    - taxForm.updated
+  transaction:
+    - transaction.created
+  reward:
+    - reward.sent
+    - reward.rejected
+notes:
+  - Unit does not publish an AsyncAPI document; this is a captured webhook/event catalog.
+  - Event names above are harvested from the Events reference; consult the per-resource events pages for payload schemas.

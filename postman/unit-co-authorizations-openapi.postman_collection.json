@@ -1,0 +1,55 @@
+{
+  "info": {
+    "_postman_id": "42ce84f7-535e-494a-a169-2ae2394a9dff",
+    "name": "Unit Card Authorizations API",
+    "description": "Real-time card authorization requests (approve/decline for programmatic auth control) and completed card authorizations.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:51.000Z",
+    "updatedAt": "2026-07-28T03:22:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-42ce84f7-535e-494a-a169-2ae2394a9dff"
+  },
+  "item": [
+    {
+      "name": "authorizations",
+      "item": [],
+      "id": "16522a22-d5f7-4450-823b-e147d3a4ba3f",
+      "createdAt": "2026-07-28T03:22:51.000Z",
+      "updatedAt": "2026-07-28T03:22:51.000Z",
+      "uid": "35240-16522a22-d5f7-4450-823b-e147d3a4ba3f"
+    },
+    {
+      "name": "authorization-requests",
+      "item": [
+        {
+          "name": "{authorizationId}",
+          "item": [],
+          "id": "29b6c59f-73f9-444e-8878-b9103229ce63",
+          "createdAt": "2026-07-28T03:22:51.000Z",
+          "updatedAt": "2026-07-28T03:22:51.000Z",
+          "uid": "35240-29b6c59f-73f9-444e-8878-b9103229ce63"
+        }
+      ],
+      "id": "16af8330-1c07-4acd-86ee-d4a61f347067",
+      "createdAt": "2026-07-28T03:22:51.000Z",
+      "updatedAt": "2026-07-28T03:22:51.000Z",
+      "uid": "35240-16af8330-1c07-4acd-86ee-d4a61f347067"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.s.unit.sh"
+    }
+  ]
+}

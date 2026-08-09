@@ -1,0 +1,74 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Unit Accounts API",
+    "description": "Deposit, credit, wallet (FBO) and DACA accounts: open, close, freeze/unfreeze, limits, deposit products, customer relationships, and repayment information.",
+    "version": "0.4.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.s.unit.sh"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/accounts": {
+      "$ref": "./schemas/account/accountPaths.json#/accounts"
+    },
+    "/accounts/{accountId}": {
+      "$ref": "./schemas/account/accountPaths.json#/account"
+    },
+    "/accounts/{accountId}/limits": {
+      "$ref": "./schemas/account/accountPaths.json#/getAccountLimits"
+    },
+    "/accounts/{accountId}/unfreeze": {
+      "$ref": "./schemas/account/accountPaths.json#/unfreezeAccount"
+    },
+    "/accounts/{accountId}/freeze": {
+      "$ref": "./schemas/account/accountPaths.json#/freezeAccount"
+    },
+    "/accounts/{accountId}/close": {
+      "$ref": "./schemas/account/accountPaths.json#/closeAccount"
+    },
+    "/accounts/{accountId}/reopen": {
+      "$ref": "./schemas/account/accountPaths.json#/reopenAccount"
+    },
+    "/accounts/{accountId}/enter-daca": {
+      "$ref": "./schemas/account/accountPaths.json#/enterDaca"
+    },
+    "/accounts/{accountId}/activate-daca": {
+      "$ref": "./schemas/account/accountPaths.json#/activateDaca"
+    },
+    "/accounts/{accountId}/deactivate-daca": {
+      "$ref": "./schemas/account/accountPaths.json#/deactivateDaca"
+    },
+    "/account-end-of-day": {
+      "$ref": "./schemas/account/accountPaths.json#/getAccountBalanceHistory"
+    },
+    "/accounts/{accountId}/repayment-information": {
+      "$ref": "./schemas/account/accountPaths.json#/repaymentInfo"
+    },
+    "/accounts/{accountId}/deposit-products": {
+      "$ref": "./schemas/account/accountPaths.json#/depositProducts"
+    },
+    "/accounts/{accountId}/relationships/customers": {
+      "$ref": "./schemas/account/accountPaths.json#/customers"
+    },
+    "/accounts/{accountId}/transactions/{transactionId}": {
+      "$ref": "./schemas/transaction/transactionPaths.json#/transaction"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

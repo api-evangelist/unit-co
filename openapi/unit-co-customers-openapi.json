@@ -1,0 +1,53 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Unit Customers API",
+    "description": "Manage created Customers (individual and business), authorized/API users, customer archival, and customer-scoped bearer tokens.",
+    "version": "0.4.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.s.unit.sh"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/customers/{customerId}": {
+      "$ref": "./schemas/customer/customerPaths.json#/customer"
+    },
+    "/customers": {
+      "$ref": "./schemas/customer/customerPaths.json#/listCustomers"
+    },
+    "/customers/{customerId}/archive": {
+      "$ref": "./schemas/customer/customerPaths.json#/archiveCustomer"
+    },
+    "/customers/{customerId}/authorized-users": {
+      "$ref": "./schemas/customer/customerPaths.json#/authorizedUsers"
+    },
+    "/users/{userId}/api-tokens": {
+      "$ref": "./schemas/token/tokenPaths.json#/apiTokens"
+    },
+    "/users/{userId}/api-tokens/{tokenId}": {
+      "$ref": "./schemas/token/tokenPaths.json#/deleteToken"
+    },
+    "/customers/{customerId}/token": {
+      "$ref": "./schemas/token/tokenPaths.json#/createCustomerToken"
+    },
+    "/customers/{customerId}/token/verification": {
+      "$ref": "./schemas/token/tokenPaths.json#/createCustomerTokenVerification"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "info": {
+    "_postman_id": "d7620e1e-3aa4-4d4f-b317-58de8f77efde",
+    "name": "Unit Accounts API",
+    "description": "Deposit, credit, wallet (FBO) and DACA accounts: open, close, freeze/unfreeze, limits, deposit products, customer relationships, and repayment information.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:22:47.000Z",
+    "updatedAt": "2026-07-28T03:22:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d7620e1e-3aa4-4d4f-b317-58de8f77efde"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountId}",
+          "item": [
+            {
+              "name": "relationships",
+              "item": [],
+              "id": "7c3439c2-3e18-4f97-a5c3-f32e51e8ea5c",
+              "createdAt": "2026-07-28T03:22:48.000Z",
+              "updatedAt": "2026-07-28T03:22:48.000Z",
+              "uid": "35240-7c3439c2-3e18-4f97-a5c3-f32e51e8ea5c"
+            },
+            {
+              "name": "transactions",
+              "item": [],
+              "id": "97166200-0972-4f49-8cca-053e3874b9e5",
+              "createdAt": "2026-07-28T03:22:48.000Z",
+              "updatedAt": "2026-07-28T03:22:48.000Z",
+              "uid": "35240-97166200-0972-4f49-8cca-053e3874b9e5"
+            }
+          ],
+          "id": "080dd5c8-c473-4e6d-8c24-f66b7f557fe6",
+          "createdAt": "2026-07-28T03:22:48.000Z",
+          "updatedAt": "2026-07-28T03:22:48.000Z",
+          "uid": "35240-080dd5c8-c473-4e6d-8c24-f66b7f557fe6"
+        }
+      ],
+      "id": "1720a209-b6f7-4793-b925-a86a55293d0a",
+      "createdAt": "2026-07-28T03:22:48.000Z",
+      "updatedAt": "2026-07-28T03:22:48.000Z",
+      "uid": "35240-1720a209-b6f7-4793-b925-a86a55293d0a"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.s.unit.sh"
+    }
+  ]
+}

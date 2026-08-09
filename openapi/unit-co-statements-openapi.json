@@ -1,0 +1,41 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Unit Statements API",
+    "description": "Retrieve monthly account statements as HTML or PDF, including bank-branded PDF statements.",
+    "version": "0.4.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.s.unit.sh"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/statements": {
+      "$ref": "./schemas/statement/statementPaths.json#/getStatements"
+    },
+    "/statements/{statementId}/html": {
+      "$ref": "./schemas/statement/statementPaths.json#/getStatementHtml"
+    },
+    "/statements/{statementId}/pdf": {
+      "$ref": "./schemas/statement/statementPaths.json#/getStatementPdf"
+    },
+    "/statements/{accountId}/bank/pdf": {
+      "$ref": "./schemas/statement/statementPaths.json#/getStatementBankPdf"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
