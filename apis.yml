@@ -11,6 +11,18 @@ description: Unit is a Banking-as-a-Service (BaaS) platform that lets companies 
   Unit publishes an official OpenAPI 3.0.2 specification (github.com/unit-finance/openapi-unit-sdk) plus
   generated Node.js, Python, Ruby, and Java SDKs. Sandbox runs at api.s.unit.sh; production access is
   provisioned per signed BaaS agreement with Unit's partner banks.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-11'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
