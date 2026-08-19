@@ -1,0 +1,29 @@
+{
+  "item": [],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.s.unit.sh",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9e033814-f21b-4ad5-999f-0bb6f4d0fb70",
+    "name": "Unit Sandbox and Reference API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Sandbox-only simulation endpoints (received ACH, ATM deposits, card activation) plus store/ATM location reference data.",
+      "type": "text/plain"
+    }
+  }
+}

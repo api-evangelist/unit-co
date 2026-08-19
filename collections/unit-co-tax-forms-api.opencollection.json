@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unit Accounts Tax Forms API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tax Forms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Tax Forms List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/tax-forms"
+          },
+          "docs": "Get Tax Forms List"
+        },
+        {
+          "info": {
+            "name": "Get Tax Form by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/tax-forms/:taxFormId",
+            "params": [
+              {
+                "name": "taxFormId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Tax Form by Id"
+        },
+        {
+          "info": {
+            "name": "Get Tax Form pdf by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/tax-forms/:taxFormId/pdf",
+            "params": [
+              {
+                "name": "taxFormId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Tax Form pdf by Id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

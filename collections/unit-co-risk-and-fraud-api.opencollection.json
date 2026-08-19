@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unit Accounts Risk and Fraud API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Risk and Fraud",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of stop payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/stop-payments"
+          },
+          "docs": "Get a list of stop payments"
+        },
+        {
+          "info": {
+            "name": "Create Stop Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/stop-payments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Stop Payment"
+        },
+        {
+          "info": {
+            "name": "Get details of a specific stop payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/stop-payments/:stopPaymentId",
+            "params": [
+              {
+                "name": "stopPaymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get details of a specific stop payment"
+        },
+        {
+          "info": {
+            "name": "Disable a stop payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/stop-payments/:stopPaymentId/disable",
+            "params": [
+              {
+                "name": "stopPaymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disable a stop payment"
+        },
+        {
+          "info": {
+            "name": "Get List Disputes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/disputes"
+          },
+          "docs": "Get List Disputes"
+        },
+        {
+          "info": {
+            "name": "Get Dispute by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/disputes/:disputeId",
+            "params": [
+              {
+                "name": "disputeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Dispute by Id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

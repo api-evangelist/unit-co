@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unit Accounts Events API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Events List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/events",
+            "params": [
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[since]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[until]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists Event resources going back up to 90 days."
+        },
+        {
+          "info": {
+            "name": "Get Event by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/events/:eventId",
+            "params": [
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Event by Id"
+        },
+        {
+          "info": {
+            "name": "Fire Event by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/events/:eventId",
+            "params": [
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Sandbox-only - re-fires an event's webhook delivery."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

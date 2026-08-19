@@ -1,0 +1,29 @@
+{
+  "item": [],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.s.unit.sh",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "999db0c1-cd97-4a6a-aa23-27dd569051db",
+    "name": "Unit Stop Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Create, retrieve, and disable stop payments and positive-pay controls on accounts.",
+      "type": "text/plain"
+    }
+  }
+}

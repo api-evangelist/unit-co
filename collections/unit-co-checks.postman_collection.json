@@ -1,0 +1,29 @@
+{
+  "item": [],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.s.unit.sh",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e9b35970-1ebe-4667-b320-a6e7c1cfec32",
+    "name": "Unit Checks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Check payments (print-and-mail) and mobile check deposits: create, approve, cancel, return, confirm, and manage front/back check images.",
+      "type": "text/plain"
+    }
+  }
+}

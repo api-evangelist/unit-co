@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unit Accounts Fees and Rewards API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fees and Rewards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Fee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/fees",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Fee"
+        },
+        {
+          "info": {
+            "name": "Reverse Fee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/fees/reverse",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reverse Fee"
+        },
+        {
+          "info": {
+            "name": "Get Rewards List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/rewards"
+          },
+          "docs": "Get Rewards List"
+        },
+        {
+          "info": {
+            "name": "Create Reward",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/rewards",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Reward"
+        },
+        {
+          "info": {
+            "name": "Get Reward by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/rewards/:rewardId",
+            "params": [
+              {
+                "name": "rewardId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Reward by Id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

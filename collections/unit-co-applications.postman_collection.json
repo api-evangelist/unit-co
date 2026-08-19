@@ -1,0 +1,29 @@
+{
+  "item": [],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.s.unit.sh",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9b6c46b9-85f5-4595-94e7-0ff662c82b69",
+    "name": "Unit Applications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "End-customer onboarding: create and manage individual and business Applications, application forms, document upload/verification, and beneficial owners.",
+      "type": "text/plain"
+    }
+  }
+}

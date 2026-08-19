@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unit Accounts Credit and Repayments API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Credit and Repayments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List Repayments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/repayments"
+          },
+          "docs": "Get List Repayments"
+        },
+        {
+          "info": {
+            "name": "Create a Repayment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/repayments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Repayment"
+        },
+        {
+          "info": {
+            "name": "Get Repayment by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/repayments/:repaymentId",
+            "params": [
+              {
+                "name": "repaymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Repayment by Id"
+        },
+        {
+          "info": {
+            "name": "Get List Recurring Repayments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/recurring-repayments"
+          },
+          "docs": "Get List Recurring Repayments"
+        },
+        {
+          "info": {
+            "name": "Create a Recurring Repayment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/recurring-repayments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Recurring Repayment"
+        },
+        {
+          "info": {
+            "name": "Get Recurring Repayment by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/recurring-repayments/:recurringRepaymentId",
+            "params": [
+              {
+                "name": "recurringRepaymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Recurring Repayment by Id"
+        },
+        {
+          "info": {
+            "name": "Disable Recurring Repayment by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/recurring-repayments/:recurringRepaymentId/disable",
+            "params": [
+              {
+                "name": "recurringRepaymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disable Recurring Repayment by Id"
+        },
+        {
+          "info": {
+            "name": "Enable Recurring Repayment by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/recurring-repayments/:recurringRepaymentId/enable",
+            "params": [
+              {
+                "name": "recurringRepaymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Enable Recurring Repayment by Id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

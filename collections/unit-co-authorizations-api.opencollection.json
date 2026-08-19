@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unit Accounts Authorizations API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authorizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List authorizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/authorizations",
+            "params": [
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get List authorizations"
+        },
+        {
+          "info": {
+            "name": "Get Authorization by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/authorizations/:authorizationId",
+            "params": [
+              {
+                "name": "authorizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Authorization by Id"
+        },
+        {
+          "info": {
+            "name": "Get List Authorization Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/authorization-requests"
+          },
+          "docs": "Get List Authorization Requests"
+        },
+        {
+          "info": {
+            "name": "Get Authorization Request by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/authorization-requests/:authorizationId",
+            "params": [
+              {
+                "name": "authorizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Authorization Request by Id"
+        },
+        {
+          "info": {
+            "name": "Approve Authorization Request by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/authorization-requests/:authorizationId/approve",
+            "params": [
+              {
+                "name": "authorizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Approve Authorization Request by Id"
+        },
+        {
+          "info": {
+            "name": "Decline Authorization Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/authorization-requests/:authorizationId/decline",
+            "params": [
+              {
+                "name": "authorizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Decline Authorization Request"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

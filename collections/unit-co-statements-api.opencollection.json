@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unit Accounts Statements API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Statements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List Statements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/statements"
+          },
+          "docs": "Get List Statements"
+        },
+        {
+          "info": {
+            "name": "Get HTML Statement by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/statements/:statementId/html",
+            "params": [
+              {
+                "name": "statementId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get HTML Statement by Id"
+        },
+        {
+          "info": {
+            "name": "Get PDF Statement by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/statements/:statementId/pdf",
+            "params": [
+              {
+                "name": "statementId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get PDF Statement by Id"
+        },
+        {
+          "info": {
+            "name": "Get Bank verification PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/statements/:accountId/bank/pdf",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Bank verification PDF"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

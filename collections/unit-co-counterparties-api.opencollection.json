@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unit Accounts Counterparties API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Counterparties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Counterparties List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/counterparties"
+          },
+          "docs": "Get Counterparties List"
+        },
+        {
+          "info": {
+            "name": "Create Counterparty",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/counterparties",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Counterparty"
+        },
+        {
+          "info": {
+            "name": "Get Counterparty by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/counterparties/:counterpartyId",
+            "params": [
+              {
+                "name": "counterpartyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Counterparty by Id"
+        },
+        {
+          "info": {
+            "name": "Update Counterparty",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.s.unit.sh/counterparties/:counterpartyId",
+            "params": [
+              {
+                "name": "counterpartyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Counterparty"
+        },
+        {
+          "info": {
+            "name": "Delete Counterparty by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.s.unit.sh/counterparties/:counterpartyId",
+            "params": [
+              {
+                "name": "counterpartyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Counterparty by Id"
+        },
+        {
+          "info": {
+            "name": "Get Counterparty Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/counterparties/:counterpartyId/balance",
+            "params": [
+              {
+                "name": "counterpartyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Counterparty Balance"
+        },
+        {
+          "info": {
+            "name": "Get Institution by Routing Number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/institutions/:routingNumber",
+            "params": [
+              {
+                "name": "routingNumber",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Institution by Routing Number"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

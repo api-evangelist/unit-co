@@ -1,0 +1,29 @@
+{
+  "item": [],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.s.unit.sh",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "10bcd5ed-780e-41b8-807f-b4e8ff98bd4d",
+    "name": "Unit Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Move money via Book, ACH and wire Payments plus recurring, received (incoming ACH), and cash deposit flows, with counterparties, returns and institution lookups.",
+      "type": "text/plain"
+    }
+  }
+}

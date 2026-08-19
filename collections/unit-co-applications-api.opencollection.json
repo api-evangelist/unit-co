@@ -1,0 +1,328 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unit Accounts Applications API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/applications",
+            "params": [
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[status]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists individual and business applications with filtering, sorting, and paging."
+        },
+        {
+          "info": {
+            "name": "Create Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/applications",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an individualApplication or businessApplication resource."
+        },
+        {
+          "info": {
+            "name": "Get Application by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/applications/:applicationId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Application by Id"
+        },
+        {
+          "info": {
+            "name": "Update Application",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.s.unit.sh/applications/:applicationId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Application"
+        },
+        {
+          "info": {
+            "name": "Cancel Application by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/applications/:applicationId/cancel",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel Application by Id"
+        },
+        {
+          "info": {
+            "name": "Get List of Documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/applications/:applicationId/documents",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get List of Documents"
+        },
+        {
+          "info": {
+            "name": "Create an application document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/applications/:applicationId/documents",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an application document"
+        },
+        {
+          "info": {
+            "name": "Upload an application document file (PDF, PNG, JPG)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.s.unit.sh/applications/:applicationId/documents/:documentId/multipart",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload an application document file (PDF, PNG, JPG)"
+        },
+        {
+          "info": {
+            "name": "Verify a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.s.unit.sh/applications/:applicationId/documents/:documentId/verify",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Verify a document"
+        },
+        {
+          "info": {
+            "name": "Download a Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/applications/:applicationId/documents/:documentId/download",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download a Document"
+        },
+        {
+          "info": {
+            "name": "Get Missing Fields by Application ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/applications/:applicationId/missing-fields",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Missing Fields by Application ID"
+        },
+        {
+          "info": {
+            "name": "Get List Application Forms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/application-forms"
+          },
+          "docs": "Get List Application Forms"
+        },
+        {
+          "info": {
+            "name": "Create Application Form",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/application-forms",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Application Form"
+        },
+        {
+          "info": {
+            "name": "Get ApplicationForm by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/application-forms/:applicationFormId",
+            "params": [
+              {
+                "name": "applicationFormId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get ApplicationForm by Id"
+        },
+        {
+          "info": {
+            "name": "Update a Business Beneficial Owner via API",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.s.unit.sh/beneficial-owner/:beneficialOwnerId",
+            "params": [
+              {
+                "name": "beneficialOwnerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Business Beneficial Owner via API"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,224 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unit Accounts Checks API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Checks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List Check Deposits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/check-deposits"
+          },
+          "docs": "Get List Check Deposits"
+        },
+        {
+          "info": {
+            "name": "Create Check Deposit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/check-deposits",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Check Deposit"
+        },
+        {
+          "info": {
+            "name": "Get Check Deposit by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/check-deposits/:checkDepositId",
+            "params": [
+              {
+                "name": "checkDepositId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Check Deposit by Id"
+        },
+        {
+          "info": {
+            "name": "Update Check Deposit",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.s.unit.sh/check-deposits/:checkDepositId",
+            "params": [
+              {
+                "name": "checkDepositId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Check Deposit"
+        },
+        {
+          "info": {
+            "name": "Confirm Check Deposit by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/check-deposits/:checkDepositId/confirm",
+            "params": [
+              {
+                "name": "checkDepositId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Confirm Check Deposit by Id"
+        },
+        {
+          "info": {
+            "name": "Get Front Check Deposit Image by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/check-deposits/:checkDepositId/front",
+            "params": [
+              {
+                "name": "checkDepositId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Front Check Deposit Image by Id"
+        },
+        {
+          "info": {
+            "name": "Get List Check Payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/check-payments"
+          },
+          "docs": "Get List Check Payments"
+        },
+        {
+          "info": {
+            "name": "Create Check Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/check-payments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Check Payment"
+        },
+        {
+          "info": {
+            "name": "Get Check Payment by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.s.unit.sh/check-payments/:checkPaymentId",
+            "params": [
+              {
+                "name": "checkPaymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Check Payment by Id"
+        },
+        {
+          "info": {
+            "name": "Approve Check Payment by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/check-payments/:checkPaymentId/approve",
+            "params": [
+              {
+                "name": "checkPaymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Approve Check Payment by Id"
+        },
+        {
+          "info": {
+            "name": "Cancel Check Payment by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/check-payments/:checkPaymentId/cancel",
+            "params": [
+              {
+                "name": "checkPaymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel Check Payment by Id"
+        },
+        {
+          "info": {
+            "name": "Return Check Payment by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.s.unit.sh/check-payments/:checkPaymentId/return",
+            "params": [
+              {
+                "name": "checkPaymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Return Check Payment by Id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
