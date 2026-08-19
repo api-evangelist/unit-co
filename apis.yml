@@ -48,7 +48,7 @@ tags:
 - JSON:API
 created: '2026-07-02'
 modified: '2026-08-08'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: unit-co:unit-co-accounts-api
   name: Unit Accounts API
