@@ -38,6 +38,15 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/unit-co.png
 tags:
+- Fintech
+- Backend-as-a-Service
+- Banking
+- Payments
+- Card Issuing
+- ACH
+- Lending
+- JSON:API
+tags_raw:
 - FinTech
 - BaaS
 - Banking
@@ -56,6 +65,8 @@ apis:
   humanURL: https://www.unit.co/docs/api/applications/
   baseURL: https://api.s.unit.sh
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -196,6 +207,8 @@ apis:
   humanURL: https://www.unit.co/docs/api/applications/
   baseURL: https://api.s.unit.sh
   tags:
+  - Application
+  tags_raw:
   - Applications
   properties:
   - type: OpenAPI
@@ -686,6 +699,8 @@ apis:
   humanURL: https://www.unit.co/docs/api/applications/
   baseURL: https://api.s.unit.sh
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -1106,6 +1121,8 @@ apis:
   humanURL: https://www.unit.co/docs/api/applications/
   baseURL: https://api.s.unit.sh
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
@@ -1176,6 +1193,8 @@ apis:
   humanURL: https://www.unit.co/docs/api/applications/
   baseURL: https://api.s.unit.sh
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
