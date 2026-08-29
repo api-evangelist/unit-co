@@ -1260,6 +1260,9 @@ apis:
   - type: APIReference
     url: https://www.unit.co/docs/api/org-api-tokens/
 common:
+- type: CapabilityMap
+  url: capabilities/unit-co-capability-edges.yml
+  name: Unit Business Capability Map
 - type: AgenticAccess
   url: agentic-access/unit-co-agentic-access.yml
 - type: TrustCenter

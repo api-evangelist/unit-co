@@ -1,0 +1,97 @@
+slug: unit-co
+provider: Unit
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 8
+edges:
+- tag: Authorizations
+  spec_file: unit-co-authorizations-api-openapi.yml
+  capability_id: BC-1340.70
+  capability_id_l1: BC-1340
+  capability_name: Card Transaction Processing Management
+  confidence: 0.85
+  evidence: POST /authorization-requests/{authorizationId}/approve  approveAuthorizationRequest  Approve
+    Authorization Request by Id ... declineAuthorizationRequest
+  reason: Operations retrieve card authorizations and approve/decline real-time authorization requests
+    — card transaction authorisation processing.
+- tag: Cards
+  spec_file: unit-co-cards-api-openapi.yml
+  capability_id: BC-1340.60
+  capability_id_l1: BC-1340
+  capability_name: Card Issuance Management
+  confidence: 0.85
+  evidence: POST /cards createCard Create a Card; POST /cards/{cardId}/report-lost; POST /cards/{cardId}/replace
+    Replace a Card; getCardPinStatus
+  reason: Debit/credit card issuance and lifecycle (create, freeze, replace, report lost/stolen, PIN status)
+    is card issuance management.
+- tag: Applications
+  spec_file: unit-co-applications-api-openapi.yml
+  capability_id: BC-1300.10
+  capability_id_l1: BC-1300
+  capability_name: Customer Onboarding Management
+  confidence: 0.82
+  evidence: POST /applications createApplication; PUT /applications/{applicationId}/documents/{documentId}/verify
+    Verify a document; GET /applications/{applicationId}/missing-fields
+  reason: Vendor states onboarding is handled via Applications; operations create applications, collect
+    and verify identity documents and report missing fields — customer onboarding / account opening with
+    identity verification. KYC due diligence is adjacent but the surface is application intake and activation.
+- tag: Checks
+  spec_file: unit-co-checks-api-openapi.yml
+  capability_id: BC-1340
+  capability_id_l1: BC-1340
+  capability_name: Payments & Card Management
+  confidence: 0.8
+  evidence: POST /check-deposits createCheckDeposit Create Check Deposit; POST /check-payments createCheckPayment
+    Create Check Payment; approveCheckPayment
+  reason: Check deposit capture and check payment issuance/approval/return are payment instrument processing;
+    spans both initiation and processing so L1 only.
+- tag: Credit and Repayments
+  spec_file: unit-co-credit-and-repayments-api-openapi.yml
+  capability_id: BC-1320.30
+  capability_id_l1: BC-1320
+  capability_name: Loan Servicing Management
+  confidence: 0.8
+  evidence: POST /repayments createRepayment Create a Repayment; POST /recurring-repayments/{recurringRepaymentId}/enable
+  reason: Managing repayments and recurring repayments on credit accounts is loan servicing (payments
+    and schedule setup).
+- tag: Customers
+  spec_file: unit-co-customers-api-openapi.yml
+  capability_id: BC-1300.40
+  capability_id_l1: BC-1300
+  capability_name: Customer Information Management
+  confidence: 0.75
+  evidence: PATCH /customers/{customerId} Update Customer; POST /customers/{customerId}/archive; addAuthorizedUsers
+    Add Authorized Users by Id
+  reason: Maintenance of banking customer records and authorised users on a BaaS platform is banking customer
+    information management; could also be read as servicing.
+- tag: Payments
+  spec_file: unit-co-payments-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.75
+  evidence: POST /payments createPayment Create a Payment; POST /payments/{paymentId}/cancel; POST /returns/{transactionId}
+    Return Received ACH Transaction
+  reason: Payment instruction creation, cancellation, recurring payments and received-payment handling
+    — payment initiation and processing; initiation is the dominant surface.
+- tag: Accounts
+  spec_file: unit-co-accounts-api-openapi.yml
+  capability_id: BC-1330.40
+  capability_id_l1: BC-1330
+  capability_name: Account Lifecycle Operations Management
+  confidence: 0.7
+  evidence: POST /accounts/{accountId}/freeze freezeAccount; POST /accounts/{accountId}/close closeAccount;
+    POST /accounts/{accountId}/reopen reopenAccount; POST /accounts/{accountId}/enter-daca Enter Deposit
+    Account Control Agreement
+  reason: Create, freeze, close, reopen and limit management of deposit accounts (including Deposit Account
+    Control Agreements) — deposit account lifecycle operations. Some ambiguity between deposit account
+    management and lifecycle operations, hence 0.7.
