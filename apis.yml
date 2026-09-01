@@ -39,7 +39,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/unit-co.png
 tags:
 - Fintech
-- BaaS
+- Backend-as-a-Service
 - Banking
 - Payments
 - Card Issuing
