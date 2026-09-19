@@ -282,6 +282,8 @@ apis:
   humanURL: https://www.unit.co/docs/api/applications/
   baseURL: https://api.s.unit.sh
   tags:
+  - Authorization
+  tags_raw:
   - Authorizations
   properties:
   - type: OpenAPI
