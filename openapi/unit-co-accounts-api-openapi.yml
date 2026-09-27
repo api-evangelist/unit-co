@@ -220,6 +220,13 @@ paths:
           $ref: '#/components/responses/SingleResource'
 components:
   parameters:
+    PageLimit:
+      name: page[limit]
+      in: query
+      schema:
+        type: integer
+        default: 100
+        maximum: 1000
     AccountId:
       name: accountId
       in: path
@@ -232,13 +239,6 @@ components:
       schema:
         type: integer
         default: 0
-    PageLimit:
-      name: page[limit]
-      in: query
-      schema:
-        type: integer
-        default: 100
-        maximum: 1000
   schemas:
     CreateAccountRequest:
       type: object
@@ -326,18 +326,18 @@ components:
                 offset:
                   type: integer
   responses:
-    ResourceList:
-      description: A page of JSON:API resources.
-      content:
-        application/vnd.api+json:
-          schema:
-            $ref: '#/components/schemas/JsonApiListResponse'
     SingleResource:
       description: A single JSON:API resource.
       content:
         application/vnd.api+json:
           schema:
             $ref: '#/components/schemas/JsonApiSingleResponse'
+    ResourceList:
+      description: A page of JSON:API resources.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/JsonApiListResponse'
   securitySchemes:
     bearerAuth:
       type: http

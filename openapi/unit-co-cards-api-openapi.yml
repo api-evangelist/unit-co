@@ -179,28 +179,6 @@ paths:
           $ref: '#/components/responses/ResourceList'
 components:
   schemas:
-    Address:
-      type: object
-      properties:
-        street:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        postalCode:
-          type: string
-        country:
-          type: string
-    JsonApiSingleResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/JsonApiResource'
-        included:
-          type: array
-          items:
-            $ref: '#/components/schemas/JsonApiResource'
     CreateCardRequest:
       type: object
       required:
@@ -242,6 +220,28 @@ components:
                           - creditAccount
                         id:
                           type: string
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+    JsonApiSingleResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiResource'
+        included:
+          type: array
+          items:
+            $ref: '#/components/schemas/JsonApiResource'
     JsonApiResource:
       type: object
       properties:
@@ -275,26 +275,7 @@ components:
                   type: integer
                 offset:
                   type: integer
-  responses:
-    ResourceList:
-      description: A page of JSON:API resources.
-      content:
-        application/vnd.api+json:
-          schema:
-            $ref: '#/components/schemas/JsonApiListResponse'
-    SingleResource:
-      description: A single JSON:API resource.
-      content:
-        application/vnd.api+json:
-          schema:
-            $ref: '#/components/schemas/JsonApiSingleResponse'
   parameters:
-    PageOffset:
-      name: page[offset]
-      in: query
-      schema:
-        type: integer
-        default: 0
     CardId:
       name: cardId
       in: path
@@ -308,6 +289,25 @@ components:
         type: integer
         default: 100
         maximum: 1000
+    PageOffset:
+      name: page[offset]
+      in: query
+      schema:
+        type: integer
+        default: 0
+  responses:
+    SingleResource:
+      description: A single JSON:API resource.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/JsonApiSingleResponse'
+    ResourceList:
+      description: A page of JSON:API resources.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/JsonApiListResponse'
   securitySchemes:
     bearerAuth:
       type: http

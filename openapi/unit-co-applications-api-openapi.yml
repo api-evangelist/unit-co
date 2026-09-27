@@ -249,7 +249,42 @@ paths:
         '200':
           $ref: '#/components/responses/SingleResource'
 components:
+  parameters:
+    PageLimit:
+      name: page[limit]
+      in: query
+      schema:
+        type: integer
+        default: 100
+        maximum: 1000
+    PageOffset:
+      name: page[offset]
+      in: query
+      schema:
+        type: integer
+        default: 0
+    ApplicationId:
+      name: applicationId
+      in: path
+      required: true
+      schema:
+        type: string
+    DocumentId:
+      name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
+    JsonApiSingleResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiResource'
+        included:
+          type: array
+          items:
+            $ref: '#/components/schemas/JsonApiResource'
     DefaultError:
       type: object
       properties:
@@ -264,15 +299,6 @@ components:
                 type: string
               detail:
                 type: string
-    JsonApiSingleResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/JsonApiResource'
-        included:
-          type: array
-          items:
-            $ref: '#/components/schemas/JsonApiResource'
     JsonApiResource:
       type: object
       properties:
@@ -287,25 +313,6 @@ components:
         relationships:
           type: object
           additionalProperties: true
-    CreateApplicationRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - type
-          - attributes
-          properties:
-            type:
-              type: string
-              enum:
-              - individualApplication
-              - businessApplication
-            attributes:
-              type: object
-              additionalProperties: true
     JsonApiListResponse:
       type: object
       properties:
@@ -325,7 +332,38 @@ components:
                   type: integer
                 offset:
                   type: integer
+    CreateApplicationRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - type
+          - attributes
+          properties:
+            type:
+              type: string
+              enum:
+              - individualApplication
+              - businessApplication
+            attributes:
+              type: object
+              additionalProperties: true
   responses:
+    SingleResource:
+      description: A single JSON:API resource.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/JsonApiSingleResponse'
+    DefaultError:
+      description: Error response.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/DefaultError'
     NotFound:
       description: The requested resource was not found.
       content:
@@ -338,44 +376,6 @@ components:
         application/vnd.api+json:
           schema:
             $ref: '#/components/schemas/JsonApiListResponse'
-    DefaultError:
-      description: Error response.
-      content:
-        application/vnd.api+json:
-          schema:
-            $ref: '#/components/schemas/DefaultError'
-    SingleResource:
-      description: A single JSON:API resource.
-      content:
-        application/vnd.api+json:
-          schema:
-            $ref: '#/components/schemas/JsonApiSingleResponse'
-  parameters:
-    ApplicationId:
-      name: applicationId
-      in: path
-      required: true
-      schema:
-        type: string
-    DocumentId:
-      name: documentId
-      in: path
-      required: true
-      schema:
-        type: string
-    PageOffset:
-      name: page[offset]
-      in: query
-      schema:
-        type: integer
-        default: 0
-    PageLimit:
-      name: page[limit]
-      in: query
-      schema:
-        type: integer
-        default: 100
-        maximum: 1000
   securitySchemes:
     bearerAuth:
       type: http

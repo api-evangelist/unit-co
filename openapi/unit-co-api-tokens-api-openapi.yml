@@ -105,19 +105,6 @@ paths:
         '200':
           $ref: '#/components/responses/SingleResource'
 components:
-  responses:
-    ResourceList:
-      description: A page of JSON:API resources.
-      content:
-        application/vnd.api+json:
-          schema:
-            $ref: '#/components/schemas/JsonApiListResponse'
-    SingleResource:
-      description: A single JSON:API resource.
-      content:
-        application/vnd.api+json:
-          schema:
-            $ref: '#/components/schemas/JsonApiSingleResponse'
   schemas:
     JsonApiSingleResponse:
       type: object
@@ -168,6 +155,19 @@ components:
       required: true
       schema:
         type: string
+  responses:
+    SingleResource:
+      description: A single JSON:API resource.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/JsonApiSingleResponse'
+    ResourceList:
+      description: A page of JSON:API resources.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/JsonApiListResponse'
   securitySchemes:
     bearerAuth:
       type: http

@@ -42,22 +42,24 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/unit-co.png
 tags:
 - Fintech
-- Backend-as-a-Service
+- Banking as a Service
 - Banking
 - Payments
 - Card Issuing
 - ACH
 - Lending
 - JSON:API
+- Embedded Finance
 tags_raw:
 - FinTech
-- BaaS
+- Banking as a Service
 - Banking
 - Payments
 - Card Issuing
 - ACH
 - Lending
 - JSON:API
+- Embedded Finance
 created: '2026-07-02'
 modified: '2026-08-08'
 specificationVersion: '0.23'
