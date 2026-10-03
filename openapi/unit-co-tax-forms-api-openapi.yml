@@ -72,20 +72,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/JsonApiResource'
-    JsonApiResource:
-      type: object
-      properties:
-        type:
-          type: string
-          description: The JSON:API resource type, e.g. individualApplication, depositAccount, individualDebitCard, bookPayment, achPayment.
-        id:
-          type: string
-        attributes:
-          type: object
-          additionalProperties: true
-        relationships:
-          type: object
-          additionalProperties: true
     JsonApiListResponse:
       type: object
       properties:
@@ -105,19 +91,33 @@ components:
                   type: integer
                 offset:
                   type: integer
+    JsonApiResource:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The JSON:API resource type, e.g. individualApplication, depositAccount, individualDebitCard, bookPayment, achPayment.
+        id:
+          type: string
+        attributes:
+          type: object
+          additionalProperties: true
+        relationships:
+          type: object
+          additionalProperties: true
   responses:
-    SingleResource:
-      description: A single JSON:API resource.
-      content:
-        application/vnd.api+json:
-          schema:
-            $ref: '#/components/schemas/JsonApiSingleResponse'
     ResourceList:
       description: A page of JSON:API resources.
       content:
         application/vnd.api+json:
           schema:
             $ref: '#/components/schemas/JsonApiListResponse'
+    SingleResource:
+      description: A single JSON:API resource.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/JsonApiSingleResponse'
   securitySchemes:
     bearerAuth:
       type: http
