@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/unit-finance/openapi-unit-sdk/HEAD/openapi.json",
+ "requested_url": "https://raw.githubusercontent.com/unit-finance/openapi-unit-sdk/HEAD/openapi.json",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 16561,
+ "sha256": "87437c6e70d85daf3b293357c37f4c8b7806fa73c7760678501aca53d4d71fb7",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

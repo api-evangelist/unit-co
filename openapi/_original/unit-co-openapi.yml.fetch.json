@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/unit-finance/unit-openapi-java-sdk/HEAD/api/openapi.yaml",
+ "requested_url": "https://raw.githubusercontent.com/unit-finance/unit-openapi-java-sdk/HEAD/api/openapi.yaml",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 541776,
+ "sha256": "2a070bf486740daa974cc66f7b6a83f21c4850ab273b1725fca6aacddbb1877f",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.932), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
