@@ -1,8 +1,8 @@
 ---
-name: Issue and manage a debit card
+name: issue-and-manage-debit-card
 description: Issue a debit card for a customer account, set per-card limits, and handle freeze / report-lost / replace lifecycle actions on Unit.
 api: openapi/unit-cards-openapi.json
-operations: [cards, card, cardLimits, freezeCard, unfreezeCard, reportLostCard, reportStolenCard, replaceCard, closeCard]
+operations: [getCardsList, getCard, getCardLimits, freezeCard, unfreezeCard, reportLostCard, reportStolenCard, replaceCard, closeCard]
 ---
 
 # Issue and manage a debit card

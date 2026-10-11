@@ -1,0 +1,52 @@
+generated: '2026-10-12'
+method: searched
+source: https://unit.co/docs/api/cards-authorizations/overview.md
+docs: https://www.unit.co/docs/api/cards-authorizations/overview/
+description: Most common card authorization decline reasons published by Unit (the list is stated as "the most common", not exhaustive). Unit publishes no per-code recommended action, so action is null.
+envelope_field: reason
+decline_codes:
+- code: CardVerificationValueFailed
+  meaning: Verification of CVV or CVV2 has failed.
+  action: null
+- code: IncorrectPIN
+  meaning: PIN verification failed.
+  action: null
+- code: ExceedsAmountLimit
+  meaning: The amount limit for the card or account has been exceeded.
+  action: null
+- code: InsufficientFunds
+  meaning: Transaction Amount exceeds the cardholder's available balance or available credit limit.
+  action: null
+- code: RequestedFunctionNotSupported
+  meaning: A permanent restriction is placed, either account specific or broad level.
+  action: null
+- code: AllowablePINTriesExceeded
+  meaning: Defined number of PIN entry tries has been exceeded.
+  action: null
+- code: SuspectedFraud
+  meaning: The transaction does not pass risk monitoring detection systems.
+  action: null
+- code: ClosedAccount
+  meaning: The account is closed.
+  action: null
+- code: DoNotHonor
+  meaning: Generic Response Code.
+  action: null
+- code: CardholderBlocked
+  meaning: New card that has not been activated or has been temporarily blocked
+  action: null
+- code: CardStolen
+  meaning: The cardholder has reported the card stolen.
+  action: null
+- code: RestrictedCard
+  meaning: A transaction is attempted from a country where transactions are restricted, including OFAC or embargoed countries.
+  action: null
+- code: MerchantDenyList
+  meaning: Unit managed Merchant deny list
+  action: null
+- code: MccDenyList
+  meaning: Unit managed MCC deny list
+  action: null
+- code: CountryDenyList
+  meaning: Unit managed Country deny list
+  action: null

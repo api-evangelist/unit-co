@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/unit-co/main/json-schema/unit-co-create-application-request-schema.json",
+  "title": "CreateApplicationRequest",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/unit-co-applications-api-openapi.yml#/components/schemas/CreateApplicationRequest",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "type",
+        "attributes"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "individualApplication",
+            "businessApplication"
+          ]
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    }
+  }
+}

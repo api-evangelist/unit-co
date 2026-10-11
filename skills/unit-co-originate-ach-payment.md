@@ -1,8 +1,8 @@
 ---
-name: Originate an ACH payment
+name: originate-ach-payment
 description: Create a counterparty and originate an ACH credit or debit payment from a Unit deposit account, safely retried with an idempotency key.
 api: openapi/unit-payments-openapi.json
-operations: [counterparties, getInstitution, getAndCreatePayments, getAndUpdatePayment, cancelPayment]
+operations: [createCounterparty, getInstitution, createPayment, getPayment, cancelPayment]
 ---
 
 # Originate an ACH payment

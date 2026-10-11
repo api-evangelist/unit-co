@@ -1,0 +1,120 @@
+generated: '2026-10-12'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 9
+  own: 6
+  other_domain: 0
+  platform: 3
+  roles:
+  - api
+  - collections
+  - identity
+  - other
+  - source
+  - status
+  - support
+  - website
+hosts:
+- host: api.unit.co
+  found_by:
+  - apis[]
+  types: []
+  serves:
+  - api
+  registrable_domain: unit.co
+  role: api
+  relation: own
+- host: app.unit.co
+  found_by:
+  - pointer
+  types:
+  - SignUp
+  serves: []
+  registrable_domain: unit.co
+  role: identity
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrganization
+  serves: []
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: status.unit.co
+  found_by:
+  - pointer
+  types:
+  - StatusPage
+  serves: []
+  registrable_domain: unit.co
+  role: status
+  relation: own
+- host: support.unit.co
+  found_by:
+  - pointer
+  - vendor-detect
+  types:
+  - Support
+  serves:
+  - support
+  vendor: zendesk
+  registrable_domain: unit.co
+  role: support
+  relation: own
+- host: unit.co
+  found_by:
+  - pointer
+  types:
+  - Postman
+  serves: []
+  registrable_domain: unit.co
+  role: collections
+  relation: own
+- host: www.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform
+- host: www.postman.com
+  found_by:
+  - pointer
+  types:
+  - PostmanWorkspace
+  serves: []
+  registrable_domain: postman.com
+  role: other
+  relation: platform
+- host: www.unit.co
+  found_by:
+  - pointer
+  - apis[]
+  - vendor-detect
+  types:
+  - Newsroom
+  - Website
+  - Documentation
+  - Blog
+  - DeveloperPortal
+  - TermsOfService
+  - PrivacyPolicy
+  - Security
+  - Integrations
+  - APIReference
+  - GettingStarted
+  - Compliance
+  - Deprecation
+  serves:
+  - docs
+  - cdn
+  vendor: cloudflare
+  registrable_domain: unit.co
+  role: website
+  relation: own

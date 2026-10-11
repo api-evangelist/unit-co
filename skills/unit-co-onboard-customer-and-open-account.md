@@ -1,8 +1,8 @@
 ---
-name: Onboard a customer and open a deposit account
+name: onboard-customer-and-open-deposit-account
 description: Create an application, collect KYC/KYB documents, and open a deposit account for the approved customer on Unit.
 api: openapi/unit-applications-openapi.json
-operations: [applications, application, documents, uploadApplicationDocumentFile, listCustomers, customer, accounts, account]
+operations: [createApplication, getApplication, getApplicationDocuments, uploadApplicationDocumentFile, getCustomersList, getCustomer, createAccount, getAccount]
 ---
 
 # Onboard a customer and open a deposit account

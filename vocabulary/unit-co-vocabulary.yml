@@ -1,0 +1,150 @@
+generated: '2026-10-12'
+method: derived
+generator: derive-vocabulary.py
+source:
+- openapi/unit-co-accounts-api-openapi.yml
+- openapi/unit-co-api-tokens-api-openapi.yml
+- openapi/unit-co-applications-api-openapi.yml
+- openapi/unit-co-authorizations-api-openapi.yml
+- openapi/unit-co-cards-api-openapi.yml
+vocabulary:
+  name: Unit Domain Vocabulary
+  description: 'Terms declared by Unit''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions. Derived,
+    not authored.'
+  version: '2026-10-12'
+  terms:
+  - term: Accounts
+    definition: Deposit and credit accounts.
+    tags:
+    - Resource Group
+    source: openapi/unit-co-accounts-api-openapi.yml
+  - term: API Tokens
+    definition: Org-level and customer-level authentication tokens.
+    tags:
+    - Resource Group
+    source: openapi/unit-co-api-tokens-api-openapi.yml
+  - term: Applications
+    definition: Individual and business application onboarding (KYC/KYB).
+    tags:
+    - Resource Group
+    source: openapi/unit-co-applications-api-openapi.yml
+  - term: Authorizations
+    definition: Completed card authorizations and real-time authorization requests.
+    tags:
+    - Resource Group
+    source: openapi/unit-co-authorizations-api-openapi.yml
+  - term: Cards
+    definition: Debit and credit card issuance and management.
+    tags:
+    - Resource Group
+    source: openapi/unit-co-cards-api-openapi.yml
+  - term: Checks
+    definition: Check deposits and outbound check payments.
+    tags:
+    - Resource Group
+    source: openapi/unit-co-checks-api-openapi.yml
+  - term: Counterparties
+    definition: External bank accounts and routing-number institution lookups.
+    tags:
+    - Resource Group
+    source: openapi/unit-co-counterparties-api-openapi.yml
+  - term: Credit and Repayments
+    definition: Repayments on credit accounts and receivables.
+    tags:
+    - Resource Group
+    source: openapi/unit-co-credit-and-repayments-api-openapi.yml
+  - term: Customers
+    definition: Customer profiles created from approved applications.
+    tags:
+    - Resource Group
+    source: openapi/unit-co-customers-api-openapi.yml
+  - term: Events
+    definition: Platform activity log.
+    tags:
+    - Resource Group
+    source: openapi/unit-co-events-api-openapi.yml
+  - term: Fees and Rewards
+    definition: Ad hoc fees and cashback-style rewards.
+    tags:
+    - Resource Group
+    source: openapi/unit-co-fees-and-rewards-api-openapi.yml
+  - term: Payments
+    definition: Book, ACH, wire, recurring, and cash-deposit payments.
+    tags:
+    - Resource Group
+    source: openapi/unit-co-payments-api-openapi.yml
+  - term: Risk and Fraud
+    definition: Stop payments and card/ACH disputes.
+    tags:
+    - Resource Group
+    source: openapi/unit-co-risk-and-fraud-api-openapi.yml
+  - term: Statements
+    definition: Monthly account statements.
+    tags:
+    - Resource Group
+    source: openapi/unit-co-statements-api-openapi.yml
+  - term: Tax Forms
+    definition: Annual tax documents.
+    tags:
+    - Resource Group
+    source: openapi/unit-co-tax-forms-api-openapi.yml
+  - term: Transactions
+    definition: Posted, immutable ledger entries.
+    tags:
+    - Resource Group
+    source: openapi/unit-co-transactions-api-openapi.yml
+  - term: Webhooks
+    definition: Subscriptions that deliver events as signed HTTP callbacks.
+    tags:
+    - Resource Group
+    source: openapi/unit-co-webhooks-api-openapi.yml
+  - term: JsonApiSingleResponse
+    definition: 'Object declared by the contract with fields: data, included.'
+    tags:
+    - Object
+    source: openapi/unit-co-accounts-api-openapi.yml#/components/schemas/JsonApiSingleResponse
+  - term: JsonApiResource
+    definition: 'Object declared by the contract with fields: type, id, attributes, relationships.'
+    tags:
+    - Object
+    source: openapi/unit-co-accounts-api-openapi.yml#/components/schemas/JsonApiResource
+  - term: JsonApiListResponse
+    definition: 'Object declared by the contract with fields: data, meta.'
+    tags:
+    - Object
+    source: openapi/unit-co-accounts-api-openapi.yml#/components/schemas/JsonApiListResponse
+  - term: CreateAccountRequest
+    definition: 'Object declared by the contract with fields: data.'
+    tags:
+    - Object
+    source: openapi/unit-co-accounts-api-openapi.yml#/components/schemas/CreateAccountRequest
+  - term: DefaultError
+    definition: 'Object declared by the contract with fields: errors.'
+    tags:
+    - Object
+    source: openapi/unit-co-applications-api-openapi.yml#/components/schemas/DefaultError
+  - term: CreateApplicationRequest
+    definition: 'Object declared by the contract with fields: data.'
+    tags:
+    - Object
+    source: openapi/unit-co-applications-api-openapi.yml#/components/schemas/CreateApplicationRequest
+  - term: Address
+    definition: 'Object declared by the contract with fields: street, city, state, postalCode, country.'
+    tags:
+    - Object
+    source: openapi/unit-co-cards-api-openapi.yml#/components/schemas/Address
+  - term: CreateCardRequest
+    definition: 'Object declared by the contract with fields: data.'
+    tags:
+    - Object
+    source: openapi/unit-co-cards-api-openapi.yml#/components/schemas/CreateCardRequest
+  - term: CreatePaymentRequest
+    definition: 'Object declared by the contract with fields: data.'
+    tags:
+    - Object
+    source: openapi/unit-co-payments-api-openapi.yml#/components/schemas/CreatePaymentRequest
+  - term: CreateWebhookRequest
+    definition: 'Object declared by the contract with fields: data.'
+    tags:
+    - Object
+    source: openapi/unit-co-webhooks-api-openapi.yml#/components/schemas/CreateWebhookRequest
