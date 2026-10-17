@@ -220,15 +220,6 @@ paths:
           $ref: '#/components/responses/SingleResource'
 components:
   schemas:
-    JsonApiSingleResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/JsonApiResource'
-        included:
-          type: array
-          items:
-            $ref: '#/components/schemas/JsonApiResource'
     JsonApiResource:
       type: object
       properties:
@@ -262,6 +253,15 @@ components:
                   type: integer
                 offset:
                   type: integer
+    JsonApiSingleResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiResource'
+        included:
+          type: array
+          items:
+            $ref: '#/components/schemas/JsonApiResource'
     CreateAccountRequest:
       type: object
       required:
@@ -306,18 +306,18 @@ components:
                         id:
                           type: string
   responses:
-    SingleResource:
-      description: A single JSON:API resource.
-      content:
-        application/vnd.api+json:
-          schema:
-            $ref: '#/components/schemas/JsonApiSingleResponse'
     ResourceList:
       description: A page of JSON:API resources.
       content:
         application/vnd.api+json:
           schema:
             $ref: '#/components/schemas/JsonApiListResponse'
+    SingleResource:
+      description: A single JSON:API resource.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/JsonApiSingleResponse'
   parameters:
     PageOffset:
       name: page[offset]

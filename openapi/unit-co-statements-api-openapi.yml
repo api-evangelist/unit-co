@@ -111,13 +111,6 @@ components:
                   type: integer
                 offset:
                   type: integer
-  responses:
-    ResourceList:
-      description: A page of JSON:API resources.
-      content:
-        application/vnd.api+json:
-          schema:
-            $ref: '#/components/schemas/JsonApiListResponse'
   parameters:
     AccountId:
       name: accountId
@@ -125,6 +118,13 @@ components:
       required: true
       schema:
         type: string
+  responses:
+    ResourceList:
+      description: A page of JSON:API resources.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/JsonApiListResponse'
   securitySchemes:
     bearerAuth:
       type: http

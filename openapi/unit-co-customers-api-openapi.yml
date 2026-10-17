@@ -94,16 +94,27 @@ paths:
         '200':
           $ref: '#/components/responses/SingleResource'
 components:
+  parameters:
+    CustomerId:
+      name: customerId
+      in: path
+      required: true
+      schema:
+        type: string
+    PageOffset:
+      name: page[offset]
+      in: query
+      schema:
+        type: integer
+        default: 0
+    PageLimit:
+      name: page[limit]
+      in: query
+      schema:
+        type: integer
+        default: 100
+        maximum: 1000
   schemas:
-    JsonApiSingleResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/JsonApiResource'
-        included:
-          type: array
-          items:
-            $ref: '#/components/schemas/JsonApiResource'
     JsonApiResource:
       type: object
       properties:
@@ -137,39 +148,28 @@ components:
                   type: integer
                 offset:
                   type: integer
+    JsonApiSingleResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiResource'
+        included:
+          type: array
+          items:
+            $ref: '#/components/schemas/JsonApiResource'
   responses:
-    SingleResource:
-      description: A single JSON:API resource.
-      content:
-        application/vnd.api+json:
-          schema:
-            $ref: '#/components/schemas/JsonApiSingleResponse'
     ResourceList:
       description: A page of JSON:API resources.
       content:
         application/vnd.api+json:
           schema:
             $ref: '#/components/schemas/JsonApiListResponse'
-  parameters:
-    CustomerId:
-      name: customerId
-      in: path
-      required: true
-      schema:
-        type: string
-    PageOffset:
-      name: page[offset]
-      in: query
-      schema:
-        type: integer
-        default: 0
-    PageLimit:
-      name: page[limit]
-      in: query
-      schema:
-        type: integer
-        default: 100
-        maximum: 1000
+    SingleResource:
+      description: A single JSON:API resource.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/JsonApiSingleResponse'
   securitySchemes:
     bearerAuth:
       type: http
